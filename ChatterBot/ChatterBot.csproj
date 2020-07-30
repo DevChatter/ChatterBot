@@ -8,6 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="MahApps.Metro" Version="2.1.1" />
+    <PackageReference Include="MahApps.Metro.IconPacks" Version="4.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="DCLogo.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

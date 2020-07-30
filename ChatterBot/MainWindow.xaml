@@ -4,11 +4,24 @@
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                 Title="Chatter Bot - Version 1.0.0.0"
+                 xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                 Icon="DCLogo.ico"
+                 Title="Chatter Bot" TitleCharacterCasing="Normal"
                  Width="800"
                  Height="450"
+                 GlowBrush="{DynamicResource MahApps.Brushes.Accent}"
+                 ResizeMode="CanResizeWithGrip"
                  WindowStartupLocation="CenterScreen"
                  mc:Ignorable="d">
+
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <TextBlock Margin="4 0 10 0"
+                       VerticalAlignment="Center"
+                       Text="Version 1.0.0.0 © DevChatter" />
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
+
     <Grid>
 
     </Grid>
