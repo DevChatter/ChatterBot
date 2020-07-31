@@ -29,6 +29,12 @@ namespace ChatterBot.ViewModels
                     Label = "Commands",
                     ToolTip = "Custom Commands"
                 },
+                new PluginViewModel(this)
+                {
+                    Icon = new PackIconMaterial {Kind = PackIconMaterialKind.Puzzle},
+                    Label = "Plugins",
+                    ToolTip = "Custom Plugins"
+                },
             };
 
             MenuOptionItems = new ObservableCollection<MenuItemViewModel>
