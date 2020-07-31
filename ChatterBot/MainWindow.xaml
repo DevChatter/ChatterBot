@@ -4,7 +4,9 @@
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                 xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                 xmlns:viewModels="clr-namespace:ChatterBot.ViewModels"
+                 xmlns:core="clr-namespace:ChatterBot.Core"
+                 xmlns:views="clr-namespace:ChatterBot.Views"
                  Icon="DCLogo.ico"
                  Title="Chatter Bot" TitleCharacterCasing="Normal"
                  Width="800"
@@ -14,6 +16,57 @@
                  WindowStartupLocation="CenterScreen"
                  mc:Ignorable="d">
 
+    <Window.DataContext>
+        <viewModels:MainViewModel />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <ResourceDictionary>
+
+            <core:SelectedItemToContentConverter x:Key="SelectedItemToContentConverter" />
+
+            <!--  this is the template for the items (options too)  -->
+            <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type viewModels:MenuItemViewModel}">
+                <Grid x:Name="RootGrid"
+                      Height="48"
+                      Background="Transparent">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type mah:HamburgerMenu}}, Path=CompactPaneLength}" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <ContentControl Grid.Column="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Icon}"
+                                    Focusable="False" />
+                    <TextBlock Grid.Column="1"
+                               VerticalAlignment="Center"
+                               FontSize="16"
+                               Text="{Binding Label}" />
+                </Grid>
+                <DataTemplate.Triggers>
+                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type mah:HamburgerMenu}}, Path=IsPaneOpen}" Value="False">
+                        <Setter TargetName="RootGrid" Property="ToolTip" Value="{Binding ToolTip, Mode=OneWay}" />
+                    </DataTrigger>
+                </DataTemplate.Triggers>
+            </DataTemplate>
+
+            <!--  these are the templates for the view models  -->
+            <DataTemplate DataType="{x:Type viewModels:TerminalViewModel}">
+                <views:TerminalView DataContext="{Binding}" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:CommandsViewModel}">
+                <views:CommandsView DataContext="{Binding}" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:AboutViewModel}">
+                <views:AboutView DataContext="{Binding}" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:SettingsViewModel}">
+                <views:AppSettingsView DataContext="{Binding}" />
+            </DataTemplate>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <mah:MetroWindow.RightWindowCommands>
         <mah:WindowCommands>
             <TextBlock Margin="4 0 10 0"
@@ -22,7 +75,31 @@
         </mah:WindowCommands>
     </mah:MetroWindow.RightWindowCommands>
 
-    <Grid>
+    <mah:HamburgerMenu x:Name="HamburgerMenuControl"
+                       DisplayMode="CompactInline"
+                       IsPaneOpen="False"
+                       CanResizeOpenPane="True"
+                       ItemTemplate="{StaticResource MenuItemTemplate}"
+                       ItemsSource="{Binding MenuItems}"
+                       OptionsItemTemplate="{StaticResource MenuItemTemplate}"
+                       OptionsItemsSource="{Binding MenuOptionItems}"
+                       SelectedIndex="1">
 
-    </Grid>
+        <!--  select the ViewModel of the selected item (options item)  -->
+        <mah:HamburgerMenu.Content>
+            <MultiBinding Converter="{StaticResource SelectedItemToContentConverter}">
+                <Binding FallbackValue="{x:Null}"
+                             Mode="OneWay"
+                             Path="SelectedItem"
+                             RelativeSource="{RelativeSource Self}" />
+                <Binding FallbackValue="{x:Null}"
+                             Mode="OneWay"
+                             Path="SelectedOptionsItem"
+                             RelativeSource="{RelativeSource Self}" />
+            </MultiBinding>
+        </mah:HamburgerMenu.Content>
+
+    </mah:HamburgerMenu>
+
+
 </mah:MetroWindow>
