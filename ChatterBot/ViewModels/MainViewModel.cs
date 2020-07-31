@@ -19,8 +19,8 @@ namespace ChatterBot.ViewModels
             {
                 new TerminalViewModel(this)
                 {
-                    Icon = new PackIconOcticons {Kind = PackIconOcticonsKind.Terminal},
-                    Label = "Terminal",
+                    Icon = new PackIconMaterialDesign() {Kind = PackIconMaterialDesignKind.Chat},
+                    Label = "Chat",
                     ToolTip = "Console and Chat"
                 },
                 new CommandsViewModel(this)
