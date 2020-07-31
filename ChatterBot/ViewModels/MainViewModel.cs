@@ -1,5 +1,8 @@
 ﻿using MahApps.Metro.IconPacks;
+using Microsoft.Xaml.Behaviors.Core;
 using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Input;
 
 namespace ChatterBot.ViewModels
 {
@@ -11,6 +14,7 @@ namespace ChatterBot.ViewModels
         public MainViewModel()
         {
             CreateMenuItems();
+            ShowAccountsWindowCommand = new ActionCommand(ShowAccountsWindow);
         }
 
         public void CreateMenuItems()
@@ -64,6 +68,25 @@ namespace ChatterBot.ViewModels
         {
             get => _menuOptionItems;
             set => SetProperty(ref _menuOptionItems, value);
+        }
+
+        public ICommand ShowAccountsWindowCommand { get; set; }
+
+        private AccountsWindow _settingsWindow;
+
+        private void ShowAccountsWindow()
+        {
+            if (_settingsWindow != null)
+            {
+                _settingsWindow.Activate();
+                return;
+            }
+
+            _settingsWindow = new AccountsWindow();
+            _settingsWindow.Owner = Application.Current.MainWindow;
+            _settingsWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            _settingsWindow.Closed += (o, args) => _settingsWindow = null;
+            _settingsWindow.Show();
         }
     }
 }
