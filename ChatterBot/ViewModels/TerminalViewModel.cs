@@ -1,6 +1,8 @@
 ﻿using ChatterBot.Core;
+using Microsoft.Xaml.Behaviors.Core;
 using System;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace ChatterBot.ViewModels
@@ -9,19 +11,42 @@ namespace ChatterBot.ViewModels
     {
         public ObservableCollection<ChatMessage> Messages { get; } = new ObservableCollection<ChatMessage>();
 
+        private string _text;
+        public string Text
+        {
+            get => _text;
+            set => SetProperty(ref _text, value);
+        }
+
+        private string _selectedUser = "DevChatter";
+        public string SelectedUser
+        {
+            get => _selectedUser;
+            set => SetProperty(ref _selectedUser, value);
+        }
+
+        public SolidColorBrush UserColor { get; set; } = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+
         public TerminalViewModel(MainViewModel mainViewModel) : base(mainViewModel)
         {
-            for (int i = 0; i < 100; i++)
+        }
+
+        public void SendMessage()
+        {
+            Messages.Add(Message);
+            Text = string.Empty;
+        }
+
+        private ICommand _sendMessageCommand;
+        public ICommand SendMessageCommand
+        {
+            get
             {
-                AddMessage(new ChatMessage(DateTime.UtcNow.AddMinutes(i), "Brendoneus",
-                    new SolidColorBrush(Color.FromRgb(255, 205, 0)),
-                    $"Hello, everyone! {i}"));
+                return _sendMessageCommand ??= new ActionCommand(SendMessage);
             }
         }
 
-        public void AddMessage(ChatMessage message)
-        {
-            Messages.Add(message);
-        }
+        public ChatMessage Message => new ChatMessage(DateTime.UtcNow,
+            SelectedUser, UserColor, Text);
     }
 }

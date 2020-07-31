@@ -19,7 +19,7 @@ namespace ChatterBot.ViewModels
             {
                 new TerminalViewModel(this)
                 {
-                    Icon = new PackIconMaterialDesign() {Kind = PackIconMaterialDesignKind.Chat},
+                    Icon = new PackIconMaterialDesign {Kind = PackIconMaterialDesignKind.Chat},
                     Label = "Chat",
                     ToolTip = "Console and Chat"
                 },
