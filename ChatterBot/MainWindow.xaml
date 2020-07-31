@@ -51,7 +51,6 @@
                 </DataTemplate.Triggers>
             </DataTemplate>
 
-            <!--  these are the templates for the view models  -->
             <DataTemplate DataType="{x:Type viewModels:TerminalViewModel}">
                 <views:TerminalView DataContext="{Binding}" />
             </DataTemplate>
@@ -75,31 +74,41 @@
         </mah:WindowCommands>
     </mah:MetroWindow.RightWindowCommands>
 
-    <mah:HamburgerMenu x:Name="HamburgerMenuControl"
-                       DisplayMode="CompactInline"
-                       IsPaneOpen="False"
-                       CanResizeOpenPane="True"
-                       ItemTemplate="{StaticResource MenuItemTemplate}"
-                       ItemsSource="{Binding MenuItems}"
-                       OptionsItemTemplate="{StaticResource MenuItemTemplate}"
-                       OptionsItemsSource="{Binding MenuOptionItems}"
-                       SelectedIndex="1">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <mah:HamburgerMenu Grid.Row="0"
+                           DisplayMode="CompactInline"
+                           IsPaneOpen="False"
+                           CanResizeOpenPane="True"
+                           ItemTemplate="{StaticResource MenuItemTemplate}"
+                           ItemsSource="{Binding MenuItems}"
+                           OptionsItemTemplate="{StaticResource MenuItemTemplate}"
+                           OptionsItemsSource="{Binding MenuOptionItems}"
+                           SelectedIndex="0">
 
-        <!--  select the ViewModel of the selected item (options item)  -->
-        <mah:HamburgerMenu.Content>
-            <MultiBinding Converter="{StaticResource SelectedItemToContentConverter}">
-                <Binding FallbackValue="{x:Null}"
+            <!--  select the ViewModel of the selected item (options item)  -->
+            <mah:HamburgerMenu.Content>
+                <MultiBinding Converter="{StaticResource SelectedItemToContentConverter}">
+                    <Binding FallbackValue="{x:Null}"
                              Mode="OneWay"
                              Path="SelectedItem"
                              RelativeSource="{RelativeSource Self}" />
-                <Binding FallbackValue="{x:Null}"
+                    <Binding FallbackValue="{x:Null}"
                              Mode="OneWay"
                              Path="SelectedOptionsItem"
                              RelativeSource="{RelativeSource Self}" />
-            </MultiBinding>
-        </mah:HamburgerMenu.Content>
+                </MultiBinding>
+            </mah:HamburgerMenu.Content>
 
-    </mah:HamburgerMenu>
+        </mah:HamburgerMenu>
 
+        <Grid Grid.Row="1" Background="{DynamicResource MahApps.Brushes.Accent}">
+            <TextBlock Text="" Foreground="{DynamicResource MahApps.Brushes.IdealForeground}" />
+        </Grid>
+
+    </Grid>
 
 </mah:MetroWindow>

@@ -1,6 +1,4 @@
-﻿using MahApps.Metro.Controls;
-
-namespace ChatterBot
+﻿namespace ChatterBot
 {
     public partial class MainWindow
     {
