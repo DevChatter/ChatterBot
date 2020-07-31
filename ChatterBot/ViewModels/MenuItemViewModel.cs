@@ -40,5 +40,4 @@ namespace ChatterBot.ViewModels
             set => SetProperty(ref _isVisible, value);
         }
     }
-
 }

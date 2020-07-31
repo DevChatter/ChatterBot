@@ -10,7 +10,7 @@ namespace ChatterBot.ViewModels
 
         public MainViewModel()
         {
-            this.CreateMenuItems();
+            CreateMenuItems();
         }
 
         public void CreateMenuItems()
