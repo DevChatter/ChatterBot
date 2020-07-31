@@ -5,9 +5,49 @@
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:local="clr-namespace:ChatterBot"
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:viewModels="clr-namespace:ChatterBot.ViewModels"
+                 xmlns:core="clr-namespace:ChatterBot.Core"
+                 xmlns:views="clr-namespace:ChatterBot.Views"
                  mc:Ignorable="d"
                  Title="AccountsWindow" Height="300" Width="400">
+
+    <Window.DataContext>
+        <viewModels:AccountsViewModel />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <ResourceDictionary>
+
+            <core:SelectedItemToContentConverter x:Key="SelectedItemToContentConverter" />
+
+            <DataTemplate DataType="{x:Type viewModels:TwitchBotViewModel}">
+                <views:TwitchBotView DataContext="{Binding}" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:TwitchStreamerViewModel}">
+                <views:TwitchStreamerView DataContext="{Binding}" />
+            </DataTemplate>
+        </ResourceDictionary>
+    </Window.Resources>
+
+
     <Grid>
-        <TextBlock Text="Accounts Window" />
+        <mah:HamburgerMenu
+            SelectedIndex="0"
+            ItemTemplate="{StaticResource MenuItemTemplate}"
+            ItemsSource="{Binding MenuItems}">
+            <mah:HamburgerMenu.Content>
+                <MultiBinding Converter="{StaticResource SelectedItemToContentConverter}">
+                    <Binding FallbackValue="{x:Null}"
+                             Mode="OneWay"
+                             Path="SelectedItem"
+                             RelativeSource="{RelativeSource Self}" />
+                    <Binding FallbackValue="{x:Null}"
+                             Mode="OneWay"
+                             Path="SelectedOptionsItem"
+                             RelativeSource="{RelativeSource Self}" />
+                </MultiBinding>
+            </mah:HamburgerMenu.Content>
+
+        </mah:HamburgerMenu>
     </Grid>
 </mah:MetroWindow>
