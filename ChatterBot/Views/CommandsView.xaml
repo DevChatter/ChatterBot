@@ -4,14 +4,50 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ChatterBot.Views"
+             xmlns:core="clr-namespace:ChatterBot.Core"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
              d:DesignHeight="300"
-             d:DesignWidth="300">
+             d:DesignWidth="600">
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="AccessData"
+                            MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="core:Access" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+
     <Grid>
-        <TextBlock Text="Commands View"
-                   FontSize="32"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Command Settings" Margin="4" />
+        </StackPanel>
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Path=CustomCommands}"
+                  AutoGenerateColumns="False" CanUserAddRows="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Command" Binding="{Binding CommandWord}" />
+                <DataGridComboBoxColumn Header="Access" SelectedItemBinding="{Binding Access}"
+                                        ItemsSource="{Binding Source={StaticResource AccessData}, Mode=OneWay}">
+                </DataGridComboBoxColumn>
+                <DataGridTextColumn Header="Response" Binding="{Binding Response}" />
+                <mah:DataGridNumericUpDownColumn Header="Cooldown" Binding="{Binding CooldownTime}"
+                                                      StringFormat="N0" Minimum="0" Interval="1" />
+                <mah:DataGridNumericUpDownColumn Header="User Cooldown" Binding="{Binding UserCooldownTime}"
+                                                      StringFormat="N0" Minimum="0" Interval="1" />
+                <DataGridCheckBoxColumn Header="Enabled" Binding="{Binding Enabled}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left">
+            <TextBox Margin="4" MinWidth="150" />
+            <Button Content="Search" Margin="4" />
+        </StackPanel>
     </Grid>
 </UserControl>
     
