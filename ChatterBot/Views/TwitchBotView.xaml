@@ -6,7 +6,33 @@
              xmlns:local="clr-namespace:ChatterBot.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <TextBlock Text="Twitch Bot Account View" />
-    </Grid>
+    <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical">
+                <Label Margin="0 0 0 -5" HorizontalAlignment="Left">Bot Username:</Label>
+                <TextBox Margin="5" Text="{Binding Path=Username, Mode=TwoWay}" />
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Vertical">
+                <Label Margin="0 0 0 -5" HorizontalAlignment="Left">Channel:</Label>
+                <TextBox Margin="5" Text="{Binding Path=Username, Mode=TwoWay}" />
+            </StackPanel>
+        </Grid>
+        <Label Margin="0 0 0 -5" HorizontalAlignment="Left">OAuth Token:</Label>
+        <PasswordBox Margin="5" PasswordChar="*" PasswordChanged="PasswordBox_OnPasswordChanged" />
+        <Button Margin="5" Content="Generate New Token" Command="{Binding GenerateTokenCommand}" />
+        <Grid HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Margin="5" Command="{Binding ConnectCommand}"
+                    Content="Connect" IsEnabled="{Binding IsDisconnected}" />
+            <Button Grid.Column="1" Margin="5" Command="{Binding DisconnectCommand}"
+                    Content="Disconnect" IsEnabled="{Binding IsConnected}" />
+        </Grid>
+    </StackPanel>
 </UserControl>

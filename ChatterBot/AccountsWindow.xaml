@@ -9,7 +9,10 @@
                  xmlns:core="clr-namespace:ChatterBot.Core"
                  xmlns:views="clr-namespace:ChatterBot.Views"
                  mc:Ignorable="d"
-                 Title="AccountsWindow" Height="300" Width="400">
+                 Icon="DCLogo.ico"
+                 Title="AccountsWindow" TitleCharacterCasing="Normal"
+                 ResizeMode="CanResizeWithGrip"
+                 Height="300" Width="400">
 
     <Window.DataContext>
         <viewModels:AccountsViewModel />

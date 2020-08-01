@@ -1,6 +1,6 @@
 ﻿namespace ChatterBot.ViewModels
 {
-    public class TwitchStreamerViewModel : MenuItemViewModel
+    public class TwitchStreamerViewModel : TwitchAccountViewModel
     {
         public TwitchStreamerViewModel(BaseViewModel windowViewModel) : base(windowViewModel)
         {
