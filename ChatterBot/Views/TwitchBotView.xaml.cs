@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using ChatterBot.ViewModels;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ChatterBot.Views

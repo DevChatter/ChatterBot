@@ -10,6 +10,7 @@
                  xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                  Icon="DCLogo.ico"
                  Title="Chatter Bot" TitleCharacterCasing="Normal"
+                 MinWidth="600" MinHeight="300"
                  Width="800"
                  Height="450"
                  GlowBrush="{DynamicResource MahApps.Brushes.Accent}"
@@ -31,6 +32,9 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewModels:CommandsViewModel}">
                 <views:CommandsView DataContext="{Binding}" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:PluginViewModel}">
+                <views:PluginView DataContext="{Binding}" />
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewModels:AboutViewModel}">
                 <views:AboutView DataContext="{Binding}" />

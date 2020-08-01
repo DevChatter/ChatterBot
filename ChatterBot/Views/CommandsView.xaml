@@ -34,8 +34,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Command" Binding="{Binding CommandWord}" />
                 <DataGridComboBoxColumn Header="Access" SelectedItemBinding="{Binding Access}"
-                                        ItemsSource="{Binding Source={StaticResource AccessData}, Mode=OneWay}">
-                </DataGridComboBoxColumn>
+                                        ItemsSource="{Binding Source={StaticResource AccessData}, Mode=OneWay}" />
                 <DataGridTextColumn Header="Response" Binding="{Binding Response}" />
                 <mah:DataGridNumericUpDownColumn Header="Cooldown" Binding="{Binding CooldownTime}"
                                                       StringFormat="N0" Minimum="0" Interval="1" />
