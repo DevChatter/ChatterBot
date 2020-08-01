@@ -14,10 +14,6 @@
                  ResizeMode="CanResizeWithGrip"
                  Height="300" Width="400">
 
-    <Window.DataContext>
-        <viewModels:AccountsViewModel />
-    </Window.DataContext>
-
     <Window.Resources>
         <ResourceDictionary>
 

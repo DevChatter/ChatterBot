@@ -1,12 +1,12 @@
-﻿namespace ChatterBot
+﻿using ChatterBot.ViewModels;
+
+namespace ChatterBot
 {
-    /// <summary>
-    /// Interaction logic for AccountsWindow.xaml
-    /// </summary>
     public partial class AccountsWindow
     {
-        public AccountsWindow()
+        public AccountsWindow(AccountsViewModel accountsViewModel)
         {
+            DataContext = accountsViewModel;
             InitializeComponent();
         }
     }
