@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatterBot", "ChatterBot\Ch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatterBot.Tests", "ChatterBot.Tests\ChatterBot.Tests.csproj", "{7B9D0125-466D-4AE6-9F69-01B275E6C1FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatterBot.Core", "ChatterBot.Core\ChatterBot.Core.csproj", "{5F6C7048-52EF-4279-A363-DDF158F1E05B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7B9D0125-466D-4AE6-9F69-01B275E6C1FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B9D0125-466D-4AE6-9F69-01B275E6C1FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B9D0125-466D-4AE6-9F69-01B275E6C1FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F6C7048-52EF-4279-A363-DDF158F1E05B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F6C7048-52EF-4279-A363-DDF158F1E05B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F6C7048-52EF-4279-A363-DDF158F1E05B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F6C7048-52EF-4279-A363-DDF158F1E05B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
