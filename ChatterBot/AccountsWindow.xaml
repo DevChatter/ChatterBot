@@ -6,8 +6,8 @@
                  xmlns:local="clr-namespace:ChatterBot"
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                  xmlns:viewModels="clr-namespace:ChatterBot.ViewModels"
-                 xmlns:core="clr-namespace:ChatterBot.Core"
                  xmlns:views="clr-namespace:ChatterBot.Views"
+                 xmlns:converters="clr-namespace:ChatterBot.Converters"
                  mc:Ignorable="d"
                  Icon="DCLogo.ico"
                  Title="AccountsWindow" TitleCharacterCasing="Normal"
@@ -17,7 +17,7 @@
     <Window.Resources>
         <ResourceDictionary>
 
-            <core:SelectedItemToContentConverter x:Key="SelectedItemToContentConverter" />
+            <converters:SelectedItemToContentConverter x:Key="SelectedItemToContentConverter" />
 
             <DataTemplate DataType="{x:Type viewModels:TwitchBotViewModel}">
                 <views:TwitchBotView DataContext="{Binding}" />

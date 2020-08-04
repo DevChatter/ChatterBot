@@ -5,9 +5,10 @@
                  xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:viewModels="clr-namespace:ChatterBot.ViewModels"
-                 xmlns:core="clr-namespace:ChatterBot.Core"
                  xmlns:views="clr-namespace:ChatterBot.Views"
                  xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                 xmlns:core="clr-namespace:ChatterBot.Core;assembly=ChatterBot.Core"
+                 xmlns:converters="clr-namespace:ChatterBot.Converters"
                  Icon="DCLogo.ico"
                  Title="Chatter Bot" TitleCharacterCasing="Normal"
                  MinWidth="600" MinHeight="300"
@@ -21,7 +22,7 @@
     <Window.Resources>
         <ResourceDictionary>
 
-            <core:SelectedItemToContentConverter x:Key="SelectedItemToContentConverter" />
+            <converters:SelectedItemToContentConverter x:Key="SelectedItemToContentConverter" />
 
             <DataTemplate DataType="{x:Type viewModels:TerminalViewModel}">
                 <views:TerminalView DataContext="{Binding}" />

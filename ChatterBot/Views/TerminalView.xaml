@@ -18,7 +18,11 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding Path=TimeStamp, StringFormat='HH:mm '}"
                                        ToolTip="{Binding Path=TimeStamp, StringFormat='yyyy-MM-dd HH:mm:ss '}" />
-                            <TextBlock Text="{Binding DisplayName}" Foreground="{Binding UserColor}" />
+                            <TextBlock Text="{Binding DisplayName}">
+                                <TextBlock.Foreground>
+                                    <SolidColorBrush Color="{Binding UserColor}" />
+                                </TextBlock.Foreground>
+                            </TextBlock>
                             <TextBlock Text=": " />
                             <TextBlock Text="{Binding Text}" />
                         </StackPanel>

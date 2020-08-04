@@ -25,7 +25,7 @@ namespace ChatterBot.ViewModels
             set => SetProperty(ref _selectedUser, value);
         }
 
-        public SolidColorBrush UserColor { get; set; } = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+        public Color UserColor { get; set; } = Color.FromRgb(255, 0, 0);
 
         public TerminalViewModel(MainViewModel mainViewModel) : base(mainViewModel)
         {
@@ -47,6 +47,8 @@ namespace ChatterBot.ViewModels
         }
 
         public ChatMessage Message => new ChatMessage(DateTime.UtcNow,
-            SelectedUser, UserColor, Text);
+            SelectedUser,
+            UserColor.ToString(),
+            Text);
     }
 }
