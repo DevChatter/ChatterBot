@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:ChatterBot"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:viewModels="clr-namespace:ChatterBot.ViewModels"
-             StartupUri="MainWindow.xaml">
+             Startup="App_OnStartup">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
