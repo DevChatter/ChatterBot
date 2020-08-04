@@ -38,13 +38,7 @@ namespace ChatterBot.ViewModels
         }
 
         private ICommand _sendMessageCommand;
-        public ICommand SendMessageCommand
-        {
-            get
-            {
-                return _sendMessageCommand ??= new ActionCommand(SendMessage);
-            }
-        }
+        public ICommand SendMessageCommand => _sendMessageCommand ??= new ActionCommand(SendMessage);
 
         public ChatMessage Message => new ChatMessage(DateTime.UtcNow,
             SelectedUser,
