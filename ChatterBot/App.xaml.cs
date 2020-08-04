@@ -16,6 +16,8 @@ namespace ChatterBot
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddSingleton<MainViewModel>();
+                    services.AddSingleton<AccountsViewModel>();
+                    services.AddSingleton<AccountsWindow>();
                     services.AddSingleton<MainWindow>();
                 })
                 .ConfigureLogging(logging =>
@@ -31,6 +33,7 @@ namespace ChatterBot
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
             var mainWindow = _host.Services.GetService<MainWindow>();
+            Current.MainWindow = mainWindow; // TODO: Confirm if this adds any benefit.
             mainWindow.Show();
         }
     }

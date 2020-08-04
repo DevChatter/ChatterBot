@@ -13,9 +13,9 @@ namespace ChatterBot.ViewModels
         private AccountsWindow _settingsWindow;
         private readonly AccountsViewModel _accountsViewModel;
 
-        public MainViewModel()
+        public MainViewModel(AccountsViewModel accountsViewModel)
         {
-            _accountsViewModel = new AccountsViewModel();
+            _accountsViewModel = accountsViewModel;
             CreateMenuItems();
             ShowAccountsWindowCommand = new ActionCommand(ShowAccountsWindow);
         }

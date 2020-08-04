@@ -18,10 +18,6 @@
                  WindowStartupLocation="CenterScreen"
                  mc:Ignorable="d">
 
-    <Window.DataContext>
-        <viewModels:MainViewModel />
-    </Window.DataContext>
-
     <Window.Resources>
         <ResourceDictionary>
 
