@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatterBot", "ChatterBot\ChatterBot.csproj", "{5EA6FF44-BEDB-4D90-B7E6-218F90F9536C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatterBot", "ChatterBot\ChatterBot.csproj", "{5EA6FF44-BEDB-4D90-B7E6-218F90F9536C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatterBot.Tests", "ChatterBot.Tests\ChatterBot.Tests.csproj", "{7B9D0125-466D-4AE6-9F69-01B275E6C1FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{5EA6FF44-BEDB-4D90-B7E6-218F90F9536C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EA6FF44-BEDB-4D90-B7E6-218F90F9536C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EA6FF44-BEDB-4D90-B7E6-218F90F9536C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B9D0125-466D-4AE6-9F69-01B275E6C1FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B9D0125-466D-4AE6-9F69-01B275E6C1FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B9D0125-466D-4AE6-9F69-01B275E6C1FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B9D0125-466D-4AE6-9F69-01B275E6C1FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
