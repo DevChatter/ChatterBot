@@ -19,6 +19,22 @@
 
 ### Creating Custom Commands
 
-### Installing Custom Plugins/Modules
+#### Supported Custom Command Formats
 
-### Creating Custom Modules
+- ChatterBot Commands
+- .
+- .
+- .
+
+### Installing Custom Plug-Ins/Modules/Scripts
+
+
+#### Supported Plug-In Runtimes
+
+- ChatterBot Modules
+- .
+- .
+- .
+
+
+### Creating Custom Plug-Ins/Modules/Scripts
