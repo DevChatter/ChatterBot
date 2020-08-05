@@ -6,13 +6,12 @@
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:viewModels="clr-namespace:ChatterBot.ViewModels"
                  xmlns:views="clr-namespace:ChatterBot.Views"
-                 xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                 xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
                  xmlns:converters="clr-namespace:ChatterBot.Converters"
                  Icon="DCLogo.ico"
                  Title="Chatter Bot" TitleCharacterCasing="Normal"
                  MinWidth="600" MinHeight="300"
-                 Width="800"
-                 Height="450"
+                 Width="800" Height="450"
                  GlowBrush="{DynamicResource MahApps.Brushes.Accent}"
                  ResizeMode="CanResizeWithGrip"
                  WindowStartupLocation="CenterScreen"
@@ -49,9 +48,10 @@
             <Button Command="{Binding ShowAccountsWindowCommand}">
                 <Button.ContentTemplate>
                     <DataTemplate>
-                        <iconPacks:PackIconMaterial Width="22" Height="22"
-                                                    VerticalAlignment="Center"
-                                                    Kind="AccountMultiple" />
+                        <icons:PackIconMaterial
+                            Width="22" Height="22"
+                            VerticalAlignment="Center"
+                            Kind="AccountMultiple" />
                     </DataTemplate>
                 </Button.ContentTemplate>
             </Button>
