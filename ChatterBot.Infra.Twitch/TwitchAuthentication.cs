@@ -5,7 +5,7 @@ namespace ChatterBot.Infra.Twitch
 {
     public class TwitchAuthentication
     {
-        public const string ClientId = ""; // TODO: Pull from Config
+        public const string ClientId = ""; // TODO: Set this value
 
         public List<string> States { get; set; } = new List<string>();
 
