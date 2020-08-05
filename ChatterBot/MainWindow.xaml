@@ -7,7 +7,6 @@
                  xmlns:viewModels="clr-namespace:ChatterBot.ViewModels"
                  xmlns:views="clr-namespace:ChatterBot.Views"
                  xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-                 xmlns:core="clr-namespace:ChatterBot.Core;assembly=ChatterBot.Core"
                  xmlns:converters="clr-namespace:ChatterBot.Converters"
                  Icon="DCLogo.ico"
                  Title="Chatter Bot" TitleCharacterCasing="Normal"
