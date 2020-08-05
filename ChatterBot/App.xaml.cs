@@ -1,9 +1,12 @@
 ﻿using ChatterBot.Core.Config;
 using ChatterBot.ViewModels;
+using ChatterBot.Web;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Windows;
 
 namespace ChatterBot
@@ -14,19 +17,13 @@ namespace ChatterBot
 
         public App()
         {
-            _host = new HostBuilder()
+            int portNumber = 1234; //ApplicationSettings.Instance.TsengSettings.PortNumber;
+            var uri = new UriBuilder("http", "localhost", portNumber).Uri;
+            _host = Host.CreateDefaultBuilder()
                 .ConfigureAppConfiguration((context, configurationBuilder) =>
                 {
                     configurationBuilder.SetBasePath(context.HostingEnvironment.ContentRootPath);
                     configurationBuilder.AddJsonFile("appsettings.json", optional: false);
-                })
-                .ConfigureServices((hostContext, services) =>
-                {
-                    services.AddSingleton<MainViewModel>();
-                    services.AddSingleton<AccountsViewModel>();
-                    services.AddSingleton<AccountsWindow>();
-                    services.AddSingleton<MainWindow>();
-                    services.Configure<ApplicationSettings>(hostContext.Configuration);
                 })
                 .ConfigureLogging(logging =>
                 {
@@ -34,15 +31,30 @@ namespace ChatterBot
                     logging.AddConsole();
                     logging.AddDebug();
                 })
+                .ConfigureWebHostDefaults(
+                    builder => builder
+                        .UseIISIntegration()
+                        .UseStartup<Startup>()
+                        .ConfigureKestrel((context, options) => { })
+                        .UseUrls(uri.AbsoluteUri))
                 .Build();
 
         }
 
-        private void App_OnStartup(object sender, StartupEventArgs e)
+        private async void App_OnStartup(object sender, StartupEventArgs e)
         {
             var mainWindow = _host.Services.GetService<MainWindow>();
             Current.MainWindow = mainWindow; // TODO: Confirm if this adds any benefit.
             mainWindow.Show();
+            await _host.RunAsync();
+        }
+
+        private async void Application_Exit(object sender, ExitEventArgs e)
+        {
+            using (_host)
+            {
+                await _host.StopAsync(TimeSpan.FromSeconds(5));
+            }
         }
     }
 }

@@ -40,6 +40,8 @@ namespace ChatterBot.ViewModels
 
         protected virtual void GenerateToken()
         {
+            // TODO: Trigger the TwitchAuthentication from this.
+
             IsManualEntry = false;
             IsGeneratedEntry = true;
         }
