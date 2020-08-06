@@ -1,4 +1,4 @@
-﻿using ChatterBot.Infra.Twitch;
+﻿using ChatterBot.Core.Auth;
 using Microsoft.Xaml.Behaviors.Core;
 using System;
 using System.Diagnostics;
@@ -43,13 +43,15 @@ namespace ChatterBot.ViewModels
             IsDisconnected = true;
         }
 
+        protected abstract AuthenticationType AuthType { get; }
+
         protected virtual void GenerateToken()
         {
             try
             {
                 ProcessStartInfo psi = new ProcessStartInfo
                 {
-                    FileName = _twitchAuthentication.GetUrl(),
+                    FileName = _twitchAuthentication.GetUrl(AuthType),
                     UseShellExecute = true
                 };
                 Process.Start(psi);

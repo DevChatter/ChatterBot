@@ -1,4 +1,5 @@
-﻿using ChatterBot.Core.Config;
+﻿using ChatterBot.Core.Auth;
+using ChatterBot.Core.Config;
 using ChatterBot.Infra.Twitch;
 using ChatterBot.ViewModels;
 using MediatR;

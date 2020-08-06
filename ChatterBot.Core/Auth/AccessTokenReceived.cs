@@ -1,4 +1,6 @@
 ﻿using MediatR;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace ChatterBot.Core.Auth
 {
@@ -20,6 +22,27 @@ namespace ChatterBot.Core.Auth
             Scope = scope;
             State = state;
             TokenType = tokenType;
+        }
+    }
+
+    public class AccessTokenRecorder : IRequestHandler<AccessTokenReceived, bool>
+    {
+        private readonly TwitchAuthentication _twitchAuthentication;
+
+        public AccessTokenRecorder(TwitchAuthentication twitchAuthentication)
+        {
+            _twitchAuthentication = twitchAuthentication;
+        }
+
+        public Task<bool> Handle(AccessTokenReceived request, CancellationToken cancellationToken)
+        {
+            if (_twitchAuthentication.States.TryGetValue(request.State, out AuthenticationType authType)
+                && request.TokenType == "bearer") // TODO: Constant or Enum this!
+            {
+
+            }
+
+            throw new System.NotImplementedException();
         }
     }
 }

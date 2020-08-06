@@ -1,4 +1,4 @@
-﻿using ChatterBot.Infra.Twitch;
+﻿using ChatterBot.Core.Auth;
 using MahApps.Metro.IconPacks;
 
 namespace ChatterBot.ViewModels
@@ -19,5 +19,7 @@ namespace ChatterBot.ViewModels
             get => _channel;
             set => SetProperty(ref _channel, value);
         }
+
+        protected override AuthenticationType AuthType => AuthenticationType.TwitchBot;
     }
 }
