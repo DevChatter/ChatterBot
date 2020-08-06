@@ -1,5 +1,4 @@
-﻿using MahApps.Metro.IconPacks;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
 namespace ChatterBot.ViewModels
 {
@@ -7,27 +6,12 @@ namespace ChatterBot.ViewModels
     {
         private ObservableCollection<MenuItemViewModel> _menuItems;
 
-        public AccountsViewModel()
-        {
-            CreateMenuItems();
-        }
-
-        private void CreateMenuItems()
+        public AccountsViewModel(TwitchBotViewModel botViewModel, TwitchStreamerViewModel streamerViewModel)
         {
             MenuItems = new ObservableCollection<MenuItemViewModel>
             {
-                new TwitchBotViewModel(this)
-                {
-                    Icon = new PackIconMaterial {Kind = PackIconMaterialKind.Robot},
-                    Label = "Bot Account",
-                    ToolTip = "Twitch Bot Account Settings"
-                },
-                new TwitchStreamerViewModel(this)
-                {
-                    Icon = new PackIconOcticons {Kind = PackIconOcticonsKind.DeviceCameraVideo},
-                    Label = "Streamer Account",
-                    ToolTip = "Twitch Stream Account Settings"
-                },
+                botViewModel,
+                streamerViewModel,
             };
         }
 

@@ -1,6 +1,4 @@
-﻿using ChatterBot.Core.Config;
-using ChatterBot.ViewModels;
-using ChatterBot.Web;
+﻿using ChatterBot.Web;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,8 +15,7 @@ namespace ChatterBot
 
         public App()
         {
-            int portNumber = 1234; //ApplicationSettings.Instance.TsengSettings.PortNumber;
-            var uri = new UriBuilder("http", "localhost", portNumber).Uri;
+            var uri = new UriBuilder("http", "localhost", 1111).Uri;
             _host = Host.CreateDefaultBuilder()
                 .ConfigureAppConfiguration((context, configurationBuilder) =>
                 {
@@ -35,6 +32,7 @@ namespace ChatterBot
                     builder => builder
                         .UseIISIntegration()
                         .UseStartup<Startup>()
+                        .UseWebRoot("wwwroot")
                         .ConfigureKestrel((context, options) => { })
                         .UseUrls(uri.AbsoluteUri))
                 .Build();

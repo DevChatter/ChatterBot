@@ -5,11 +5,11 @@ namespace ChatterBot.Infra.Twitch
 {
     public class TwitchAuthentication
     {
-        public const string ClientId = ""; // TODO: Set this value
+        public const string ClientId = "4e5f6e3z1rfby5qaxcooobv2hpq2wg";
 
         public List<string> States { get; set; } = new List<string>();
 
-        public const string RedirectUrl = "http://localhost:5834"; // TODO: Pull from Config
+        public const string RedirectUrl = "http://localhost:1111/";
 
         public static string[] Scopes =
         {

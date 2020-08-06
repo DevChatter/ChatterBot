@@ -1,4 +1,5 @@
 ﻿using ChatterBot.Core;
+using MahApps.Metro.IconPacks;
 using System.Collections.ObjectModel;
 
 namespace ChatterBot.ViewModels
@@ -7,8 +8,12 @@ namespace ChatterBot.ViewModels
     {
         public ObservableCollection<Plugin> Plugins { get; set; }
 
-        public PluginViewModel(MainViewModel mainViewModel) : base(mainViewModel)
+        public PluginViewModel()
         {
+            Icon = new PackIconMaterial { Kind = PackIconMaterialKind.Puzzle };
+            Label = "Plugins";
+            ToolTip = "Custom Plugins";
+
             Plugins = new ObservableCollection<Plugin>
             {
                 new Plugin { Name = "Wasteful Game", Location = "\\WastefulGame\\",

@@ -1,9 +1,15 @@
-﻿namespace ChatterBot.ViewModels
+﻿using ChatterBot.Infra.Twitch;
+using MahApps.Metro.IconPacks;
+
+namespace ChatterBot.ViewModels
 {
     public class TwitchStreamerViewModel : TwitchAccountViewModel
     {
-        public TwitchStreamerViewModel(BaseViewModel windowViewModel) : base(windowViewModel)
+        public TwitchStreamerViewModel(TwitchAuthentication auth) : base(auth)
         {
+            Icon = new PackIconOcticons { Kind = PackIconOcticonsKind.DeviceCameraVideo };
+            Label = "Streamer Account";
+            ToolTip = "Twitch Stream Account Settings";
         }
     }
 }

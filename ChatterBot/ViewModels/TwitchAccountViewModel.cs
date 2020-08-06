@@ -1,4 +1,7 @@
-﻿using Microsoft.Xaml.Behaviors.Core;
+﻿using ChatterBot.Infra.Twitch;
+using Microsoft.Xaml.Behaviors.Core;
+using System;
+using System.Diagnostics;
 using System.Windows.Input;
 
 namespace ChatterBot.ViewModels
@@ -11,9 +14,11 @@ namespace ChatterBot.ViewModels
         private bool _isDisconnected = true;
         private bool _isManualEntry = false;
         private bool _isGeneratedEntry = true;
+        private readonly TwitchAuthentication _twitchAuthentication;
 
-        protected TwitchAccountViewModel(BaseViewModel windowViewModel) : base(windowViewModel)
+        protected TwitchAccountViewModel(TwitchAuthentication twitchAuthentication)
         {
+            _twitchAuthentication = twitchAuthentication;
             ConnectCommand = new ActionCommand(Connect);
             DisconnectCommand = new ActionCommand(Disconnect);
             GenerateTokenCommand = new ActionCommand(GenerateToken);
@@ -40,10 +45,24 @@ namespace ChatterBot.ViewModels
 
         protected virtual void GenerateToken()
         {
-            // TODO: Trigger the TwitchAuthentication from this.
+            try
+            {
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = _twitchAuthentication.GetUrl(),
+                    UseShellExecute = true
+                };
+                Process.Start(psi);
 
-            IsManualEntry = false;
-            IsGeneratedEntry = true;
+
+                IsManualEntry = false;
+                IsGeneratedEntry = true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public bool IsGeneratedEntry
