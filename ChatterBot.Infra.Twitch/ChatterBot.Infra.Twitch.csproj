@@ -8,5 +8,9 @@
     <PackageReference Include="TwitchLib" Version="3.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ChatterBot.Core\ChatterBot.Core.csproj" />
+  </ItemGroup>
+
 
 </Project>

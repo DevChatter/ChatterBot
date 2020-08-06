@@ -5,9 +5,8 @@ namespace ChatterBot.ViewModels
 {
     public class TwitchBotViewModel : TwitchAccountViewModel
     {
-        private string _channel;
-
-        public TwitchBotViewModel(TwitchAuthentication auth) : base(auth)
+        public TwitchBotViewModel(TwitchAuthentication auth, ITwitchBot twitchBot)
+            : base(auth, twitchBot, AuthenticationType.TwitchBot)
         {
             Icon = new PackIconMaterial { Kind = PackIconMaterialKind.Robot };
             Label = "Bot Account";
@@ -16,10 +15,8 @@ namespace ChatterBot.ViewModels
 
         public string Channel
         {
-            get => _channel;
-            set => SetProperty(ref _channel, value);
+            get => Credentials.Channel;
+            set => SetProperty(() => Credentials.Channel, x => Credentials.Channel = x, value);
         }
-
-        protected override AuthenticationType AuthType => AuthenticationType.TwitchBot;
     }
 }

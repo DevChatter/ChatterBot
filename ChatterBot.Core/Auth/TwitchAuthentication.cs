@@ -11,6 +11,9 @@ namespace ChatterBot.Core.Auth
         public Dictionary<string, AuthenticationType> States { get; set; }
             = new Dictionary<string, AuthenticationType>();
 
+        public Dictionary<AuthenticationType, TwitchCredentials> Credentials { get; set; }
+            = new Dictionary<AuthenticationType, TwitchCredentials>();
+
         public const string RedirectUrl = "http://localhost:1111/";
 
         public static HashSet<string> Scopes = new HashSet<string>

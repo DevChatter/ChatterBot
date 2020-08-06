@@ -27,7 +27,7 @@ namespace ChatterBot.Web
             services.AddMvc();
             services.AddSignalR();
 
-            services.AddMediatR(typeof(Startup));
+            services.AddMediatR(typeof(Startup), typeof(AccessTokenRecorder));
 
             services.AddSingleton<MainViewModel>();
             services.AddSingleton<AccountsViewModel>();
@@ -38,9 +38,10 @@ namespace ChatterBot.Web
             services.AddSingleton<SettingsViewModel>();
             services.AddSingleton<AccountsWindow>();
             services.AddSingleton<MainWindow>();
-            services.AddTransient<TwitchAuthentication>();
+            services.AddSingleton<TwitchAuthentication>();
             services.AddTransient<TwitchBotViewModel>();
             services.AddTransient<TwitchStreamerViewModel>();
+            services.AddTransient<ITwitchBot, TwitchBot>();
 
             services.Configure<ApplicationSettings>(Configuration);
         }

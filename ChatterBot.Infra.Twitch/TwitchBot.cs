@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ChatterBot.Core.Auth;
+using ChatterBot.Infra.Twitch.Extensions;
+using System;
 using TwitchLib.Client;
 using TwitchLib.Client.Events;
 using TwitchLib.Client.Models;
@@ -7,14 +9,12 @@ using TwitchLib.Communication.Models;
 
 namespace ChatterBot.Infra.Twitch
 {
-    public class TwitchBot
+    public class TwitchBot : ITwitchBot
     {
         private readonly TwitchClient _client;
 
         public TwitchBot()
         {
-            // TODO: Pull these from our settings
-            ConnectionCredentials credentials = new ConnectionCredentials("twitch_username", "access_token");
             var clientOptions = new ClientOptions
             {
                 MessagesAllowedInPeriod = 750,
@@ -22,7 +22,12 @@ namespace ChatterBot.Infra.Twitch
             };
             WebSocketClient customClient = new WebSocketClient(clientOptions);
             _client = new TwitchClient(customClient);
-            _client.Initialize(credentials, "channel");
+        }
+
+        public void Connect(TwitchCredentials twitchCredentials)
+        {
+            ConnectionCredentials credentials = twitchCredentials.ToTwitchLib();
+            _client.Initialize(credentials, twitchCredentials.Channel);
 
             _client.OnLog += Client_OnLog;
             _client.OnJoinedChannel += Client_OnJoinedChannel;
@@ -31,6 +36,11 @@ namespace ChatterBot.Infra.Twitch
             _client.OnConnected += Client_OnConnected;
 
             _client.Connect();
+        }
+
+        public void Disconnect()
+        {
+            throw new NotImplementedException();
         }
 
         private void Client_OnLog(object sender, OnLogArgs e)
@@ -52,6 +62,10 @@ namespace ChatterBot.Infra.Twitch
 
         private void Client_OnMessageReceived(object sender, OnMessageReceivedArgs e)
         {
+            if (e.ChatMessage.Message.ToLower().StartsWith("ping"))
+            {
+                _client.SendMessage(e.ChatMessage.Channel, "PONG");
+            }
         }
 
         private void Client_OnWhisperReceived(object sender, OnWhisperReceivedArgs e)
