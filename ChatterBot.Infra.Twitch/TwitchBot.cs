@@ -26,6 +26,7 @@ namespace ChatterBot.Infra.Twitch
 
         public void Connect(TwitchCredentials twitchCredentials)
         {
+            // TODO: Decrypt here.
             ConnectionCredentials credentials = twitchCredentials.ToTwitchLib();
             _client.Initialize(credentials, twitchCredentials.Channel);
 
