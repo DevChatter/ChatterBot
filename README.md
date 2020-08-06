@@ -4,6 +4,13 @@
 - For the developers, it's designed to be extendable and have their existing bot's commands integrate with ChatterBot.
 - For the non-developers, it will be easy to include custom scripts and modules built for Chatter bot as well as ones built for other chat bots.
 
+### Name Suggestions
+As "ChatterBot" is the temporary name for this project, here are a list of some of the suggestions for the final name of the bot.
+- ChatterBot
+- OneBot
+- OmniBot
+- OmegaBot
+
 ## Quick Start
 
 - Download the latest version of ChatterBot from the Releases.
