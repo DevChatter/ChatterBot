@@ -1,6 +1,5 @@
 ﻿using ChatterBot.Core.Auth;
 using ChatterBot.Core.Config;
-using ChatterBot.ViewModels;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -32,18 +31,7 @@ namespace ChatterBot.Web
             services.AddCore(appSettings);
             services.AddInfrastructureForLiteDb(appSettings);
             services.AddInfrastructureForTwitch();
-
-            services.AddSingleton<MainViewModel>();
-            services.AddSingleton<AccountsViewModel>();
-            services.AddSingleton<TerminalViewModel>();
-            services.AddSingleton<AboutViewModel>();
-            services.AddSingleton<CommandsViewModel>();
-            services.AddSingleton<PluginViewModel>();
-            services.AddSingleton<SettingsViewModel>();
-            services.AddSingleton<AccountsWindow>();
-            services.AddSingleton<MainWindow>();
-            services.AddTransient<TwitchBotViewModel>();
-            services.AddTransient<TwitchStreamerViewModel>();
+            services.AddUI();
         }
 
         public void Configure(IApplicationBuilder app)
