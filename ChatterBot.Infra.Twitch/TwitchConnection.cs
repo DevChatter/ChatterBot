@@ -11,10 +11,12 @@ namespace ChatterBot.Infra.Twitch
 {
     public class TwitchConnection : ITwitchConnection
     {
+        private readonly DataProtection _dataProtection;
         protected readonly TwitchClient Client;
 
-        public TwitchConnection()
+        public TwitchConnection(DataProtection dataProtection)
         {
+            _dataProtection = dataProtection;
             var clientOptions = new ClientOptions
             {
                 MessagesAllowedInPeriod = 750,
@@ -32,10 +34,8 @@ namespace ChatterBot.Infra.Twitch
 
         public void Connect(TwitchCredentials twitchCredentials)
         {
-            // TODO: Decrypt here.
-            ConnectionCredentials credentials = twitchCredentials.ToTwitchLib();
+            ConnectionCredentials credentials = twitchCredentials.ToTwitchLib(_dataProtection);
             Client.Initialize(credentials, twitchCredentials.Channel);
-
 
             Client.Connect();
         }

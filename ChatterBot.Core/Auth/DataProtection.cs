@@ -1,4 +1,6 @@
-﻿using System.Security.Cryptography;
+﻿using ChatterBot.Core.Config;
+using Microsoft.Extensions.Options;
+using System.Security.Cryptography;
 
 namespace ChatterBot.Core.Auth
 {
@@ -6,10 +8,9 @@ namespace ChatterBot.Core.Auth
     {
         private readonly byte[] _entropy;
 
-        public DataProtection()
+        public DataProtection(IOptions<ApplicationSettings> appSettings)
         {
-            // TODO: Get entropy "salt" from config file.
-            _entropy = new byte[] { 23, 42, 12, 23, 44, 51, 122, 93, 74 };
+            _entropy = appSettings.Value.SaltBytes;
         }
 
         public byte[] Protect(byte[] data)

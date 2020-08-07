@@ -97,9 +97,8 @@ namespace ChatterBot.ViewModels
             set => SetProperty(() => Credentials.Username, x => Credentials.Username = x, value);
         }
 
-        public string OAuth
+        public byte[] OAuth
         {
-            get => Credentials.AuthToken;
             set => SetProperty(() => Credentials.AuthToken, x => Credentials.AuthToken = x, value);
         }
 

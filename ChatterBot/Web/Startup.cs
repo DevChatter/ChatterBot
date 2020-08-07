@@ -29,6 +29,8 @@ namespace ChatterBot.Web
 
             services.AddMediatR(typeof(Startup), typeof(AccessTokenRecorder));
 
+            services.AddSingleton<DataProtection>();
+
             services.AddSingleton<MainViewModel>();
             services.AddSingleton<AccountsViewModel>();
             services.AddSingleton<TerminalViewModel>();
