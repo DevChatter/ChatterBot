@@ -9,12 +9,9 @@ namespace ChatterBot.ViewModels
         private object _toolTip;
         private bool _isVisible = true;
 
-        public MenuItemViewModel(BaseViewModel windowViewModel)
+        public MenuItemViewModel()
         {
-            WindowViewModel = windowViewModel;
         }
-
-        public BaseViewModel WindowViewModel { get; }
 
         public object Icon
         {

@@ -1,37 +1,21 @@
-﻿using MahApps.Metro.IconPacks;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
 namespace ChatterBot.ViewModels
 {
     public class AccountsViewModel : BaseViewModel
     {
-        private ObservableCollection<MenuItemViewModel> _menuItems;
+        private ObservableCollection<TwitchAccountViewModel> _menuItems;
 
-        public AccountsViewModel()
+        public AccountsViewModel(TwitchBotViewModel botViewModel, TwitchStreamerViewModel streamerViewModel)
         {
-            CreateMenuItems();
-        }
-
-        private void CreateMenuItems()
-        {
-            MenuItems = new ObservableCollection<MenuItemViewModel>
+            MenuItems = new ObservableCollection<TwitchAccountViewModel>
             {
-                new TwitchBotViewModel(this)
-                {
-                    Icon = new PackIconMaterial {Kind = PackIconMaterialKind.Robot},
-                    Label = "Bot Account",
-                    ToolTip = "Twitch Bot Account Settings"
-                },
-                new TwitchStreamerViewModel(this)
-                {
-                    Icon = new PackIconOcticons {Kind = PackIconOcticonsKind.DeviceCameraVideo},
-                    Label = "Streamer Account",
-                    ToolTip = "Twitch Stream Account Settings"
-                },
+                botViewModel,
+                streamerViewModel,
             };
         }
 
-        public ObservableCollection<MenuItemViewModel> MenuItems
+        public ObservableCollection<TwitchAccountViewModel> MenuItems
         {
             get => _menuItems;
             set => SetProperty(ref _menuItems, value);

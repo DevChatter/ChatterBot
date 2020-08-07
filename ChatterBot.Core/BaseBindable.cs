@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -18,6 +19,15 @@ namespace ChatterBot.Core
             if (EqualityComparer<T>.Default.Equals(storage, value)) return false;
 
             storage = value;
+            OnPropertyChanged(propertyName);
+            return true;
+        }
+
+        protected bool SetProperty<T>(Func<T> getter, Action<T> setter, T value, [CallerMemberName] string propertyName = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(getter(), value)) return false;
+
+            setter(value);
             OnPropertyChanged(propertyName);
             return true;
         }

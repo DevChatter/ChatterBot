@@ -1,48 +1,108 @@
-﻿using Microsoft.Xaml.Behaviors.Core;
+﻿using ChatterBot.Core.Auth;
+using Microsoft.Xaml.Behaviors.Core;
+using System;
+using System.Diagnostics;
 using System.Windows.Input;
 
 namespace ChatterBot.ViewModels
 {
     public abstract class TwitchAccountViewModel : MenuItemViewModel
     {
-        private string _username;
-        private string _oAuth;
         private bool _isConnected;
         private bool _isDisconnected = true;
+        private bool _isManualEntry = false;
+        private bool _isGeneratedEntry = true;
+        private readonly TwitchAuthentication _twitchAuthentication;
+        private readonly ITwitchConnection _twitchConnection;
 
-        protected TwitchAccountViewModel(BaseViewModel windowViewModel) : base(windowViewModel)
+        protected TwitchAccountViewModel(TwitchAuthentication twitchAuthentication,
+            ITwitchConnection twitchConnection,
+            AuthenticationType authType)
         {
+            AuthType = authType;
+            _twitchAuthentication = twitchAuthentication;
+            _twitchConnection = twitchConnection;
             ConnectCommand = new ActionCommand(Connect);
             DisconnectCommand = new ActionCommand(Disconnect);
             GenerateTokenCommand = new ActionCommand(GenerateToken);
+            ManualEntryCommand = new ActionCommand(SwitchToManualEntry);
+
+            if (!_twitchAuthentication.Credentials.ContainsKey(AuthType))
+            {
+                _twitchAuthentication.Credentials[AuthType] = new TwitchCredentials
+                {
+                    AuthType = authType
+                };
+            }
+        }
+
+        private void SwitchToManualEntry()
+        {
+            IsManualEntry = true;
+            IsGeneratedEntry = false;
         }
 
         protected virtual void Connect()
         {
+            _twitchConnection.Connect(Credentials);
             IsConnected = true;
             IsDisconnected = false;
         }
 
         protected virtual void Disconnect()
         {
+            _twitchConnection.Disconnect();
             IsConnected = false;
             IsDisconnected = true;
         }
 
+        protected AuthenticationType AuthType { get; }
+
+        public TwitchCredentials Credentials => _twitchAuthentication.Credentials[AuthType];
+
         protected virtual void GenerateToken()
         {
+            try
+            {
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = _twitchAuthentication.GetUrl(AuthType),
+                    UseShellExecute = true
+                };
+                Process.Start(psi);
+
+
+                IsManualEntry = false;
+                IsGeneratedEntry = true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
-        public string Username
+        public bool IsGeneratedEntry
         {
-            get => _username;
-            set => SetProperty(ref _username, value);
+            get => _isGeneratedEntry;
+            set => SetProperty(ref _isGeneratedEntry, value);
         }
 
-        public string OAuth
+        public bool IsManualEntry
         {
-            get => _oAuth;
-            set => SetProperty(ref _oAuth, value);
+            get => _isManualEntry;
+            set => SetProperty(ref _isManualEntry, value);
+        }
+
+        public virtual string Username
+        {
+            get => Credentials.Username;
+            set => SetProperty(() => Credentials.Username, x => Credentials.Username = x, value);
+        }
+
+        public byte[] OAuth
+        {
+            set => SetProperty(() => Credentials.AuthToken, x => Credentials.AuthToken = x, value);
         }
 
         public bool IsConnected
@@ -60,5 +120,6 @@ namespace ChatterBot.ViewModels
         public ICommand ConnectCommand { get; set; }
         public ICommand DisconnectCommand { get; set; }
         public ICommand GenerateTokenCommand { get; set; }
+        public ICommand ManualEntryCommand { get; set; }
     }
 }

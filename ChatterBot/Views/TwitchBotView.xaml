@@ -21,7 +21,10 @@
             </StackPanel>
         </Grid>
         <Label Margin="0 0 0 -5" HorizontalAlignment="Left">OAuth Token:</Label>
-        <PasswordBox Margin="5" PasswordChar="*" PasswordChanged="PasswordBox_OnPasswordChanged" />
+        <Button Margin="5" Content="Enter Manually" Command="{Binding ManualEntryCommand}"
+                Visibility="{Binding Path=IsGeneratedEntry, Converter={StaticResource BoolToVisConverter} }" />
+        <PasswordBox Margin="5" PasswordChar="*" PasswordChanged="PasswordBox_OnPasswordChanged"
+                     Visibility="{Binding Path=IsManualEntry, Converter={StaticResource BoolToVisConverter} }" />
         <Button Margin="5" Content="Generate New Token" Command="{Binding GenerateTokenCommand}" />
         <Grid HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>

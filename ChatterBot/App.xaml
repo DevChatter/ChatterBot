@@ -4,7 +4,8 @@
              xmlns:local="clr-namespace:ChatterBot"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:viewModels="clr-namespace:ChatterBot.ViewModels"
-             Startup="App_OnStartup">
+             Startup="App_OnStartup"
+             Exit="Application_Exit">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -40,6 +41,9 @@
                     </DataTrigger>
                 </DataTemplate.Triggers>
             </DataTemplate>
+
+            <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -1,4 +1,4 @@
-﻿using MahApps.Metro.IconPacks;
+﻿using ChatterBot.Core.Data;
 using Microsoft.Xaml.Behaviors.Core;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -12,53 +12,31 @@ namespace ChatterBot.ViewModels
         private ObservableCollection<MenuItemViewModel> _menuOptionItems;
         private AccountsWindow _settingsWindow;
         private readonly AccountsViewModel _accountsViewModel;
+        private readonly IDataStore _dataStore;
 
-        public MainViewModel(AccountsViewModel accountsViewModel)
+        public MainViewModel(AccountsViewModel accountsViewModel,
+            TerminalViewModel terminalViewModel,
+            CommandsViewModel commandsViewModel,
+            PluginViewModel pluginViewModel,
+            AboutViewModel aboutViewModel,
+            SettingsViewModel settingsViewModel,
+            IDataStore dataStore)
         {
             _accountsViewModel = accountsViewModel;
-            CreateMenuItems();
+            _dataStore = dataStore;
             ShowAccountsWindowCommand = new ActionCommand(ShowAccountsWindow);
-        }
-
-        public void CreateMenuItems()
-        {
             MenuItems = new ObservableCollection<MenuItemViewModel>
             {
-                new TerminalViewModel(this)
-                {
-                    Icon = new PackIconMaterialDesign {Kind = PackIconMaterialDesignKind.Chat},
-                    Label = "Chat",
-                    ToolTip = "Console and Chat"
-                },
-                new CommandsViewModel(this)
-                {
-                    Icon = new PackIconFontAwesome {Kind = PackIconFontAwesomeKind.ExclamationSolid},
-                    Label = "Commands",
-                    ToolTip = "Custom Commands"
-                },
-                new PluginViewModel(this)
-                {
-                    Icon = new PackIconMaterial {Kind = PackIconMaterialKind.Puzzle},
-                    Label = "Plugins",
-                    ToolTip = "Custom Plugins"
-                },
+                terminalViewModel,
+                commandsViewModel,
+                pluginViewModel,
             };
-
             MenuOptionItems = new ObservableCollection<MenuItemViewModel>
             {
-                new AboutViewModel(this)
-                {
-                    Icon = new PackIconMaterial {Kind = PackIconMaterialKind.Help},
-                    Label = "About",
-                    ToolTip = "Information About ChatterBot"
-                },
-                new SettingsViewModel(this)
-                {
-                    Icon = new PackIconMaterial {Kind = PackIconMaterialKind.Cog},
-                    Label = "Settings",
-                    ToolTip = "Application Settings"
-                },
+                aboutViewModel,
+                settingsViewModel,
             };
+
         }
 
         public ObservableCollection<MenuItemViewModel> MenuItems
@@ -83,7 +61,7 @@ namespace ChatterBot.ViewModels
                 return;
             }
 
-            _settingsWindow = new AccountsWindow(_accountsViewModel);
+            _settingsWindow = new AccountsWindow(_accountsViewModel, _dataStore);
             _settingsWindow.Owner = Application.Current.MainWindow;
             _settingsWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             _settingsWindow.Closed += (o, args) => _settingsWindow = null;
