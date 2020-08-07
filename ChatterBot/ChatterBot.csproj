@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ChatterBot.Core\ChatterBot.Core.csproj" />
+    <ProjectReference Include="..\ChatterBot.Infra.LiteDb\ChatterBot.Infra.LiteDb.csproj" />
     <ProjectReference Include="..\ChatterBot.Infra.Twitch\ChatterBot.Infra.Twitch.csproj" />
   </ItemGroup>
 

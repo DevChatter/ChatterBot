@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChatterBot.Core.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,13 +7,21 @@ namespace ChatterBot.Core.Auth
 {
     public class TwitchAuthentication
     {
+        public TwitchAuthentication(IDataStore dataStore)
+        {
+            var credentials = dataStore.GetCredentials() ?? new List<TwitchCredentials>();
+
+            Credentials = credentials.Any()
+                ? credentials.ToDictionary(x => x.AuthType)
+                : new Dictionary<AuthenticationType, TwitchCredentials>();
+        }
+
         public const string ClientId = "4e5f6e3z1rfby5qaxcooobv2hpq2wg";
 
         public Dictionary<string, AuthenticationType> States { get; set; }
             = new Dictionary<string, AuthenticationType>();
 
         public Dictionary<AuthenticationType, TwitchCredentials> Credentials { get; set; }
-            = new Dictionary<AuthenticationType, TwitchCredentials>();
 
         public const string RedirectUrl = "http://localhost:1111/";
 

@@ -4,18 +4,18 @@ namespace ChatterBot.ViewModels
 {
     public class AccountsViewModel : BaseViewModel
     {
-        private ObservableCollection<MenuItemViewModel> _menuItems;
+        private ObservableCollection<TwitchAccountViewModel> _menuItems;
 
         public AccountsViewModel(TwitchBotViewModel botViewModel, TwitchStreamerViewModel streamerViewModel)
         {
-            MenuItems = new ObservableCollection<MenuItemViewModel>
+            MenuItems = new ObservableCollection<TwitchAccountViewModel>
             {
                 botViewModel,
                 streamerViewModel,
             };
         }
 
-        public ObservableCollection<MenuItemViewModel> MenuItems
+        public ObservableCollection<TwitchAccountViewModel> MenuItems
         {
             get => _menuItems;
             set => SetProperty(ref _menuItems, value);

@@ -1,5 +1,7 @@
 ﻿using ChatterBot.Core.Auth;
 using ChatterBot.Core.Config;
+using ChatterBot.Core.Data;
+using ChatterBot.Infra.LiteDb;
 using ChatterBot.Infra.Twitch;
 using ChatterBot.ViewModels;
 using MediatR;
@@ -7,6 +9,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 
 namespace ChatterBot.Web
 {
@@ -46,6 +49,13 @@ namespace ChatterBot.Web
             services.AddTransient<ITwitchConnection, TwitchBot>();
 
             services.Configure<ApplicationSettings>(Configuration);
+
+            services.AddSingleton<IDataStore>(provider =>
+            {
+                var dataStore = new DataStore(provider.GetService<IOptions<ApplicationSettings>>());
+                dataStore.EnsureSchema();
+                return dataStore;
+            });
         }
 
         public void Configure(IApplicationBuilder app)

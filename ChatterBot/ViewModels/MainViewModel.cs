@@ -1,4 +1,5 @@
-﻿using Microsoft.Xaml.Behaviors.Core;
+﻿using ChatterBot.Core.Data;
+using Microsoft.Xaml.Behaviors.Core;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
@@ -11,15 +12,18 @@ namespace ChatterBot.ViewModels
         private ObservableCollection<MenuItemViewModel> _menuOptionItems;
         private AccountsWindow _settingsWindow;
         private readonly AccountsViewModel _accountsViewModel;
+        private readonly IDataStore _dataStore;
 
         public MainViewModel(AccountsViewModel accountsViewModel,
             TerminalViewModel terminalViewModel,
             CommandsViewModel commandsViewModel,
             PluginViewModel pluginViewModel,
             AboutViewModel aboutViewModel,
-            SettingsViewModel settingsViewModel)
+            SettingsViewModel settingsViewModel,
+            IDataStore dataStore)
         {
             _accountsViewModel = accountsViewModel;
+            _dataStore = dataStore;
             ShowAccountsWindowCommand = new ActionCommand(ShowAccountsWindow);
             MenuItems = new ObservableCollection<MenuItemViewModel>
             {
@@ -57,7 +61,7 @@ namespace ChatterBot.ViewModels
                 return;
             }
 
-            _settingsWindow = new AccountsWindow(_accountsViewModel);
+            _settingsWindow = new AccountsWindow(_accountsViewModel, _dataStore);
             _settingsWindow.Owner = Application.Current.MainWindow;
             _settingsWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             _settingsWindow.Closed += (o, args) => _settingsWindow = null;

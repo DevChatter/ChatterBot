@@ -1,5 +1,6 @@
 ﻿using ChatterBot.Core.Config;
 using Microsoft.Extensions.Options;
+using System;
 using System.Security.Cryptography;
 
 namespace ChatterBot.Core.Auth
@@ -19,7 +20,7 @@ namespace ChatterBot.Core.Auth
             {
                 return ProtectedData.Protect(data, _entropy, DataProtectionScope.CurrentUser);
             }
-            catch (CryptographicException e)
+            catch (Exception e)
             {
                 // TODO: Log exception
                 return null;
@@ -32,7 +33,7 @@ namespace ChatterBot.Core.Auth
             {
                 return ProtectedData.Unprotect(data, _entropy, DataProtectionScope.CurrentUser);
             }
-            catch (CryptographicException e)
+            catch (Exception e)
             {
                 // TODO: Log exception
                 return null;

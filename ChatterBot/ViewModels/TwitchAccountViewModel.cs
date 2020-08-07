@@ -29,7 +29,10 @@ namespace ChatterBot.ViewModels
 
             if (!_twitchAuthentication.Credentials.ContainsKey(AuthType))
             {
-                _twitchAuthentication.Credentials[AuthType] = new TwitchCredentials();
+                _twitchAuthentication.Credentials[AuthType] = new TwitchCredentials
+                {
+                    AuthType = authType
+                };
             }
         }
 
