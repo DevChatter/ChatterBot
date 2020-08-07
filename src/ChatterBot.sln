@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatterBot", "ChatterBot\ChatterBot.csproj", "{5EA6FF44-BEDB-4D90-B7E6-218F90F9536C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatterBot", "UI\ChatterBot.csproj", "{5EA6FF44-BEDB-4D90-B7E6-218F90F9536C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatterBot.Tests", "ChatterBot.Tests\ChatterBot.Tests.csproj", "{7B9D0125-466D-4AE6-9F69-01B275E6C1FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatterBot.Tests", "UnitTests\ChatterBot.Tests.csproj", "{7B9D0125-466D-4AE6-9F69-01B275E6C1FF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatterBot.Core", "ChatterBot.Core\ChatterBot.Core.csproj", "{5F6C7048-52EF-4279-A363-DDF158F1E05B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatterBot.Core", "Core\ChatterBot.Core.csproj", "{5F6C7048-52EF-4279-A363-DDF158F1E05B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatterBot.Infra.Twitch", "ChatterBot.Infra.Twitch\ChatterBot.Infra.Twitch.csproj", "{1832E511-F1A3-43B2-A003-44EA2002E823}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatterBot.Infra.Twitch", "Infra.Twitch\ChatterBot.Infra.Twitch.csproj", "{1832E511-F1A3-43B2-A003-44EA2002E823}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatterBot.Infra.LiteDb", "ChatterBot.Infra.LiteDb\ChatterBot.Infra.LiteDb.csproj", "{E16C775C-CDF4-46F0-8A04-873E26BF0E95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatterBot.Infra.LiteDb", "Infra.LiteDb\ChatterBot.Infra.LiteDb.csproj", "{E16C775C-CDF4-46F0-8A04-873E26BF0E95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
