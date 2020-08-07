@@ -5,8 +5,8 @@ namespace ChatterBot.ViewModels
 {
     public class TwitchStreamerViewModel : TwitchAccountViewModel
     {
-        public TwitchStreamerViewModel(TwitchAuthentication auth, ITwitchBot twitchBot)
-            : base(auth, twitchBot, AuthenticationType.TwitchStreamer)
+        public TwitchStreamerViewModel(TwitchAuthentication auth, ITwitchConnection twitchConnection)
+            : base(auth, twitchConnection, AuthenticationType.TwitchStreamer)
         {
             Icon = new PackIconOcticons { Kind = PackIconOcticonsKind.DeviceCameraVideo };
             Label = "Streamer Account";

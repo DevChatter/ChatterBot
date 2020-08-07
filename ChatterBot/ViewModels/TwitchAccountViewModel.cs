@@ -13,15 +13,15 @@ namespace ChatterBot.ViewModels
         private bool _isManualEntry = false;
         private bool _isGeneratedEntry = true;
         private readonly TwitchAuthentication _twitchAuthentication;
-        private readonly ITwitchBot _twitchBot;
+        private readonly ITwitchConnection _twitchConnection;
 
         protected TwitchAccountViewModel(TwitchAuthentication twitchAuthentication,
-            ITwitchBot twitchBot,
+            ITwitchConnection twitchConnection,
             AuthenticationType authType)
         {
             AuthType = authType;
             _twitchAuthentication = twitchAuthentication;
-            _twitchBot = twitchBot;
+            _twitchConnection = twitchConnection;
             ConnectCommand = new ActionCommand(Connect);
             DisconnectCommand = new ActionCommand(Disconnect);
             GenerateTokenCommand = new ActionCommand(GenerateToken);
@@ -41,14 +41,14 @@ namespace ChatterBot.ViewModels
 
         protected virtual void Connect()
         {
-            _twitchBot.Connect(Credentials);
+            _twitchConnection.Connect(Credentials);
             IsConnected = true;
             IsDisconnected = false;
         }
 
         protected virtual void Disconnect()
         {
-            _twitchBot.Disconnect();
+            _twitchConnection.Disconnect();
             IsConnected = false;
             IsDisconnected = true;
         }

@@ -1,6 +1,6 @@
 ﻿namespace ChatterBot.Core.Auth
 {
-    public interface ITwitchBot
+    public interface ITwitchConnection
     {
         void Connect(TwitchCredentials credentials);
         void Disconnect();

@@ -41,7 +41,7 @@ namespace ChatterBot.Web
             services.AddSingleton<TwitchAuthentication>();
             services.AddTransient<TwitchBotViewModel>();
             services.AddTransient<TwitchStreamerViewModel>();
-            services.AddTransient<ITwitchBot, TwitchBot>();
+            services.AddTransient<ITwitchConnection, TwitchBot>();
 
             services.Configure<ApplicationSettings>(Configuration);
         }
