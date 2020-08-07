@@ -2,7 +2,6 @@
 using ChatterBot.Core.Config;
 using ChatterBot.Core.Data;
 using ChatterBot.Infra.LiteDb;
-using ChatterBot.Infra.Twitch;
 using ChatterBot.ViewModels;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -34,6 +33,7 @@ namespace ChatterBot.Web
 
             var appSettings = this.Configuration.Get<ApplicationSettings>();
             services.AddCore(appSettings);
+            services.AddInfrastructureForTwitch();
 
             services.AddSingleton<MainViewModel>();
             services.AddSingleton<AccountsViewModel>();
@@ -46,7 +46,6 @@ namespace ChatterBot.Web
             services.AddSingleton<MainWindow>();
             services.AddTransient<TwitchBotViewModel>();
             services.AddTransient<TwitchStreamerViewModel>();
-            services.AddTransient<ITwitchConnection, TwitchBot>();
 
             services.Configure<ApplicationSettings>(Configuration);
 
