@@ -2,7 +2,6 @@
 using ChatterBot.Core.Config;
 using ChatterBot.Core.Data;
 using LiteDB;
-using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 
 namespace ChatterBot.Infra.LiteDb
@@ -11,11 +10,11 @@ namespace ChatterBot.Infra.LiteDb
     {
         private readonly ApplicationSettings _appSettings;
 
-        public DataStore(IOptions<ApplicationSettings> appSettings)
+        public DataStore(ApplicationSettings appSettings)
         {
-            _appSettings = appSettings.Value;
+            _appSettings = appSettings;
         }
-
+        
         public void EnsureSchema()
         {
             BsonMapper.Global.Entity<TwitchCredentials>().Id(x => x.AuthType);

@@ -1,5 +1,4 @@
 ﻿using ChatterBot.Core.Config;
-using Microsoft.Extensions.Options;
 using System;
 using System.Security.Cryptography;
 
@@ -9,9 +8,9 @@ namespace ChatterBot.Core.Auth
     {
         private readonly byte[] _entropy;
 
-        public DataProtection(IOptions<ApplicationSettings> appSettings)
+        public DataProtection(ApplicationSettings appSettings)
         {
-            _entropy = appSettings.Value.SaltBytes;
+            _entropy = appSettings.SaltBytes;
         }
 
         public byte[] Protect(byte[] data)
@@ -20,7 +19,7 @@ namespace ChatterBot.Core.Auth
             {
                 return ProtectedData.Protect(data, _entropy, DataProtectionScope.CurrentUser);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // TODO: Log exception
                 return null;
@@ -33,7 +32,7 @@ namespace ChatterBot.Core.Auth
             {
                 return ProtectedData.Unprotect(data, _entropy, DataProtectionScope.CurrentUser);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // TODO: Log exception
                 return null;
