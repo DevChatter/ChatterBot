@@ -1,7 +1,6 @@
 ﻿using ChatterBot.Core;
 using ChatterBot.Core.SimpleCommands;
 using MahApps.Metro.IconPacks;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace ChatterBot.ViewModels

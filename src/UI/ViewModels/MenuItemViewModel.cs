@@ -2,16 +2,12 @@
 
 namespace ChatterBot.ViewModels
 {
-    public class MenuItemViewModel : BaseViewModel, IHamburgerMenuItemBase
+    public abstract class MenuItemViewModel : BaseViewModel, IHamburgerMenuItemBase
     {
         private object _icon;
         private object _label;
         private object _toolTip;
         private bool _isVisible = true;
-
-        public MenuItemViewModel()
-        {
-        }
 
         public object Icon
         {
