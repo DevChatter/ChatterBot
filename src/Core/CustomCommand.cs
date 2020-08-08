@@ -4,6 +4,8 @@ namespace ChatterBot.Core
 {
     public class CustomCommand : BaseBindable
     {
+        public int Id { get; set; }
+
         private string _commandWord = "!";
         private Access _access = Access.Everyone;
         private string _response;

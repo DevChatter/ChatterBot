@@ -1,4 +1,5 @@
-﻿using ChatterBot.Core.Auth;
+﻿using ChatterBot.Core;
+using ChatterBot.Core.Auth;
 using ChatterBot.Core.Config;
 using ChatterBot.Core.Data;
 using LiteDB;
@@ -14,7 +15,7 @@ namespace ChatterBot.Infra.LiteDb
         {
             _appSettings = appSettings;
         }
-        
+
         public void EnsureSchema()
         {
             BsonMapper.Global.Entity<TwitchCredentials>().Id(x => x.AuthType);
@@ -22,7 +23,7 @@ namespace ChatterBot.Infra.LiteDb
             using (var db = new LiteDatabase(_appSettings.LightDbConnection))
             {
                 // Create Collection if it doesn't exist.
-                var col = db.GetCollection<TwitchCredentials>(nameof(TwitchCredentials));
+                _ = db.GetCollection<TwitchCredentials>(nameof(TwitchCredentials));
             }
         }
 
@@ -43,6 +44,26 @@ namespace ChatterBot.Infra.LiteDb
                 var col = db.GetCollection<TwitchCredentials>(nameof(TwitchCredentials));
 
                 col.Upsert(credentials);
+            }
+        }
+
+        public List<CustomCommand> GetCommands()
+        {
+            using (var db = new LiteDatabase(_appSettings.LightDbConnection))
+            {
+                var col = db.GetCollection<CustomCommand>(nameof(CustomCommand));
+
+                return col.Query().ToList();
+            }
+        }
+
+        public void SaveCommands(IEnumerable<CustomCommand> commands)
+        {
+            using (var db = new LiteDatabase(_appSettings.LightDbConnection))
+            {
+                var col = db.GetCollection<CustomCommand>(nameof(CustomCommand));
+
+                col.Upsert(commands);
             }
         }
     }

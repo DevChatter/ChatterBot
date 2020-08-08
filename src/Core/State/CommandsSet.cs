@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 
 namespace ChatterBot.Core.State
 {
     public class CommandsSet
     {
-        public ObservableCollection<CustomCommand> CustomCommands { get; }
-            = new ObservableCollection<CustomCommand>();
+        public BindingList<CustomCommand> CustomCommands { get; private set; }
 
         public IEnumerable<CustomCommand> GetCommandsToRun(ChatMessage chatMessage) =>
             CustomCommands
@@ -18,5 +17,10 @@ namespace ChatterBot.Core.State
 
         private static bool TextMatchesCommand(ChatMessage chatMessage, CustomCommand command)
             => chatMessage.Text.StartsWith(command.CommandWord, StringComparison.InvariantCultureIgnoreCase);
+
+        public void Initialize(List<CustomCommand> commands)
+        {
+            CustomCommands = new BindingList<CustomCommand>(commands);
+        }
     }
 }
