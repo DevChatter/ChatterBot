@@ -1,6 +1,6 @@
 ﻿using ChatterBot.Core;
 using ChatterBot.Core.Auth;
-using ChatterBot.Core.State;
+using ChatterBot.Core.SimpleCommands;
 using ChatterBot.Infra.Twitch.Extensions;
 using System;
 using System.Collections;

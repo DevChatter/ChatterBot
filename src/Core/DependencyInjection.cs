@@ -2,7 +2,6 @@
 using ChatterBot.Core.Config;
 using ChatterBot.Core.Interfaces;
 using ChatterBot.Core.SimpleCommands;
-using ChatterBot.Core.State;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

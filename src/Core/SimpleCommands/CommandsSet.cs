@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace ChatterBot.Core.State
+namespace ChatterBot.Core.SimpleCommands
 {
     public class CommandsSet
     {

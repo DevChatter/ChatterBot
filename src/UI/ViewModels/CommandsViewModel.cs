@@ -1,5 +1,5 @@
 ﻿using ChatterBot.Core;
-using ChatterBot.Core.State;
+using ChatterBot.Core.SimpleCommands;
 using MahApps.Metro.IconPacks;
 using System.Collections.ObjectModel;
 using System.ComponentModel;

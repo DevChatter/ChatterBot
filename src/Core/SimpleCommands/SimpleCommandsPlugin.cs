@@ -1,6 +1,5 @@
 ﻿using ChatterBot.Core.Data;
 using ChatterBot.Core.Interfaces;
-using ChatterBot.Core.State;
 using System.ComponentModel;
 
 namespace ChatterBot.Core.SimpleCommands

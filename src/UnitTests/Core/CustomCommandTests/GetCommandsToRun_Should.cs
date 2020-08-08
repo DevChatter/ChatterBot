@@ -1,5 +1,5 @@
 ﻿using ChatterBot.Core;
-using ChatterBot.Core.State;
+using ChatterBot.Core.SimpleCommands;
 using FluentAssertions;
 using System;
 using System.Linq;
