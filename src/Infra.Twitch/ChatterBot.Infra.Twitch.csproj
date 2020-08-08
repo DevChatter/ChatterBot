@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ChatterBot.Core\ChatterBot.Core.csproj" />
+    <ProjectReference Include="..\Core\ChatterBot.Core.csproj" />
   </ItemGroup>
 
 

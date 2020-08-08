@@ -1,6 +1,5 @@
 ﻿using ChatterBot.Core.Data;
 using ChatterBot.ViewModels;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 
