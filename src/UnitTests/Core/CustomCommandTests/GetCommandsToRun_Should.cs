@@ -2,6 +2,7 @@
 using ChatterBot.Core.State;
 using FluentAssertions;
 using System;
+using System.Linq;
 using Xunit;
 
 namespace ChatterBot.Tests.Core.CustomCommandTests
@@ -47,6 +48,33 @@ namespace ChatterBot.Tests.Core.CustomCommandTests
             var result = _commandsSet.GetCommandsToRun(chatMessage);
 
             result.Should().NotBeEmpty();
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void ReturnMatchingCommand_WhenEnabled(bool enabled)
+        {
+            var text = "!Ted";
+            _commandsSet.CustomCommands.Add(new CustomCommand
+            {
+                Response = "C# <3 Java",
+                Access = Access.Everyone,
+                CommandWord = text,
+                Enabled = enabled,
+            });
+            var chatMessage = new ChatMessage(DateTime.UtcNow, "Brendoneus", "#ffff00", text);
+
+            var result = _commandsSet.GetCommandsToRun(chatMessage);
+
+            if (enabled)
+            {
+                result.Should().ContainSingle();
+            }
+            else
+            {
+                result.Should().BeEmpty();
+            }
         }
     }
 }
