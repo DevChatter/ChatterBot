@@ -21,12 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ChatterBot.Core\ChatterBot.Core.csproj" />
-    <ProjectReference Include="..\ChatterBot.Infra.LiteDb\ChatterBot.Infra.LiteDb.csproj" />
-    <ProjectReference Include="..\ChatterBot.Infra.Twitch\ChatterBot.Infra.Twitch.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -37,6 +31,12 @@
 
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\ChatterBot.Core.csproj" />
+    <ProjectReference Include="..\Infra.LiteDb\ChatterBot.Infra.LiteDb.csproj" />
+    <ProjectReference Include="..\Infra.Twitch\ChatterBot.Infra.Twitch.csproj" />
   </ItemGroup>
 
   <ItemGroup>
