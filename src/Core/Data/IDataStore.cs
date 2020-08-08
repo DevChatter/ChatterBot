@@ -1,4 +1,5 @@
 ﻿using ChatterBot.Core.Auth;
+using ChatterBot.Core.SimpleCommands;
 using System.Collections.Generic;
 
 namespace ChatterBot.Core.Data
