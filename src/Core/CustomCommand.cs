@@ -1,4 +1,6 @@
-﻿namespace ChatterBot.Core
+﻿using System;
+
+namespace ChatterBot.Core
 {
     public class CustomCommand : BaseBindable
     {
@@ -43,6 +45,11 @@
         {
             get => _enabled;
             set => SetProperty(ref _enabled, value);
+        }
+
+        public void Run(Action<string> respond)
+        {
+            respond(Response);
         }
     }
 }
