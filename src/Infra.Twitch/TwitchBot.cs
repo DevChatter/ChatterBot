@@ -12,9 +12,9 @@ namespace ChatterBot.Infra.Twitch
 {
     internal class TwitchBot : TwitchConnection
     {
-        private readonly CommandsSet _commandsSet;
+        private readonly ICommandsSet _commandsSet;
 
-        public TwitchBot(IDataProtection dataProtection, CommandsSet commandsSet)
+        public TwitchBot(IDataProtection dataProtection, ICommandsSet commandsSet)
             : base(dataProtection)
         {
             _commandsSet = commandsSet;

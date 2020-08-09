@@ -7,11 +7,11 @@ namespace ChatterBot.ViewModels
 {
     public class CommandsViewModel : MenuItemViewModel
     {
-        private readonly CommandsSet _commandsSet;
+        private readonly ICommandsSet _commandsSet;
 
         public BindingList<CustomCommand> CustomCommands => _commandsSet.CustomCommands;
 
-        public CommandsViewModel(CommandsSet commandsSet)
+        public CommandsViewModel(ICommandsSet commandsSet)
         {
             _commandsSet = commandsSet;
             Icon = new PackIconFontAwesome { Kind = PackIconFontAwesomeKind.ExclamationSolid };

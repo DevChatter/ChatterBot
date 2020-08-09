@@ -11,7 +11,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             services.AddSingleton<IDataProtection>(new DataProtection(appSettings));
             services.AddSingleton<IPlugin, SimpleCommandsPlugin>();
-            services.AddSingleton<CommandsSet>();
+            services.AddSingleton<ICommandsSet>(new CommandsSet());
             services.AddSingleton<TwitchAuthentication>();
         }
     }
