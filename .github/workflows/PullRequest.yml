@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest #Can't use anything else as WPF build has a windows dependency - waiting on .NET MAUI
 
     steps:
     - uses: actions/checkout@v2
