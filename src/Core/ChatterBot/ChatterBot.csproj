@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -6,6 +6,9 @@
 
   <ItemGroup>
     <Folder Include="Core\Interfaces\" />
+    <Folder Include="Domain\" />
+    <Folder Include="Infra\" />
+    <Folder Include="UI\" />
   </ItemGroup>
 
 </Project>
