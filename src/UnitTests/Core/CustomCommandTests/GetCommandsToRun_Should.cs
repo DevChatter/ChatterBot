@@ -2,6 +2,7 @@
 using ChatterBot.Core.SimpleCommands;
 using FluentAssertions;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -22,10 +23,11 @@ namespace ChatterBot.Tests.Core.CustomCommandTests
                 Enabled = true,
                 Access = Access.Everyone,
             };
-            _commandsSet.CustomCommands.Add(_customCommand);
+            _commandsSet.Initialize(new List<CustomCommand> { _customCommand});
         }
 
         [Fact]
+        [Trait("Category", "Unit")]
         public void ReturnEmpty_GivenNonMatchingMessage()
         {
             var chatMessage = new ChatMessage(DateTime.UtcNow, "Brendoneus", "#ffff00", "Hello!");
@@ -41,6 +43,7 @@ namespace ChatterBot.Tests.Core.CustomCommandTests
         [InlineData("!pInG")]
         [InlineData("!pING")]
         [InlineData("!PING")]
+        [Trait("Category", "Unit")]
         public void ReturnCommand_GivenMatchingCommandWord_RegardlessOfCasing(string text)
         {
             var chatMessage = new ChatMessage(DateTime.UtcNow, "Brendoneus", "#ffff00", text);
@@ -53,6 +56,7 @@ namespace ChatterBot.Tests.Core.CustomCommandTests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
+        [Trait("Category", "Unit")]
         public void ReturnMatchingCommand_WhenEnabled(bool enabled)
         {
             var text = "!Ted";

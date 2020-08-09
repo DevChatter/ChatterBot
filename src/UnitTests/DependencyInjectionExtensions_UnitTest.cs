@@ -12,7 +12,7 @@ namespace ChatterBot.Tests
 {
     public class DependencyInjection_Should
     {
-        [WpfFact]
+        [Fact]
         [Trait("Category", "Unit")]
         public async Task BeAbleToInstantiateAllRegisteredTypes()
         {
