@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\ChatterBot\ChatterBot.csproj" />
+    <ProjectReference Include="..\Infra.LiteDb\ChatterBot.Infra.LiteDb.csproj" />
+    <ProjectReference Include="..\Infra.Twitch\ChatterBot.Infra.Twitch.csproj" />
   </ItemGroup>
 
 </Project>

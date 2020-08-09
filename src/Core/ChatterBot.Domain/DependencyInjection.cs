@@ -7,7 +7,7 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class DependencyInjectionExtensions
     {
-        public static void AddCore(this IServiceCollection services, ApplicationSettings appSettings)
+        public static void AddDomain(this IServiceCollection services, ApplicationSettings appSettings)
         {
             services.AddSingleton<IDataProtection>(new DataProtection(appSettings));
             services.AddSingleton<IPlugin, SimpleCommandsPlugin>();

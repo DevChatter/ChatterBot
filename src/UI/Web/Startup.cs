@@ -28,9 +28,8 @@ namespace ChatterBot.Web
             services.AddMediatR(typeof(Startup), typeof(AccessTokenRecorder));
 
             var appSettings = this.Configuration.Get<ApplicationSettings>();
-            services.AddCore(appSettings);
-            services.AddInfrastructureForLiteDb(appSettings);
-            services.AddInfrastructureForTwitch();
+            services.AddDomain(appSettings);
+            services.AddInfrastructure(appSettings);
             services.AddUI();
         }
 
