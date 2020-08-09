@@ -35,10 +35,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Core\ChatterBot.Domain\ChatterBot.Domain.csproj" />
     <ProjectReference Include="..\Core\ChatterBot\ChatterBot.csproj" />
-    <ProjectReference Include="..\Core\ChatterBot.Core\ChatterBot.Core.csproj" />
     <ProjectReference Include="..\Infra\Infra.LiteDb\ChatterBot.Infra.LiteDb.csproj" />
     <ProjectReference Include="..\Infra\Infra.Twitch\ChatterBot.Infra.Twitch.csproj" />
+    <ProjectReference Include="..\Infra\Infra\ChatterBot.Infra.csproj" />
   </ItemGroup>
 
   <ItemGroup>
