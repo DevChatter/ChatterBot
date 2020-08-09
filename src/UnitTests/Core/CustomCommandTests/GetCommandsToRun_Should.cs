@@ -1,6 +1,8 @@
 ﻿using ChatterBot.Core;
+using ChatterBot.Core.Config;
 using ChatterBot.Core.SimpleCommands;
 using FluentAssertions;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +12,16 @@ namespace ChatterBot.Tests.Core.CustomCommandTests
 {
     public class GetCommandsToRun_Should
     {
-        private readonly CommandsSet _commandsSet;
+        private readonly ICommandsSet _commandsSet;
         private readonly CustomCommand _customCommand;
 
         public GetCommandsToRun_Should()
         {
-            _commandsSet = new CommandsSet();
+            var fakeAppSettings = new ApplicationSettings() { Entropy = "SomeFakedEntropyString", LightDbConnection = "Filename=database.db;Password=1234" };
+            var services = new ServiceCollection();
+            services.AddCore(fakeAppSettings);
+
+            _commandsSet = services.BuildServiceProvider().GetService<ICommandsSet>();
             _customCommand = new CustomCommand
             {
                 CommandWord = "!ping",

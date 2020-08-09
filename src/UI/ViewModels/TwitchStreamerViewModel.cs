@@ -5,7 +5,7 @@ namespace ChatterBot.ViewModels
 {
     public class TwitchStreamerViewModel : TwitchAccountViewModel
     {
-        public TwitchStreamerViewModel(TwitchAuthentication auth, ITwitchConnection twitchConnection)
+        public TwitchStreamerViewModel(ITwitchAuthentication auth, ITwitchConnection twitchConnection)
             : base(auth, twitchConnection, AuthenticationType.TwitchStreamer)
         {
             Icon = new PackIconOcticons { Kind = PackIconOcticonsKind.DeviceCameraVideo };

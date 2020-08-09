@@ -4,12 +4,12 @@ using System.ComponentModel;
 
 namespace ChatterBot.Core.SimpleCommands
 {
-    public class SimpleCommandsPlugin : IPlugin
+    internal class SimpleCommandsPlugin : IPlugin
     {
         private readonly IDataStore _dataStore;
-        private readonly CommandsSet _commandsSet;
+        private readonly ICommandsSet _commandsSet;
 
-        public SimpleCommandsPlugin(IDataStore dataStore, CommandsSet commandsSet)
+        public SimpleCommandsPlugin(IDataStore dataStore, ICommandsSet commandsSet)
         {
             _dataStore = dataStore;
             _commandsSet = commandsSet;

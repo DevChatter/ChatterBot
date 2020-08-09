@@ -12,10 +12,10 @@ namespace ChatterBot.ViewModels
         private bool _isDisconnected = true;
         private bool _isManualEntry = false;
         private bool _isGeneratedEntry = true;
-        private readonly TwitchAuthentication _twitchAuthentication;
+        private readonly ITwitchAuthentication _twitchAuthentication;
         private readonly ITwitchConnection _twitchConnection;
 
-        protected TwitchAccountViewModel(TwitchAuthentication twitchAuthentication,
+        protected TwitchAccountViewModel(ITwitchAuthentication twitchAuthentication,
             ITwitchConnection twitchConnection,
             AuthenticationType authType)
         {

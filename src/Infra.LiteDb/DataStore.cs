@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace ChatterBot.Infra.LiteDb
 {
-    public class DataStore : IDataStore
+    internal class DataStore : IDataStore
     {
         private readonly ApplicationSettings _appSettings;
 

@@ -9,10 +9,10 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static void AddCore(this IServiceCollection services, ApplicationSettings appSettings)
         {
-            services.AddSingleton(new DataProtection(appSettings));
+            services.AddSingleton<IDataProtection>(new DataProtection(appSettings));
             services.AddSingleton<IPlugin, SimpleCommandsPlugin>();
-            services.AddSingleton<CommandsSet>();
-            services.AddSingleton<TwitchAuthentication>();
+            services.AddSingleton<ICommandsSet, CommandsSet>();
+            services.AddSingleton<ITwitchAuthentication, TwitchAuthentication>();
         }
     }
 }
