@@ -5,13 +5,6 @@ using System.Linq;
 
 namespace ChatterBot.Core.Auth
 {
-    public interface ITwitchAuthentication
-    {
-        string GetUrl(AuthenticationType authenticationType);
-
-        Dictionary<AuthenticationType, TwitchCredentials> Credentials { get; set; }
-        Dictionary<string, AuthenticationType> States { get; set; }
-    }
     internal class TwitchAuthentication : ITwitchAuthentication
     {
         public TwitchAuthentication(IDataStore dataStore)
