@@ -11,4 +11,8 @@
     <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="4.7.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ChatterBot\ChatterBot.csproj" />
+  </ItemGroup>
+
 </Project>
