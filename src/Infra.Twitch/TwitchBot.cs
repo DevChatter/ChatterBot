@@ -10,7 +10,7 @@ using TwitchLib.Client.Events;
 
 namespace ChatterBot.Infra.Twitch
 {
-    public class TwitchBot : TwitchConnection
+    internal class TwitchBot : TwitchConnection
     {
         private readonly CommandsSet _commandsSet;
 

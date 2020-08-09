@@ -9,7 +9,7 @@ using TwitchLib.Communication.Models;
 
 namespace ChatterBot.Infra.Twitch
 {
-    public class TwitchConnection : ITwitchConnection
+    internal class TwitchConnection : ITwitchConnection
     {
         private readonly IDataProtection _dataProtection;
         protected readonly TwitchClient Client;
