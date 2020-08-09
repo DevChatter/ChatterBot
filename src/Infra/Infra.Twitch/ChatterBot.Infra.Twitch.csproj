@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\ChatterBot.Domain\ChatterBot.Domain.csproj" />
     <ProjectReference Include="..\..\Core\ChatterBot\ChatterBot.csproj" />
   </ItemGroup>
 

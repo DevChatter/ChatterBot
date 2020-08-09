@@ -23,6 +23,7 @@
     <ProjectReference Include="..\Infra\Infra.Twitch\ChatterBot.Infra.Twitch.csproj" />
     <ProjectReference Include="..\Infra\Infra\ChatterBot.Infra.csproj" />
     <ProjectReference Include="..\UI\ChatterBot.UI.csproj" />
+    <ProjectReference Include="..\Plugins\SimpleCommands\SimpleCommands.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,11 +1,13 @@
 ﻿using ChatterBot.Core;
+using ChatterBot.Core.Interfaces;
 using ChatterBot.Core.SimpleCommands;
+using ChatterBot.Views;
 using MahApps.Metro.IconPacks;
 using System.ComponentModel;
 
 namespace ChatterBot.ViewModels
 {
-    public class CommandsViewModel : MenuItemViewModel
+    public class CommandsViewModel : BaseViewModel, IMenuItemViewModel
     {
         private readonly ICommandsSet _commandsSet;
 
@@ -17,6 +19,15 @@ namespace ChatterBot.ViewModels
             Icon = new PackIconFontAwesome { Kind = PackIconFontAwesomeKind.ExclamationSolid };
             Label = "Commands";
             ToolTip = "Custom Commands";
+            IsOption = false;
+            Content = new CommandsView();
         }
+
+        public object Icon { get; }
+        public object Label { get; }
+        public object ToolTip { get; }
+        public bool IsVisible { get; set; }
+        public bool IsOption { get; }
+        public object Content { get; }
     }
 }

@@ -31,6 +31,8 @@ namespace ChatterBot.Web
             services.AddDomain(appSettings);
             services.AddInfrastructure(appSettings);
             services.AddUI();
+
+            services.AddSimpleCommandsPlugin();
         }
 
         public void Configure(IApplicationBuilder app)

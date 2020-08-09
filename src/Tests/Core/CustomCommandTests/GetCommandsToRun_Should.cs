@@ -29,7 +29,7 @@ namespace ChatterBot.Tests.Core.CustomCommandTests
                 Enabled = true,
                 Access = Access.Everyone,
             };
-            _commandsSet.Initialize(new List<CustomCommand> { _customCommand});
+            _commandsSet.Initialize(new List<CustomCommand> { _customCommand });
         }
 
         [Fact]

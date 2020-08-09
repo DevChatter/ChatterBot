@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using ChatterBot.Core;
+using System.Collections.ObjectModel;
 
 namespace ChatterBot.ViewModels
 {

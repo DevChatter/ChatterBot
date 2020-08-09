@@ -1,4 +1,5 @@
 ﻿using ChatterBot.Core.Interfaces;
+using ChatterBot.Core.State;
 using ChatterBot.Web;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 namespace ChatterBot
@@ -43,15 +45,28 @@ namespace ChatterBot
 
         private async void App_OnStartup(object sender, StartupEventArgs e)
         {
-            var plugins = _host.Services.GetServices<IPlugin>();
+            IServiceProvider provider = _host.Services;
+
+            InitializeMenus(provider);
+
+            var plugins = provider.GetServices<IPlugin>();
             foreach (IPlugin plugin in plugins)
             {
                 plugin.Initialize();
             }
-            var mainWindow = _host.Services.GetService<MainWindow>();
+
+
+            var mainWindow = provider.GetService<MainWindow>();
             Current.MainWindow = mainWindow; // TODO: Confirm if this adds any benefit.
             mainWindow.Show();
             await _host.RunAsync();
+        }
+
+        private void InitializeMenus(IServiceProvider provider)
+        {
+            var menuItemsSet = provider.GetService<IMainMenuItemsSet>();
+            var menuItems = provider.GetServices<IMenuItemViewModel>().ToArray();
+            menuItemsSet.Initialize(menuItems.Where(x => !x.IsOption), menuItems.Where(x => x.IsOption));
         }
 
         private async void Application_Exit(object sender, ExitEventArgs e)

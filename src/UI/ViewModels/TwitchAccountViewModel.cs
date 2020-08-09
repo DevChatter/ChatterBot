@@ -17,7 +17,8 @@ namespace ChatterBot.ViewModels
 
         protected TwitchAccountViewModel(ITwitchAuthentication twitchAuthentication,
             ITwitchConnection twitchConnection,
-            AuthenticationType authType)
+            AuthenticationType authType, object icon, object label, object toolTip, object content)
+            : base(icon, label, toolTip, content)
         {
             AuthType = authType;
             _twitchAuthentication = twitchAuthentication;

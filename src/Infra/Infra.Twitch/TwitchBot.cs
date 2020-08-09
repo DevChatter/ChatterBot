@@ -1,23 +1,21 @@
 ﻿using ChatterBot.Core;
 using ChatterBot.Core.Auth;
-using ChatterBot.Core.SimpleCommands;
+using ChatterBot.Core.Interfaces;
 using ChatterBot.Infra.Twitch.Extensions;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TwitchLib.Client.Events;
 
 namespace ChatterBot.Infra.Twitch
 {
     internal class TwitchBot : TwitchConnection
     {
-        private readonly ICommandsSet _commandsSet;
+        private readonly IEnumerable<IMessageHandler> _messageHandlers;
 
-        public TwitchBot(IDataProtection dataProtection, ICommandsSet commandsSet)
+        public TwitchBot(IDataProtection dataProtection, IEnumerable<IMessageHandler> messageHandlers)
             : base(dataProtection)
         {
-            _commandsSet = commandsSet;
+            _messageHandlers = messageHandlers;
         }
 
         protected override void Client_OnJoinedChannel(object? sender, OnJoinedChannelArgs e)
@@ -30,11 +28,10 @@ namespace ChatterBot.Infra.Twitch
         protected override void Client_OnMessageReceived(object? sender, OnMessageReceivedArgs e)
         {
             ChatMessage chatMessage = e.ChatMessage.ToDomain();
-            IEnumerable<CustomCommand> toRun = _commandsSet.GetCommandsToRun(chatMessage);
-
-            foreach (CustomCommand command in toRun)
+            foreach (IMessageHandler messageHandler in _messageHandlers)
             {
-                command.Run(message => Client.SendMessage(e.ChatMessage.Channel, message));
+                messageHandler.Handle(chatMessage,
+                    response => Client.SendMessage(e.ChatMessage.Channel, response));
             }
         }
     }

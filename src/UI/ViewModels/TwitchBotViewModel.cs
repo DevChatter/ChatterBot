@@ -1,4 +1,5 @@
 ﻿using ChatterBot.Core.Auth;
+using ChatterBot.Views;
 using MahApps.Metro.IconPacks;
 
 namespace ChatterBot.ViewModels
@@ -6,11 +7,10 @@ namespace ChatterBot.ViewModels
     public class TwitchBotViewModel : TwitchAccountViewModel
     {
         public TwitchBotViewModel(ITwitchAuthentication auth, ITwitchConnection twitchConnection)
-            : base(auth, twitchConnection, AuthenticationType.TwitchBot)
+            : base(auth, twitchConnection, AuthenticationType.TwitchBot,
+                new PackIconMaterial { Kind = PackIconMaterialKind.Robot },
+                "Bot Account", "Twitch Bot Account Settings", new TwitchBotView())
         {
-            Icon = new PackIconMaterial { Kind = PackIconMaterialKind.Robot };
-            Label = "Bot Account";
-            ToolTip = "Twitch Bot Account Settings";
         }
 
         public string Channel

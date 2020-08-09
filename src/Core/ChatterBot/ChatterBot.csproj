@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Domain\" />
     <Folder Include="Infra\" />
     <Folder Include="UI\" />
   </ItemGroup>

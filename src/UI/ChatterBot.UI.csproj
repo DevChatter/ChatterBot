@@ -14,10 +14,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="DCLogo.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="MahApps.Metro" Version="2.1.1" />
     <PackageReference Include="MahApps.Metro.IconPacks" Version="4.4.0" />
     <PackageReference Include="MediatR" Version="8.1.0" />
@@ -37,15 +33,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Core\ChatterBot.Domain\ChatterBot.Domain.csproj" />
     <ProjectReference Include="..\Core\ChatterBot\ChatterBot.csproj" />
     <ProjectReference Include="..\Infra\Infra.LiteDb\ChatterBot.Infra.LiteDb.csproj" />
     <ProjectReference Include="..\Infra\Infra.Twitch\ChatterBot.Infra.Twitch.csproj" />
     <ProjectReference Include="..\Infra\Infra\ChatterBot.Infra.csproj" />
+    <ProjectReference Include="..\Plugins\SimpleCommands\SimpleCommands.csproj" />
   </ItemGroup>
 
   <ItemGroup>
