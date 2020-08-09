@@ -29,6 +29,11 @@ Thanks for your interest in directly working on the project with us!
 - .
 - .
 
+### Our Branch Structure
+- `main` - current released version.
+- `dev` - collaborative development branch for the next version. Branched from `main`. Merges into `main`.
+- `release-*` - collaborative release branch for tying up final loose ends, meta-data, versions, etc. Branched from `dev`. Merged into `main` then tagged `v*.*.*.*` before `main` merged into `dev`.
+- `hotfix-*` - collaborative hotfix branch for fixing issues in released version. Branched from `main`. Merged into `main` then tagged `v*.*.*.*` before `main` merged into `dev`.
 
 #### We can always use help with:
 - Updating documentation (this and other documentation files).
