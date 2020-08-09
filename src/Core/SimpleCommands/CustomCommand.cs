@@ -1,7 +1,11 @@
-﻿namespace ChatterBot.Core
+﻿using System;
+
+namespace ChatterBot.Core.SimpleCommands
 {
     public class CustomCommand : BaseBindable
     {
+        public int Id { get; set; }
+
         private string _commandWord = "!";
         private Access _access = Access.Everyone;
         private string _response;
@@ -43,6 +47,11 @@
         {
             get => _enabled;
             set => SetProperty(ref _enabled, value);
+        }
+
+        public void Run(Action<string> respond)
+        {
+            respond(Response);
         }
     }
 }

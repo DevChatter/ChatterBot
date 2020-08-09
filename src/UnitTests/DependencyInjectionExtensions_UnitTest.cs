@@ -1,4 +1,5 @@
 ﻿#pragma warning disable CA1707 // Identifiers should not contain underscores
+using ChatterBot.Core.Config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace ChatterBot.Tests
             // Arrange
             var services = new ServiceCollection();
 
-            var fakeAppSettings = new Core.Config.ApplicationSettings() { Entropy = "SomeFakedEntropyString", LightDbConnection = "Filename=database.db;Password=1234" };
+            var fakeAppSettings = new ApplicationSettings() { Entropy = "SomeFakedEntropyString", LightDbConnection = "Filename=database.db;Password=1234" };
             //services.AddUI();
             services.AddCore(fakeAppSettings);
             services.AddInfrastructureForLiteDb(fakeAppSettings);

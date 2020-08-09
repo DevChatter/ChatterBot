@@ -1,26 +1,22 @@
 ﻿using ChatterBot.Core;
+using ChatterBot.Core.SimpleCommands;
 using MahApps.Metro.IconPacks;
-using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace ChatterBot.ViewModels
 {
     public class CommandsViewModel : MenuItemViewModel
     {
-        public ObservableCollection<CustomCommand> CustomCommands { get; } = new ObservableCollection<CustomCommand>();
+        private readonly CommandsSet _commandsSet;
 
-        public CommandsViewModel()
+        public BindingList<CustomCommand> CustomCommands => _commandsSet.CustomCommands;
+
+        public CommandsViewModel(CommandsSet commandsSet)
         {
+            _commandsSet = commandsSet;
             Icon = new PackIconFontAwesome { Kind = PackIconFontAwesomeKind.ExclamationSolid };
             Label = "Commands";
             ToolTip = "Custom Commands";
-
-            CustomCommands.Add(new CustomCommand { Access = Access.Everyone, CommandWord = "!ping", Response = "Pong!" });
-            CustomCommands.Add(new CustomCommand
-            {
-                Access = Access.VIPs,
-                CommandWord = "!so",
-                Response = "Huge shout out to $arg1! Go check them out! https://www.twitch.tv/$name1"
-            });
         }
     }
 }

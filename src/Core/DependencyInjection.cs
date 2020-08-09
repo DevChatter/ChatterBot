@@ -1,5 +1,7 @@
 ﻿using ChatterBot.Core.Auth;
 using ChatterBot.Core.Config;
+using ChatterBot.Core.Interfaces;
+using ChatterBot.Core.SimpleCommands;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -8,6 +10,8 @@ namespace Microsoft.Extensions.DependencyInjection
         public static void AddCore(this IServiceCollection services, ApplicationSettings appSettings)
         {
             services.AddSingleton(new DataProtection(appSettings));
+            services.AddSingleton<IPlugin, SimpleCommandsPlugin>();
+            services.AddSingleton<CommandsSet>();
             services.AddSingleton<TwitchAuthentication>();
         }
     }

@@ -1,10 +1,12 @@
-﻿using ChatterBot.Web;
+﻿using ChatterBot.Core.Interfaces;
+using ChatterBot.Web;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace ChatterBot
@@ -41,6 +43,11 @@ namespace ChatterBot
 
         private async void App_OnStartup(object sender, StartupEventArgs e)
         {
+            var plugins = _host.Services.GetServices<IPlugin>();
+            foreach (IPlugin plugin in plugins)
+            {
+                plugin.Initialize();
+            }
             var mainWindow = _host.Services.GetService<MainWindow>();
             Current.MainWindow = mainWindow; // TODO: Confirm if this adds any benefit.
             mainWindow.Show();

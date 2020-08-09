@@ -1,13 +1,23 @@
-﻿using ChatterBot.Core.Auth;
+﻿using ChatterBot.Core;
+using ChatterBot.Core.Auth;
+using ChatterBot.Core.SimpleCommands;
+using ChatterBot.Infra.Twitch.Extensions;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using TwitchLib.Client.Events;
 
 namespace ChatterBot.Infra.Twitch
 {
     public class TwitchBot : TwitchConnection
     {
-        public TwitchBot(DataProtection dataProtection) : base(dataProtection)
+        private readonly CommandsSet _commandsSet;
+
+        public TwitchBot(DataProtection dataProtection, CommandsSet commandsSet)
+            : base(dataProtection)
         {
+            _commandsSet = commandsSet;
         }
 
         protected override void Client_OnJoinedChannel(object sender, OnJoinedChannelArgs e)
@@ -17,14 +27,15 @@ namespace ChatterBot.Infra.Twitch
             Client.SendMessage(e.Channel, message);
         }
 
-
         protected override void Client_OnMessageReceived(object sender, OnMessageReceivedArgs e)
         {
-            if (e.ChatMessage.Message.ToLower().StartsWith("ping"))
+            ChatMessage chatMessage = e.ChatMessage.ToDomain();
+            IEnumerable<CustomCommand> toRun = _commandsSet.GetCommandsToRun(chatMessage);
+
+            foreach (CustomCommand command in toRun)
             {
-                Client.SendMessage(e.ChatMessage.Channel, "PONG");
+                command.Run(message => Client.SendMessage(e.ChatMessage.Channel, message));
             }
         }
-
     }
 }
