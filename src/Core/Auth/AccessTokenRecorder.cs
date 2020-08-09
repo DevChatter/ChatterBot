@@ -8,10 +8,10 @@ namespace ChatterBot.Core.Auth
 {
     public class AccessTokenRecorder : IRequestHandler<AccessTokenReceived, bool>
     {
-        private readonly TwitchAuthentication _twitchAuthentication;
+        private readonly ITwitchAuthentication _twitchAuthentication;
         private readonly IDataProtection _dataProtection;
 
-        public AccessTokenRecorder(TwitchAuthentication twitchAuthentication,
+        public AccessTokenRecorder(ITwitchAuthentication twitchAuthentication,
             IDataProtection dataProtection)
         {
             _twitchAuthentication = twitchAuthentication;

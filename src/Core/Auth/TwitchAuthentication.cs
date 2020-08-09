@@ -12,7 +12,7 @@ namespace ChatterBot.Core.Auth
         Dictionary<AuthenticationType, TwitchCredentials> Credentials { get; set; }
         Dictionary<string, AuthenticationType> States { get; set; }
     }
-    public class TwitchAuthentication : ITwitchAuthentication
+    internal class TwitchAuthentication : ITwitchAuthentication
     {
         public TwitchAuthentication(IDataStore dataStore)
         {

@@ -5,7 +5,7 @@ namespace ChatterBot.ViewModels
 {
     public class TwitchBotViewModel : TwitchAccountViewModel
     {
-        public TwitchBotViewModel(TwitchAuthentication auth, ITwitchConnection twitchConnection)
+        public TwitchBotViewModel(ITwitchAuthentication auth, ITwitchConnection twitchConnection)
             : base(auth, twitchConnection, AuthenticationType.TwitchBot)
         {
             Icon = new PackIconMaterial { Kind = PackIconMaterialKind.Robot };
