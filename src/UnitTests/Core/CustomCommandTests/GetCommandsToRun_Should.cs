@@ -2,6 +2,7 @@
 using ChatterBot.Core.SimpleCommands;
 using FluentAssertions;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -22,7 +23,7 @@ namespace ChatterBot.Tests.Core.CustomCommandTests
                 Enabled = true,
                 Access = Access.Everyone,
             };
-            _commandsSet.CustomCommands.Add(_customCommand);
+            _commandsSet.Initialize(new List<CustomCommand> { _customCommand});
         }
 
         [Fact]
