@@ -11,7 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatterBot.Infra.LiteDb", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatterBot.Infra.Twitch", "Infra\Infra.Twitch\ChatterBot.Infra.Twitch.csproj", "{0E5A7600-7157-4C72-A778-F94A5AC30BFF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatterBot.Core", "Core\ChatterBot\ChatterBot.Core.csproj", "{F8937AEA-28A7-4D6B-BD7A-C792314C1590}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatterBot.Domain", "Core\ChatterBot.Domain\ChatterBot.Domain.csproj", "{9EC6FFFF-0CA7-4298-8CB0-7C8204979C66}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatterBot.Infra", "Infra\Infra\ChatterBot.Infra.csproj", "{E886F0A0-B40D-48B1-8521-C4B74D4E1B10}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatterBot.Core", "Core\ChatterBot.Core\ChatterBot.Core.csproj", "{17771EA1-2DB8-496B-9743-2013B17383EC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatterBot", "Core\ChatterBot\ChatterBot.csproj", "{51850ADA-F7C1-4691-ABBB-A69545331BCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +41,22 @@ Global
 		{0E5A7600-7157-4C72-A778-F94A5AC30BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E5A7600-7157-4C72-A778-F94A5AC30BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E5A7600-7157-4C72-A778-F94A5AC30BFF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F8937AEA-28A7-4D6B-BD7A-C792314C1590}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F8937AEA-28A7-4D6B-BD7A-C792314C1590}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F8937AEA-28A7-4D6B-BD7A-C792314C1590}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F8937AEA-28A7-4D6B-BD7A-C792314C1590}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EC6FFFF-0CA7-4298-8CB0-7C8204979C66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EC6FFFF-0CA7-4298-8CB0-7C8204979C66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EC6FFFF-0CA7-4298-8CB0-7C8204979C66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EC6FFFF-0CA7-4298-8CB0-7C8204979C66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E886F0A0-B40D-48B1-8521-C4B74D4E1B10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E886F0A0-B40D-48B1-8521-C4B74D4E1B10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E886F0A0-B40D-48B1-8521-C4B74D4E1B10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E886F0A0-B40D-48B1-8521-C4B74D4E1B10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17771EA1-2DB8-496B-9743-2013B17383EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17771EA1-2DB8-496B-9743-2013B17383EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17771EA1-2DB8-496B-9743-2013B17383EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17771EA1-2DB8-496B-9743-2013B17383EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51850ADA-F7C1-4691-ABBB-A69545331BCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51850ADA-F7C1-4691-ABBB-A69545331BCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51850ADA-F7C1-4691-ABBB-A69545331BCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51850ADA-F7C1-4691-ABBB-A69545331BCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
