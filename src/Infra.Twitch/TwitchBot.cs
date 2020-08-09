@@ -14,7 +14,7 @@ namespace ChatterBot.Infra.Twitch
     {
         private readonly CommandsSet _commandsSet;
 
-        public TwitchBot(DataProtection dataProtection, CommandsSet commandsSet)
+        public TwitchBot(IDataProtection dataProtection, CommandsSet commandsSet)
             : base(dataProtection)
         {
             _commandsSet = commandsSet;

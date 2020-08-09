@@ -11,10 +11,10 @@ namespace ChatterBot.Infra.Twitch
 {
     public class TwitchConnection : ITwitchConnection
     {
-        private readonly DataProtection _dataProtection;
+        private readonly IDataProtection _dataProtection;
         protected readonly TwitchClient Client;
 
-        public TwitchConnection(DataProtection dataProtection)
+        public TwitchConnection(IDataProtection dataProtection)
         {
             _dataProtection = dataProtection;
             var clientOptions = new ClientOptions

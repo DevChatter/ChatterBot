@@ -7,7 +7,7 @@ namespace ChatterBot.Infra.Twitch.Extensions
     public static class CredentialsExtensions
     {
         public static ConnectionCredentials ToTwitchLib(
-            this TwitchCredentials credentials, DataProtection dataProtection)
+            this TwitchCredentials credentials, IDataProtection dataProtection)
             => new ConnectionCredentials(credentials.Username,
                 dataProtection.Unprotect(credentials.AuthToken).BytesToString());
     }

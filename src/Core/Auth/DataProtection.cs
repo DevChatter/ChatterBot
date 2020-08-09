@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 
 namespace ChatterBot.Core.Auth
 {
-    public class DataProtection
+    internal class DataProtection : IDataProtection
     {
         private readonly byte[] _entropy;
 
