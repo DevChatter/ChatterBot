@@ -14,7 +14,7 @@ As "ChatterBot" is the temporary name for this project, here are a list of some 
 ## Quick Start
 
 - Download the latest version of ChatterBot from the Releases.
-- .
+- Run the `ChatterBot.exe` file.
 - .
 - .
 - .
