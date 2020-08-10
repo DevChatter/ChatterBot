@@ -13,6 +13,7 @@ namespace ChatterBot.Plugins.SimpleCommands
             services.AddSingleton<IPlugin, SimpleCommandsPlugin>();
             services.AddTransient<ICustomCommandValidator, CustomCommandValidator>();
             services.AddSingleton<ICommandsSet, CommandsSet>();
+            services.AddSingleton<IMessageHandler, SimpleCommandsMessageHandler>();
         }
     }
 }

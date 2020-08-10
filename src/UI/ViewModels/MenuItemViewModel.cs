@@ -1,6 +1,7 @@
 ﻿using ChatterBot.Core;
 using ChatterBot.Core.Interfaces;
 using MahApps.Metro.Controls;
+using System.Windows.Controls;
 
 namespace ChatterBot.ViewModels
 {
@@ -10,11 +11,12 @@ namespace ChatterBot.ViewModels
         private bool _isVisible = true;
 
         protected MenuItemViewModel(object icon, object label, object toolTip,
-            object content, bool isOption = false)
+            UserControl content, bool isOption = false)
         {
             Icon = icon;
             Label = label;
             ToolTip = toolTip;
+            content.DataContext = this;
             Content = content;
             IsOption = isOption;
         }

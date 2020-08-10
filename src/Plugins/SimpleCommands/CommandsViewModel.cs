@@ -18,7 +18,7 @@ namespace ChatterBot.Plugins.SimpleCommands
             Label = "Commands";
             ToolTip = "Custom Commands";
             IsOption = false;
-            Content = new CommandsView();
+            Content = new CommandsView { DataContext = this };
         }
 
         public object Icon { get; }

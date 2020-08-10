@@ -2,6 +2,7 @@
 using Microsoft.Xaml.Behaviors.Core;
 using System;
 using System.Diagnostics;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace ChatterBot.ViewModels
@@ -17,7 +18,7 @@ namespace ChatterBot.ViewModels
 
         protected TwitchAccountViewModel(ITwitchAuthentication twitchAuthentication,
             ITwitchConnection twitchConnection,
-            AuthenticationType authType, object icon, object label, object toolTip, object content)
+            AuthenticationType authType, object icon, object label, object toolTip, UserControl content)
             : base(icon, label, toolTip, content)
         {
             AuthType = authType;

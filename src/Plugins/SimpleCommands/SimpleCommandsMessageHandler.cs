@@ -7,9 +7,9 @@ namespace ChatterBot.Plugins.SimpleCommands
 {
     public class SimpleCommandsMessageHandler : IMessageHandler
     {
-        private readonly CommandsSet _commandsSet;
+        private readonly ICommandsSet _commandsSet;
 
-        public SimpleCommandsMessageHandler(CommandsSet commandsSet)
+        public SimpleCommandsMessageHandler(ICommandsSet commandsSet)
         {
             _commandsSet = commandsSet;
         }
