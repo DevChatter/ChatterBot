@@ -14,7 +14,7 @@ namespace ChatterBot.Converters
             {
                 return values[0] ?? values[1];
             }
-            return null;
+            return null!;
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

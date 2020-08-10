@@ -45,25 +45,25 @@ namespace ChatterBot.Infra.Twitch
             throw new NotImplementedException();
         }
 
-        protected virtual void Client_OnLog(object sender, OnLogArgs e)
+        protected virtual void Client_OnLog(object? sender, OnLogArgs e)
         {
             Console.WriteLine($"{e.DateTime}: {e.BotUsername} - {e.Data}");
         }
 
-        protected virtual void Client_OnConnected(object sender, OnConnectedArgs e)
+        protected virtual void Client_OnConnected(object? sender, OnConnectedArgs e)
         {
             Console.WriteLine($"Connected to {e.AutoJoinChannel}");
         }
 
-        protected virtual void Client_OnJoinedChannel(object sender, OnJoinedChannelArgs e)
+        protected virtual void Client_OnJoinedChannel(object? sender, OnJoinedChannelArgs e)
         {
         }
 
-        protected virtual void Client_OnMessageReceived(object sender, OnMessageReceivedArgs e)
+        protected virtual void Client_OnMessageReceived(object? sender, OnMessageReceivedArgs e)
         {
         }
 
-        protected virtual void Client_OnWhisperReceived(object sender, OnWhisperReceivedArgs e)
+        protected virtual void Client_OnWhisperReceived(object? sender, OnWhisperReceivedArgs e)
         {
         }
     }

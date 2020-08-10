@@ -20,14 +20,14 @@ namespace ChatterBot.Infra.Twitch
             _commandsSet = commandsSet;
         }
 
-        protected override void Client_OnJoinedChannel(object sender, OnJoinedChannelArgs e)
+        protected override void Client_OnJoinedChannel(object? sender, OnJoinedChannelArgs e)
         {
             var message = "Hey everyone! I am a bot connected via TwitchLib!";
             Console.WriteLine(message);
             Client.SendMessage(e.Channel, message);
         }
 
-        protected override void Client_OnMessageReceived(object sender, OnMessageReceivedArgs e)
+        protected override void Client_OnMessageReceived(object? sender, OnMessageReceivedArgs e)
         {
             ChatMessage chatMessage = e.ChatMessage.ToDomain();
             IEnumerable<CustomCommand> toRun = _commandsSet.GetCommandsToRun(chatMessage);

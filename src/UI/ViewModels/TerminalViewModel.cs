@@ -12,7 +12,7 @@ namespace ChatterBot.ViewModels
     {
         public ObservableCollection<ChatMessage> Messages { get; } = new ObservableCollection<ChatMessage>();
 
-        private string _text;
+        private string _text = string.Empty;
         public string Text
         {
             get => _text;
@@ -41,7 +41,7 @@ namespace ChatterBot.ViewModels
             Text = string.Empty;
         }
 
-        private ICommand _sendMessageCommand;
+        private ICommand? _sendMessageCommand;
         public ICommand SendMessageCommand => _sendMessageCommand ??= new ActionCommand(SendMessage);
 
         public ChatMessage Message => new ChatMessage(DateTime.UtcNow,
