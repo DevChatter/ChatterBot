@@ -1,0 +1,50 @@
+<html>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+
+    <h1>ChatterBot Logical Dependency Diagram</h1>
+    <div class="mermaid">
+      graph TD
+        subgraph Entry Points
+          id1(ChatterBot.UI)
+          style id1 fill:#C6E0B4
+          id2(ChatterBot.Tests)
+          style id2 fill:#FFE699
+        end
+
+        subgraph Core
+          id3(ChatterBot)
+          style id3 fill:#B4C6E7
+          id4(ChatterBot.DomainModel)
+          style id4 fill:#B4C6E7
+        end
+
+        subgraph Infrastructure
+          id5(ChatterBot.Infra)
+          style id5 fill:#f4b084
+          id6(ChatterBot.Infra.LiteDb)
+          style id6 fill:#f4b084
+          id7(ChatterBot.Infra.Twitch)
+          style id7 fill:#f4b084
+        end
+
+        id1 --> id3
+        id1 --> id4
+        id1 --> id5
+
+        id2 --> id5
+        id2 --> id3
+
+        id4 --> id3
+
+        id5 --> id3
+        id5 --> id6
+        id5 --> id7
+
+        id6 --> id3
+
+        id7 --> id3
+    </div>
+  </body>
+</html>
