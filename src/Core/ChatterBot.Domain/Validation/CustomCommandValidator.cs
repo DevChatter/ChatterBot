@@ -9,13 +9,9 @@ namespace ChatterBot.Domain.Validation
     {
         public CustomCommandValidator()
         {
-            //this.RuleFor(x => x.DecimalFormat)
-            //    .NotEmpty()
-            //    .MaximumLength(Currency.DecimalFormatMaxLength);
-
-            //this.RuleFor(x => x.Symbol)
-            //    .NotEmpty()
-            //    .MaximumLength(Currency.SymbolMaxLength);
+            // TOOD: Add additional validation rules.
+            this.RuleFor(x => x.CommandWord).NotEmpty().WithMessage("{PropertyName} must not be empty.");
+            this.RuleFor(x => x.CommandWord).Must(x => x.StartsWith("!")).WithMessage("{PropertyName} must start with a '!' character.");
         }
     }
 }
