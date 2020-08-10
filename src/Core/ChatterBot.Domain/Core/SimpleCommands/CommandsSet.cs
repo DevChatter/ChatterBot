@@ -5,14 +5,6 @@ using System.Linq;
 
 namespace ChatterBot.Core.SimpleCommands
 {
-    public interface ICommandsSet
-    {
-        BindingList<CustomCommand> CustomCommands { get; }
-
-        IEnumerable<CustomCommand> GetCommandsToRun(ChatMessage chatMessage);
-        void Initialize(List<CustomCommand> commands);
-    }
-
     internal class CommandsSet : ICommandsSet
     {
         public BindingList<CustomCommand> CustomCommands { get; private set; }

@@ -21,9 +21,8 @@ namespace ChatterBot.Tests
 
             var fakeAppSettings = new ApplicationSettings() { Entropy = "SomeFakedEntropyString", LightDbConnection = "Filename=database.db;Password=1234" };
             //services.AddUI();
-            services.AddCore(fakeAppSettings);
-            services.AddInfrastructureForLiteDb(fakeAppSettings);
-            services.AddInfrastructureForTwitch();
+            services.AddDomain(fakeAppSettings);
+            services.AddInfrastructure(fakeAppSettings);
 
             var serviceProvider = services.BuildServiceProvider();
 
