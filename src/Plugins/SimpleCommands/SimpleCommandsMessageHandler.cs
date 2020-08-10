@@ -1,6 +1,5 @@
 ﻿using ChatterBot.Core;
 using ChatterBot.Core.Interfaces;
-using ChatterBot.Core.SimpleCommands;
 using System;
 using System.Collections.Generic;
 

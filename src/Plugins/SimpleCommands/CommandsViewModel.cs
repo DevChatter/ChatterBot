@@ -1,11 +1,9 @@
 ﻿using ChatterBot.Core;
 using ChatterBot.Core.Interfaces;
-using ChatterBot.Core.SimpleCommands;
-using ChatterBot.Views;
 using MahApps.Metro.IconPacks;
 using System.ComponentModel;
 
-namespace ChatterBot.ViewModels
+namespace ChatterBot.Plugins.SimpleCommands
 {
     public class CommandsViewModel : BaseViewModel, IMenuItemViewModel
     {

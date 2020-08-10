@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace ChatterBot.Views
+namespace ChatterBot.Plugins.SimpleCommands
 {
     public partial class CommandsView : UserControl
     {

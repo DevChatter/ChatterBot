@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using ChatterBot.Core.Config;
-using ChatterBot.Core.SimpleCommands;
 using ChatterBot.Domain.Validation;
+using ChatterBot.Plugins.SimpleCommands;
 using FluentAssertions;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;

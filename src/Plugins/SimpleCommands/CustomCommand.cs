@@ -1,6 +1,7 @@
-﻿using System;
+﻿using ChatterBot.Core;
+using System;
 
-namespace ChatterBot.Core.SimpleCommands
+namespace ChatterBot.Plugins.SimpleCommands
 {
     public class CustomCommand : BaseBindable
     {

@@ -5,6 +5,7 @@ using TwitchLib.Client;
 using TwitchLib.Client.Events;
 using TwitchLib.Client.Models;
 using TwitchLib.Communication.Clients;
+using TwitchLib.Communication.Events;
 using TwitchLib.Communication.Models;
 
 namespace ChatterBot.Infra.Twitch
@@ -30,19 +31,34 @@ namespace ChatterBot.Infra.Twitch
             Client.OnMessageReceived += Client_OnMessageReceived;
             Client.OnWhisperReceived += Client_OnWhisperReceived;
             Client.OnConnected += Client_OnConnected;
+            Client.OnError += Client_OnError;
+            Client.OnConnectionError += Client_OnConnectionError;
+            Client.OnNoPermissionError += Client_OnNoPermissionError;
+        }
+
+        private void Client_OnNoPermissionError(object? sender, EventArgs e)
+        {
+        }
+
+        private void Client_OnConnectionError(object? sender, OnConnectionErrorArgs e)
+        {
+        }
+
+        private void Client_OnError(object? sender, OnErrorEventArgs e)
+        {
         }
 
         public void Connect(TwitchCredentials twitchCredentials)
         {
             ConnectionCredentials credentials = twitchCredentials.ToTwitchLib(_dataProtection);
-            Client.Initialize(credentials, twitchCredentials.Channel);
+            Client.Initialize(credentials, twitchCredentials.Channel.ToLowerInvariant());
 
             Client.Connect();
         }
 
         public void Disconnect()
         {
-            throw new NotImplementedException();
+            Client.Disconnect();
         }
 
         protected virtual void Client_OnLog(object? sender, OnLogArgs e)

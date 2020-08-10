@@ -1,11 +1,10 @@
 ﻿using ChatterBot.Core;
 using ChatterBot.Core.Config;
-using ChatterBot.Core.SimpleCommands;
+using ChatterBot.Plugins.SimpleCommands;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 
 namespace ChatterBot.Tests.Core.CustomCommandTests

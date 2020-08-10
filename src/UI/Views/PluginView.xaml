@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:sys="clr-namespace:System;assembly=System.Runtime"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             xmlns:core="clr-namespace:ChatterBot.Core;assembly=ChatterBot.Core"
+             xmlns:core="clr-namespace:ChatterBot.Core;assembly=ChatterBot"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="450">
 

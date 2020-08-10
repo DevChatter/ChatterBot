@@ -1,5 +1,6 @@
 ﻿using ChatterBot.Core.Auth;
 using ChatterBot.Core.Config;
+using ChatterBot.Plugins.SimpleCommands;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;

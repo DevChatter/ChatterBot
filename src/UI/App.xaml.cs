@@ -55,7 +55,6 @@ namespace ChatterBot
                 plugin.Initialize();
             }
 
-
             var mainWindow = provider.GetService<MainWindow>();
             Current.MainWindow = mainWindow; // TODO: Confirm if this adds any benefit.
             mainWindow.Show();

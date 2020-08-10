@@ -1,8 +1,9 @@
 ﻿using ChatterBot.Core.Interfaces;
-using ChatterBot.Core.SimpleCommands;
 using ChatterBot.Domain.Validation;
+using ChatterBot.Plugins.SimpleCommands.Validation;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace ChatterBot.Plugins.SimpleCommands
 {
     public static class DependencyInjectionExtensions
     {
@@ -10,8 +11,8 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             // TODO: Replace this with scanning for IPlugin when loading assemblies
             services.AddSingleton<IPlugin, SimpleCommandsPlugin>();
-            services.AddSingleton<CommandsSet>();
             services.AddTransient<ICustomCommandValidator, CustomCommandValidator>();
+            services.AddSingleton<ICommandsSet, CommandsSet>();
         }
     }
 }
