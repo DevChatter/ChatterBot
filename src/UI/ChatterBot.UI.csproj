@@ -3,6 +3,8 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <nullable>enable</nullable>
+    <LangVersion>latest</LangVersion>
     <UseWPF>true</UseWPF>
     <ApplicationIcon></ApplicationIcon>
   </PropertyGroup>

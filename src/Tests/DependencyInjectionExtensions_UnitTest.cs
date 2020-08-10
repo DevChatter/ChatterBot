@@ -31,8 +31,10 @@ namespace ChatterBot.Tests
 
             foreach (var serviceDescriptor in services)
             {
-                serviceDescriptor.ServiceType.Should().NotBeNull();
-                serviceDescriptor.ServiceType.FullName.Should().NotBeNullOrEmpty();
+                if (serviceDescriptor.ServiceType == null)
+                    throw new NullReferenceException("services contains a serviceDescriptor with a null ServiceType");
+                if (serviceDescriptor.ServiceType.FullName == null)
+                    throw new NullReferenceException("services contains a serviceDescriptor with a null ServiceType FullName");
 
                 try
                 {

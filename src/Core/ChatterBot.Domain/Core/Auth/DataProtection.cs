@@ -22,7 +22,7 @@ namespace ChatterBot.Core.Auth
             catch (Exception)
             {
                 // TODO: Log exception
-                return null;
+                return Array.Empty<byte>();
             }
         }
 
@@ -35,7 +35,7 @@ namespace ChatterBot.Core.Auth
             catch (Exception)
             {
                 // TODO: Log exception
-                return null;
+                return Array.Empty<byte>();
             }
         }
     }

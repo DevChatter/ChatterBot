@@ -8,9 +8,9 @@ namespace ChatterBot.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        private ObservableCollection<MenuItemViewModel> _menuItems;
-        private ObservableCollection<MenuItemViewModel> _menuOptionItems;
-        private AccountsWindow _settingsWindow;
+        private ObservableCollection<MenuItemViewModel> _menuItems = new ObservableCollection<MenuItemViewModel>();
+        private ObservableCollection<MenuItemViewModel> _menuOptionItems = new ObservableCollection<MenuItemViewModel>();
+        private AccountsWindow? _settingsWindow; 
         private readonly AccountsViewModel _accountsViewModel;
         private readonly IDataStore _dataStore;
 
