@@ -17,14 +17,14 @@ namespace ChatterBot.Core.SimpleCommands
 
         public void Initialize()
         {
-            _commandsSet.Initialize(_dataStore.GetCommands());
+            _commandsSet.Initialize(_dataStore.GetEntities<CustomCommand>());
 
             _commandsSet.CustomCommands.ListChanged += CustomCommandsOnListChanged;
         }
 
         private void CustomCommandsOnListChanged(object sender, ListChangedEventArgs e)
         {
-            _dataStore.SaveCommands(_commandsSet.CustomCommands);
+            _dataStore.SaveEntities(_commandsSet.CustomCommands);
         }
     }
 }

@@ -1,8 +1,6 @@
-﻿using ChatterBot.Core;
-using ChatterBot.Core.Auth;
+﻿using ChatterBot.Core.Auth;
 using ChatterBot.Core.Config;
 using ChatterBot.Core.Data;
-using ChatterBot.Core.SimpleCommands;
 using LiteDB;
 using System.Collections.Generic;
 
@@ -28,43 +26,23 @@ namespace ChatterBot.Infra.LiteDb
             }
         }
 
-        public List<TwitchCredentials> GetCredentials()
+        public List<TEntity> GetEntities<TEntity>()
         {
             using (var db = new LiteDatabase(_appSettings.LightDbConnection))
             {
-                var col = db.GetCollection<TwitchCredentials>(nameof(TwitchCredentials));
+                var col = db.GetCollection<TEntity>(typeof(TEntity).Name);
 
                 return col.Query().ToList();
             }
         }
 
-        public void SaveCredentials(IEnumerable<TwitchCredentials> credentials)
+        public void SaveEntities<TEntity>(IEnumerable<TEntity> entities)
         {
             using (var db = new LiteDatabase(_appSettings.LightDbConnection))
             {
-                var col = db.GetCollection<TwitchCredentials>(nameof(TwitchCredentials));
+                var col = db.GetCollection<TEntity>(typeof(TEntity).Name);
 
-                col.Upsert(credentials);
-            }
-        }
-
-        public List<CustomCommand> GetCommands()
-        {
-            using (var db = new LiteDatabase(_appSettings.LightDbConnection))
-            {
-                var col = db.GetCollection<CustomCommand>(nameof(CustomCommand));
-
-                return col.Query().ToList();
-            }
-        }
-
-        public void SaveCommands(IEnumerable<CustomCommand> commands)
-        {
-            using (var db = new LiteDatabase(_appSettings.LightDbConnection))
-            {
-                var col = db.GetCollection<CustomCommand>(nameof(CustomCommand));
-
-                col.Upsert(commands);
+                col.Upsert(entities);
             }
         }
     }

@@ -21,7 +21,7 @@ namespace ChatterBot
         private void AccountsWindow_OnClosing(object sender, CancelEventArgs e)
         {
             var credentials = _accountsViewModel.MenuItems.Select(x => x.Credentials);
-            _dataStore.SaveCredentials(credentials);
+            _dataStore.SaveEntities(credentials);
         }
     }
 }
