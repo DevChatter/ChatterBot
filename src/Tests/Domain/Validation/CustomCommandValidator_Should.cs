@@ -1,5 +1,4 @@
-﻿using ChatterBot.Core;
-using ChatterBot.Plugins.SimpleCommands;
+﻿using ChatterBot.Plugins.SimpleCommands;
 using ChatterBot.Plugins.SimpleCommands.Validation;
 using FluentAssertions;
 using FluentValidation;
