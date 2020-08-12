@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <nullable>enable</nullable>
+    <LangVersion>latest</LangVersion>
     <RootNamespace>ChatterBot.Plugins.SimpleCommands</RootNamespace>
     <AssemblyName>ChatterBot.Plugins.SimpleCommands</AssemblyName>
   </PropertyGroup>

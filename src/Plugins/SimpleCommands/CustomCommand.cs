@@ -12,9 +12,9 @@ namespace ChatterBot.Plugins.SimpleCommands
 
         private string _commandWord = "!";
         private Access _access = Access.Everyone;
-        private string _response;
-        private int _cooldownTime;
-        private int _userCooldownTime;
+        private string _response = "";
+        private int _cooldownTime = 0;
+        private int _userCooldownTime = 0;
         private bool _enabled = true;
         private readonly CustomCommandValidator _validator;
 
