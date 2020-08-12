@@ -1,5 +1,4 @@
-﻿using ChatterBot.Core;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace ChatterBot.Plugins.SimpleCommands
