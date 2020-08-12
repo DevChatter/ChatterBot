@@ -27,7 +27,7 @@ namespace ChatterBot.UI.Web
 
             services.AddMediatR(typeof(Startup), typeof(AccessTokenRecorder));
 
-            var appSettings = this.Configuration.Get<ApplicationSettings>();
+            var appSettings = Configuration.Get<ApplicationSettings>();
             services.AddDomain(appSettings);
             services.AddInfrastructure(appSettings);
             services.AddUI();

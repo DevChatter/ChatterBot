@@ -10,7 +10,7 @@ namespace ChatterBot.Domain.Auth
     {
         public TwitchAuthentication(IDataStore dataStore)
         {
-            var credentials = dataStore.GetEntities<TwitchCredentials>();
+            List<TwitchCredentials> credentials = dataStore.GetEntities<TwitchCredentials>();
 
             Credentials = credentials.Any()
                 ? credentials.ToDictionary(x => x.AuthType)

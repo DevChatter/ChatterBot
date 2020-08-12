@@ -1,5 +1,7 @@
-﻿using ChatterBot.Data;
+﻿using ChatterBot.Auth;
+using ChatterBot.Data;
 using ChatterBot.UI.ViewModels;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
@@ -20,7 +22,7 @@ namespace ChatterBot.UI
 
         private void AccountsWindow_OnClosing(object sender, CancelEventArgs e)
         {
-            var credentials = _accountsViewModel.MenuItems.Select(x => x.Credentials);
+            IEnumerable<TwitchCredentials> credentials = _accountsViewModel.MenuItems.Select(x => x.Credentials);
             _dataStore.SaveEntities(credentials);
         }
     }

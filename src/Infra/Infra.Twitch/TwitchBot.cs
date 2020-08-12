@@ -19,7 +19,7 @@ namespace ChatterBot.Infra.Twitch
 
         protected override void Client_OnJoinedChannel(object? sender, OnJoinedChannelArgs e)
         {
-            var message = "Hey everyone! I am a bot connected via TwitchLib!";
+            string message = "Hey everyone! I am a bot connected via TwitchLib!";
             Console.WriteLine(message);
             Client.SendMessage(e.Channel, message);
         }

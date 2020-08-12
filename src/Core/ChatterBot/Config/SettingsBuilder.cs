@@ -19,7 +19,7 @@ namespace ChatterBot.Config
         private static byte[] GetSalt(int maximumSaltLength)
         {
             var salt = new byte[maximumSaltLength];
-            using (var random = CryptoService)
+            using (RNGCryptoServiceProvider random = CryptoService)
             {
                 random.GetNonZeroBytes(salt);
             }

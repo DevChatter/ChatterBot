@@ -34,7 +34,7 @@ namespace ChatterBot.Tests.CustomCommandTests
         {
             var chatMessage = new ChatMessage(DateTime.UtcNow, "Brendoneus", "#ffff00", "Hello!");
 
-            var result = _commandsSet.GetCommandsToRun(chatMessage);
+            IEnumerable<CustomCommand> result = _commandsSet.GetCommandsToRun(chatMessage);
 
             result.Should().BeEmpty();
         }
@@ -50,7 +50,7 @@ namespace ChatterBot.Tests.CustomCommandTests
         {
             var chatMessage = new ChatMessage(DateTime.UtcNow, "Brendoneus", "#ffff00", text);
 
-            var result = _commandsSet.GetCommandsToRun(chatMessage);
+            IEnumerable<CustomCommand> result = _commandsSet.GetCommandsToRun(chatMessage);
 
             result.Should().NotBeEmpty();
         }
@@ -61,7 +61,7 @@ namespace ChatterBot.Tests.CustomCommandTests
         [Trait("Category", "Unit")]
         public void ReturnMatchingCommand_WhenEnabled(bool enabled)
         {
-            var text = "!Ted";
+            string text = "!Ted";
             _commandsSet.CustomCommands.Add(new CustomCommand
             {
                 Response = "C# <3 Java",
@@ -71,7 +71,7 @@ namespace ChatterBot.Tests.CustomCommandTests
             });
             var chatMessage = new ChatMessage(DateTime.UtcNow, "Brendoneus", "#ffff00", text);
 
-            var result = _commandsSet.GetCommandsToRun(chatMessage);
+            IEnumerable<CustomCommand> result = _commandsSet.GetCommandsToRun(chatMessage);
 
             if (enabled)
             {

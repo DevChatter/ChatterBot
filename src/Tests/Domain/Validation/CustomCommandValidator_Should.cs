@@ -2,6 +2,7 @@
 using ChatterBot.Plugins.SimpleCommands.Validation;
 using FluentAssertions;
 using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
 using Xunit;
@@ -28,7 +29,7 @@ namespace ChatterBot.Tests.Domain.Validation
             };
 
             // Act
-            var result = await services.BuildServiceProvider().GetRequiredService<ICustomCommandValidator>().ValidateAsync(command).ConfigureAwait(false);
+            ValidationResult result = await services.BuildServiceProvider().GetRequiredService<ICustomCommandValidator>().ValidateAsync(command).ConfigureAwait(false);
 
             // Assert
             result.IsValid.Should().BeTrue();
@@ -42,10 +43,10 @@ namespace ChatterBot.Tests.Domain.Validation
             var services = new ServiceCollection();
             services.AddSimpleCommandsPlugin();
 
-            var command = new CustomCommand() { CommandWord = string.Empty };
+            var command = new CustomCommand { CommandWord = string.Empty };
 
             // Act
-            var result = await services.BuildServiceProvider().GetRequiredService<ICustomCommandValidator>().ValidateAsync(command).ConfigureAwait(false);
+            ValidationResult result = await services.BuildServiceProvider().GetRequiredService<ICustomCommandValidator>().ValidateAsync(command).ConfigureAwait(false);
 
             // Assert
             result.IsValid.Should().BeFalse();

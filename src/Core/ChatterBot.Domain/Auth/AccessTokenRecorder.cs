@@ -23,7 +23,7 @@ namespace ChatterBot.Domain.Auth
             if (_twitchAuthentication.States.TryGetValue(request.State, out AuthenticationType authType)
                 && request.TokenType == "bearer") // TODO: Constant or Enum this!
             {
-                var encrypted = _dataProtection.Protect(request.AccessToken.StringToBytes());
+                byte[] encrypted = _dataProtection.Protect(request.AccessToken.StringToBytes());
                 // TODO: Be sure there *is* an entry in the dictionary.
                 _twitchAuthentication.Credentials[authType].AuthToken = encrypted;
 
