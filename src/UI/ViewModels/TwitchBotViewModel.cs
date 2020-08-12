@@ -1,8 +1,8 @@
 ﻿using ChatterBot.Auth;
-using ChatterBot.Views;
 using MahApps.Metro.IconPacks;
+using TwitchBotView = ChatterBot.UI.Views.TwitchBotView;
 
-namespace ChatterBot.ViewModels
+namespace ChatterBot.UI.ViewModels
 {
     public class TwitchBotViewModel : TwitchAccountViewModel
     {

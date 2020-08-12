@@ -1,9 +1,9 @@
 ﻿using ChatterBot.Data;
-using ChatterBot.ViewModels;
+using ChatterBot.UI.ViewModels;
 using System.ComponentModel;
 using System.Linq;
 
-namespace ChatterBot
+namespace ChatterBot.UI
 {
     public partial class AccountsWindow
     {

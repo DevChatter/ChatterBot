@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace ChatterBot.Web
+namespace ChatterBot.UI.Web
 {
     public class Startup
     {

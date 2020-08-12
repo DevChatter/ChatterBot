@@ -1,4 +1,4 @@
-﻿using ChatterBot.Views;
+﻿using ChatterBot.UI.Views;
 using MahApps.Metro.IconPacks;
 using Microsoft.Xaml.Behaviors.Core;
 using System;
@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace ChatterBot.ViewModels
+namespace ChatterBot.UI.ViewModels
 {
     public class TerminalViewModel : MenuItemViewModel
     {

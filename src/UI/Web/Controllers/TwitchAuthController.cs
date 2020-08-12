@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace ChatterBot.Web.Controllers
+namespace ChatterBot.UI.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

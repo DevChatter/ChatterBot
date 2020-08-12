@@ -1,9 +1,9 @@
 ﻿using ChatterBot.Interfaces;
-using ChatterBot.ViewModels;
+using ChatterBot.UI.ViewModels;
 using MahApps.Metro.Controls;
 using System.Linq;
 
-namespace ChatterBot
+namespace ChatterBot.UI
 {
     public partial class MainWindow
     {

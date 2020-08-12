@@ -1,6 +1,6 @@
 ﻿using ChatterBot.Interfaces;
 using ChatterBot.State;
-using ChatterBot.Web;
+using ChatterBot.UI.Web;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,7 +10,7 @@ using System;
 using System.Linq;
 using System.Windows;
 
-namespace ChatterBot
+namespace ChatterBot.UI
 {
     public partial class App
     {

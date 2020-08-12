@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 
-namespace ChatterBot.ViewModels
+namespace ChatterBot.UI.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {

@@ -1,4 +1,4 @@
-﻿namespace ChatterBot.Views
+﻿namespace ChatterBot.UI.Views
 {
     public partial class TerminalView
     {

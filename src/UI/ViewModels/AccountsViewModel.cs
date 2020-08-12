@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace ChatterBot.ViewModels
+namespace ChatterBot.UI.ViewModels
 {
     public class AccountsViewModel : BaseViewModel
     {

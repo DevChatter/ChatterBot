@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace ChatterBot.ViewModels
+namespace ChatterBot.UI.ViewModels
 {
     public abstract class TwitchAccountViewModel : MenuItemViewModel
     {

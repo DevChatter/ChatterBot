@@ -2,7 +2,7 @@
 using MahApps.Metro.Controls;
 using System.Windows.Controls;
 
-namespace ChatterBot.ViewModels
+namespace ChatterBot.UI.ViewModels
 {
     public abstract class MenuItemViewModel
         : BaseBindable, IHamburgerMenuItemBase, IMenuItemViewModel

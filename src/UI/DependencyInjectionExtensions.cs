@@ -1,6 +1,6 @@
-﻿using ChatterBot;
-using ChatterBot.Interfaces;
-using ChatterBot.ViewModels;
+﻿using ChatterBot.Interfaces;
+using ChatterBot.UI;
+using ChatterBot.UI.ViewModels;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
