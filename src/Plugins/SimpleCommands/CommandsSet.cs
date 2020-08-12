@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace ChatterBot.Plugins.SimpleCommands
 {
-    public class CommandsSet : ICommandsSet
+    internal class CommandsSet : ICommandsSet
     {
         public BindingList<CustomCommand> CustomCommands { get; private set; }
 

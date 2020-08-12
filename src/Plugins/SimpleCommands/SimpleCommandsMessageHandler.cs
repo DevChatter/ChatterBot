@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace ChatterBot.Plugins.SimpleCommands
 {
-    public class SimpleCommandsMessageHandler : IMessageHandler
+    internal class SimpleCommandsMessageHandler : IMessageHandler
     {
         private readonly ICommandsSet _commandsSet;
 

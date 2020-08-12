@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace ChatterBot.Plugins.SimpleCommands
 {
-    public class CommandsViewModel : BaseViewModel, IMenuItemViewModel
+    internal class CommandsViewModel : BaseViewModel, IMenuItemViewModel
     {
         private readonly ICommandsSet _commandsSet;
 
