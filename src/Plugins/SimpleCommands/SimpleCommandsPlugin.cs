@@ -2,6 +2,7 @@
 using ChatterBot.Core.Interfaces;
 using ChatterBot.Core.State;
 using System.ComponentModel;
+using System.Linq;
 
 namespace ChatterBot.Plugins.SimpleCommands
 {
@@ -30,7 +31,8 @@ namespace ChatterBot.Plugins.SimpleCommands
 
         private void CustomCommandsOnListChanged(object sender, ListChangedEventArgs e)
         {
-            _dataStore.SaveEntities(_commandsSet.CustomCommands);
+            var toSave = _commandsSet.CustomCommands.Where(x => string.IsNullOrEmpty(x.Error));
+            _dataStore.SaveEntities(toSave);
         }
     }
 }
