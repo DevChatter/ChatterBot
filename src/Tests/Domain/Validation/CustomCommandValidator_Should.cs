@@ -1,11 +1,10 @@
 ﻿using ChatterBot.Core;
-using System.Threading.Tasks;
-using ChatterBot.Core.Config;
-using ChatterBot.Domain.Validation;
 using ChatterBot.Plugins.SimpleCommands;
+using ChatterBot.Plugins.SimpleCommands.Validation;
 using FluentAssertions;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace ChatterBot.Tests.Domain.Validation

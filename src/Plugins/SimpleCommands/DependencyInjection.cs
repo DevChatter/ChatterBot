@@ -1,5 +1,4 @@
 ﻿using ChatterBot.Core.Interfaces;
-using ChatterBot.Domain.Validation;
 using ChatterBot.Plugins.SimpleCommands;
 using ChatterBot.Plugins.SimpleCommands.Validation;
 
