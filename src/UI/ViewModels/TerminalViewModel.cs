@@ -1,4 +1,5 @@
 ﻿using ChatterBot.Core;
+using ChatterBot.Views;
 using MahApps.Metro.IconPacks;
 using Microsoft.Xaml.Behaviors.Core;
 using System;
@@ -29,10 +30,9 @@ namespace ChatterBot.ViewModels
         public Color UserColor { get; set; } = Color.FromRgb(255, 0, 0);
 
         public TerminalViewModel()
+            : base(new PackIconMaterialDesign { Kind = PackIconMaterialDesignKind.Chat },
+                "Chat", "Console and Chat", new TerminalView())
         {
-            Icon = new PackIconMaterialDesign { Kind = PackIconMaterialDesignKind.Chat };
-            Label = "Chat";
-            ToolTip = "Console and Chat";
         }
 
         public void SendMessage()

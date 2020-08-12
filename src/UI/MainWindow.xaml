@@ -4,10 +4,9 @@
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                 xmlns:viewModels="clr-namespace:ChatterBot.ViewModels"
-                 xmlns:views="clr-namespace:ChatterBot.Views"
                  xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
                  xmlns:converters="clr-namespace:ChatterBot.Converters"
+                 xmlns:interfaces="clr-namespace:ChatterBot.Core.Interfaces;assembly=ChatterBot"
                  Icon="DCLogo.ico"
                  Title="Chatter Bot" TitleCharacterCasing="Normal"
                  MinWidth="600" MinHeight="300"
@@ -22,21 +21,10 @@
 
             <converters:SelectedItemToContentConverter x:Key="SelectedItemToContentConverter" />
 
-            <DataTemplate DataType="{x:Type viewModels:TerminalViewModel}">
-                <views:TerminalView DataContext="{Binding}" />
+            <DataTemplate DataType="{x:Type interfaces:IMenuItemViewModel}">
+                <ContentControl Content="{Binding Content}" />
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModels:CommandsViewModel}">
-                <views:CommandsView DataContext="{Binding}" />
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModels:PluginViewModel}">
-                <views:PluginView DataContext="{Binding}" />
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModels:AboutViewModel}">
-                <views:AboutView DataContext="{Binding}" />
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModels:SettingsViewModel}">
-                <views:AppSettingsView DataContext="{Binding}" />
-            </DataTemplate>
+
         </ResourceDictionary>
     </Window.Resources>
 
@@ -63,10 +51,13 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <mah:HamburgerMenu Grid.Row="0"
+        <mah:HamburgerMenu x:Name="HamburgerMenu"
+                           Grid.Row="0"
                            DisplayMode="CompactInline"
                            IsPaneOpen="False"
                            CanResizeOpenPane="True"
+                           ItemClick="HamburgerMenuControl_OnItemClick"
+                           OptionsItemClick="HamburgerMenuControl_OnItemClick"
                            ItemTemplate="{StaticResource MenuItemTemplate}"
                            ItemsSource="{Binding MenuItems}"
                            OptionsItemTemplate="{StaticResource MenuItemTemplate}"

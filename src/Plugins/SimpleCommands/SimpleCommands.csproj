@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <nullable>enable</nullable>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>ChatterBot.Plugins.SimpleCommands</RootNamespace>
+    <AssemblyName>ChatterBot.Plugins.SimpleCommands</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="9.1.1" />
+    <PackageReference Include="MahApps.Metro" Version="2.1.1" />
+    <PackageReference Include="MahApps.Metro.IconPacks" Version="4.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="CommandsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\ChatterBot.Domain\ChatterBot.Domain.csproj" />
+    <ProjectReference Include="..\..\Core\ChatterBot\ChatterBot.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="CommandsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>

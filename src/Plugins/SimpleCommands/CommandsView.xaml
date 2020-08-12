@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="ChatterBot.Views.CommandsView"
+﻿<UserControl x:Class="ChatterBot.Plugins.SimpleCommands.CommandsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:sys="clr-namespace:System;assembly=System.Runtime"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-             xmlns:core="clr-namespace:ChatterBot.Core;assembly=ChatterBot.Core"
+             xmlns:core="clr-namespace:ChatterBot.Core;assembly=ChatterBot"
              mc:Ignorable="d" 
              d:DesignHeight="300"
              d:DesignWidth="600">
@@ -30,14 +30,33 @@
         </StackPanel>
         <DataGrid Grid.Row="1" ItemsSource="{Binding Path=CustomCommands}"
                   AutoGenerateColumns="False" CanUserAddRows="True">
+            <DataGrid.RowValidationRules>
+                <DataErrorValidationRule ValidatesOnTargetUpdated="True" ValidationStep="UpdatedValue" />
+            </DataGrid.RowValidationRules>
+            <DataGrid.RowValidationErrorTemplate>
+                <ControlTemplate>
+                    <Grid Margin="0,-2,0,-2"
+                          ToolTip="{Binding RelativeSource={
+                                            RelativeSource FindAncestor,
+                                            AncestorType={x:Type DataGridRow}},
+                                    Path=(Validation.Errors)/ErrorContent}">
+                        <Ellipse StrokeThickness="0" Fill="Red"
+                                 Width="{TemplateBinding FontSize}"
+                                 Height="{TemplateBinding FontSize}" />
+                        <TextBlock Text="!" FontSize="{TemplateBinding FontSize}"
+                                   FontWeight="Bold" Foreground="White"
+                                   HorizontalAlignment="Center" />
+                    </Grid>
+                </ControlTemplate>
+            </DataGrid.RowValidationErrorTemplate>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Command" Binding="{Binding CommandWord}" />
+                <DataGridTextColumn Header="Command" Binding="{Binding CommandWord, ValidatesOnDataErrors=True}" />
                 <DataGridComboBoxColumn Header="Access" SelectedItemBinding="{Binding Access}"
                                         ItemsSource="{Binding Source={StaticResource AccessData}, Mode=OneWay}" />
-                <DataGridTextColumn Header="Response" Binding="{Binding Response}" />
-                <mah:DataGridNumericUpDownColumn Header="Cooldown" Binding="{Binding CooldownTime}"
+                <DataGridTextColumn Header="Response" Binding="{Binding Response, ValidatesOnDataErrors=True}" />
+                <mah:DataGridNumericUpDownColumn Header="Cooldown" Binding="{Binding CooldownTime, ValidatesOnDataErrors=True}"
                                                       StringFormat="N0" Minimum="0" Interval="1" />
-                <mah:DataGridNumericUpDownColumn Header="User Cooldown" Binding="{Binding UserCooldownTime}"
+                <mah:DataGridNumericUpDownColumn Header="User Cooldown" Binding="{Binding UserCooldownTime, ValidatesOnDataErrors=True}"
                                                       StringFormat="N0" Minimum="0" Interval="1" />
                 <DataGridCheckBoxColumn Header="Enabled" Binding="{Binding Enabled}" />
             </DataGrid.Columns>

@@ -1,11 +1,10 @@
 ﻿using ChatterBot.Core;
 using ChatterBot.Core.Config;
-using ChatterBot.Core.SimpleCommands;
+using ChatterBot.Plugins.SimpleCommands;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 
 namespace ChatterBot.Tests.Core.CustomCommandTests
@@ -17,9 +16,8 @@ namespace ChatterBot.Tests.Core.CustomCommandTests
 
         public GetCommandsToRun_Should()
         {
-            var fakeAppSettings = new ApplicationSettings() { Entropy = "SomeFakedEntropyString", LightDbConnection = "Filename=database.db;Password=1234" };
             var services = new ServiceCollection();
-            services.AddDomain(fakeAppSettings);
+            services.AddSimpleCommandsPlugin();
 
             _commandsSet = services.BuildServiceProvider().GetService<ICommandsSet>();
             _customCommand = new CustomCommand
@@ -29,7 +27,7 @@ namespace ChatterBot.Tests.Core.CustomCommandTests
                 Enabled = true,
                 Access = Access.Everyone,
             };
-            _commandsSet.Initialize(new List<CustomCommand> { _customCommand});
+            _commandsSet.Initialize(new List<CustomCommand> { _customCommand });
         }
 
         [Fact]

@@ -1,36 +1,37 @@
-﻿using MahApps.Metro.Controls;
+﻿using ChatterBot.Core;
+using ChatterBot.Core.Interfaces;
+using MahApps.Metro.Controls;
+using System.Windows.Controls;
 
 namespace ChatterBot.ViewModels
 {
-    public abstract class MenuItemViewModel : BaseViewModel, IHamburgerMenuItemBase
+    public abstract class MenuItemViewModel
+        : BaseBindable, IHamburgerMenuItemBase, IMenuItemViewModel
     {
-        private object? _icon;
-        private object? _label;
-        private object? _toolTip;
         private bool _isVisible = true;
 
-        public object? Icon
+        protected MenuItemViewModel(object icon, object label, object toolTip,
+            UserControl content, bool isOption = false)
         {
-            get => _icon;
-            set => SetProperty(ref _icon, value);
+            Icon = icon;
+            Label = label;
+            ToolTip = toolTip;
+            content.DataContext = this;
+            Content = content;
+            IsOption = isOption;
         }
 
-        public object? Label
-        {
-            get => _label;
-            set => SetProperty(ref _label, value);
-        }
-
-        public object? ToolTip
-        {
-            get => _toolTip;
-            set => SetProperty(ref _toolTip, value);
-        }
+        public object? Icon { get; }
+        public object? Label { get; }
+        public object? ToolTip { get; }
 
         public bool IsVisible
         {
             get => _isVisible;
             set => SetProperty(ref _isVisible, value);
         }
+
+        public bool IsOption { get; }
+        public object? Content { get; }
     }
 }

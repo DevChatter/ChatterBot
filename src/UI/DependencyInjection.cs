@@ -1,7 +1,7 @@
 ﻿using ChatterBot;
-using ChatterBot.Core.Config;
+using ChatterBot.Core.Interfaces;
+using ChatterBot.Core.State;
 using ChatterBot.ViewModels;
-using Microsoft.Extensions.Configuration;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -11,11 +11,10 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             services.AddSingleton<MainViewModel>();
             services.AddSingleton<AccountsViewModel>();
-            services.AddSingleton<TerminalViewModel>();
-            services.AddSingleton<AboutViewModel>();
-            services.AddSingleton<CommandsViewModel>();
-            services.AddSingleton<PluginViewModel>();
-            services.AddSingleton<SettingsViewModel>();
+            services.AddSingleton<IMenuItemViewModel, TerminalViewModel>();
+            services.AddSingleton<IMenuItemViewModel, AboutViewModel>();
+            services.AddSingleton<IMenuItemViewModel, PluginViewModel>();
+            services.AddSingleton<IMenuItemViewModel, SettingsViewModel>();
             services.AddTransient<TwitchBotViewModel>();
             services.AddTransient<TwitchStreamerViewModel>();
 

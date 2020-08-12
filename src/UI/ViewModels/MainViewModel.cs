@@ -1,6 +1,9 @@
-﻿using ChatterBot.Core.Data;
+﻿using ChatterBot.Core;
+using ChatterBot.Core.Data;
+using ChatterBot.Core.Interfaces;
+using ChatterBot.Core.State;
 using Microsoft.Xaml.Behaviors.Core;
-using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 
@@ -8,48 +11,24 @@ namespace ChatterBot.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        private ObservableCollection<MenuItemViewModel> _menuItems = new ObservableCollection<MenuItemViewModel>();
-        private ObservableCollection<MenuItemViewModel> _menuOptionItems = new ObservableCollection<MenuItemViewModel>();
-        private AccountsWindow? _settingsWindow; 
+        private AccountsWindow? _settingsWindow;
         private readonly AccountsViewModel _accountsViewModel;
+        private readonly IMainMenuItemsSet _mainMenuItemsSet;
         private readonly IDataStore _dataStore;
 
         public MainViewModel(AccountsViewModel accountsViewModel,
-            TerminalViewModel terminalViewModel,
-            CommandsViewModel commandsViewModel,
-            PluginViewModel pluginViewModel,
-            AboutViewModel aboutViewModel,
-            SettingsViewModel settingsViewModel,
+            IMainMenuItemsSet mainMenuItemsSet,
             IDataStore dataStore)
         {
             _accountsViewModel = accountsViewModel;
+            _mainMenuItemsSet = mainMenuItemsSet;
             _dataStore = dataStore;
             ShowAccountsWindowCommand = new ActionCommand(ShowAccountsWindow);
-            MenuItems = new ObservableCollection<MenuItemViewModel>
-            {
-                terminalViewModel,
-                commandsViewModel,
-                pluginViewModel,
-            };
-            MenuOptionItems = new ObservableCollection<MenuItemViewModel>
-            {
-                aboutViewModel,
-                settingsViewModel,
-            };
-
         }
 
-        public ObservableCollection<MenuItemViewModel> MenuItems
-        {
-            get => _menuItems;
-            set => SetProperty(ref _menuItems, value);
-        }
+        public BindingList<IMenuItemViewModel> MenuItems => _mainMenuItemsSet.MenuItems;
 
-        public ObservableCollection<MenuItemViewModel> MenuOptionItems
-        {
-            get => _menuOptionItems;
-            set => SetProperty(ref _menuOptionItems, value);
-        }
+        public BindingList<IMenuItemViewModel> MenuOptionItems => _mainMenuItemsSet.MenuOptionItems;
 
         public ICommand ShowAccountsWindowCommand { get; set; }
 

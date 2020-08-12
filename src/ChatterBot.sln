@@ -17,6 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatterBot.Infra", "Infra\I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatterBot", "Core\ChatterBot\ChatterBot.csproj", "{51850ADA-F7C1-4691-ABBB-A69545331BCF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{78695F0D-DFB1-4447-B85A-266D2482A544}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCommands", "Plugins\SimpleCommands\SimpleCommands.csproj", "{5623BF81-9B32-481A-997A-F19DE14CDDEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,9 +55,16 @@ Global
 		{51850ADA-F7C1-4691-ABBB-A69545331BCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51850ADA-F7C1-4691-ABBB-A69545331BCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51850ADA-F7C1-4691-ABBB-A69545331BCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5623BF81-9B32-481A-997A-F19DE14CDDEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5623BF81-9B32-481A-997A-F19DE14CDDEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5623BF81-9B32-481A-997A-F19DE14CDDEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5623BF81-9B32-481A-997A-F19DE14CDDEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5623BF81-9B32-481A-997A-F19DE14CDDEF} = {78695F0D-DFB1-4447-B85A-266D2482A544}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BDEB2191-52C3-483A-B9B1-4A39DC4D7AEC}

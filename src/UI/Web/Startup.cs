@@ -1,5 +1,6 @@
 ﻿using ChatterBot.Core.Auth;
 using ChatterBot.Core.Config;
+using ChatterBot.Plugins.SimpleCommands;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -31,6 +32,8 @@ namespace ChatterBot.Web
             services.AddDomain(appSettings);
             services.AddInfrastructure(appSettings);
             services.AddUI();
+
+            services.AddSimpleCommandsPlugin();
         }
 
         public void Configure(IApplicationBuilder app)

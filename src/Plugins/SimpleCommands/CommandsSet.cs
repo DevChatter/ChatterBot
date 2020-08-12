@@ -1,9 +1,10 @@
-﻿using System;
+﻿using ChatterBot.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace ChatterBot.Core.SimpleCommands
+namespace ChatterBot.Plugins.SimpleCommands
 {
     internal class CommandsSet : ICommandsSet
     {

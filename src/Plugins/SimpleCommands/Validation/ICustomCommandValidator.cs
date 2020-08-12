@@ -1,4 +1,4 @@
-﻿using ChatterBot.Core.SimpleCommands;
+﻿using ChatterBot.Plugins.SimpleCommands;
 using FluentValidation;
 
 namespace ChatterBot.Domain.Validation

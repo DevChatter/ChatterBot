@@ -1,6 +1,4 @@
-﻿using ChatterBot.Core;
-
-namespace ChatterBot.ViewModels
+﻿namespace ChatterBot.Core
 {
     public abstract class BaseViewModel : BaseBindable
     {
