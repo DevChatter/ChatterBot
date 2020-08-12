@@ -1,10 +1,10 @@
-﻿using ChatterBot.Core.Extensions;
+﻿using ChatterBot.Core.Auth;
+using ChatterBot.Core.Extensions;
 using MediatR;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ChatterBot.Core.Auth
+namespace ChatterBot.Domain.Auth
 {
     public class AccessTokenRecorder : IRequestHandler<AccessTokenReceived, bool>
     {

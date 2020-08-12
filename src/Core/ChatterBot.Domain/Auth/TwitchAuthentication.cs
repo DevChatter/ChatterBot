@@ -1,9 +1,10 @@
-﻿using ChatterBot.Core.Data;
+﻿using ChatterBot.Core.Auth;
+using ChatterBot.Core.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ChatterBot.Core.Auth
+namespace ChatterBot.Domain.Auth
 {
     internal class TwitchAuthentication : ITwitchAuthentication
     {

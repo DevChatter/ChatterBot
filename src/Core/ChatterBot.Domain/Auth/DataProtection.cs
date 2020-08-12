@@ -1,8 +1,9 @@
-﻿using ChatterBot.Core.Config;
+﻿using ChatterBot.Core.Auth;
+using ChatterBot.Core.Config;
 using System;
 using System.Security.Cryptography;
 
-namespace ChatterBot.Core.Auth
+namespace ChatterBot.Domain.Auth
 {
     internal class DataProtection : IDataProtection
     {

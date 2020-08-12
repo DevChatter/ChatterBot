@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace ChatterBot.Domain.Core.State
+namespace ChatterBot.Domain.State
 {
     internal class MainMenuItemsSet : IMainMenuItemsSet
     {
