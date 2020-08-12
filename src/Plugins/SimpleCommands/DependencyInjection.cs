@@ -4,7 +4,7 @@ using ChatterBot.Plugins.SimpleCommands.Validation;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    public static class DependencyInjection
+    public static class DependencyInjectionExtensions
     {
         public static void AddSimpleCommandsPlugin(this IServiceCollection services)
         {
