@@ -1,4 +1,4 @@
-﻿using ChatterBot.Core.Auth;
+﻿using ChatterBot.Auth;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

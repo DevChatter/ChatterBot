@@ -1,4 +1,4 @@
-﻿namespace ChatterBot.Core.Interfaces
+﻿namespace ChatterBot.Interfaces
 {
     public interface IPlugin
     {

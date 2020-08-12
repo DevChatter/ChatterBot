@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:sys="clr-namespace:System;assembly=System.Runtime"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-             xmlns:core="clr-namespace:ChatterBot.Core;assembly=ChatterBot"
+             xmlns:chatterBot="clr-namespace:ChatterBot;assembly=ChatterBot"
              mc:Ignorable="d" 
              d:DesignHeight="300"
              d:DesignWidth="600">
@@ -14,7 +14,7 @@
                             MethodName="GetValues"
                             ObjectType="{x:Type sys:Enum}">
             <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="core:Access" />
+                <x:Type TypeName="chatterBot:Access" />
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </UserControl.Resources>

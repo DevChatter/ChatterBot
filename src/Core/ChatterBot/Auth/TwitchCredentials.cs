@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ChatterBot.Core.Auth
+namespace ChatterBot.Auth
 {
     public class TwitchCredentials
     {

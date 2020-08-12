@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ChatterBot.Core.Auth
+namespace ChatterBot.Auth
 {
     public interface ITwitchAuthentication
     {

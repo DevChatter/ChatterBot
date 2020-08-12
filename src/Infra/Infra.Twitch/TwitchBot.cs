@@ -1,7 +1,6 @@
-﻿using ChatterBot.Core;
-using ChatterBot.Core.Auth;
-using ChatterBot.Core.Interfaces;
+﻿using ChatterBot.Auth;
 using ChatterBot.Infra.Twitch.Extensions;
+using ChatterBot.Interfaces;
 using System;
 using System.Collections.Generic;
 using TwitchLib.Client.Events;

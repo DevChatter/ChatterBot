@@ -1,4 +1,4 @@
-﻿using ChatterBot.Core.Auth;
+﻿using ChatterBot.Auth;
 using Microsoft.Xaml.Behaviors.Core;
 using System;
 using System.Diagnostics;

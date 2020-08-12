@@ -1,6 +1,4 @@
-﻿using ChatterBot.Core;
-using ChatterBot.Core.Config;
-using ChatterBot.Plugins.SimpleCommands;
+﻿using ChatterBot.Plugins.SimpleCommands;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using System;

@@ -1,5 +1,5 @@
-﻿using ChatterBot.Core.Config;
-using ChatterBot.Core.Data;
+﻿using ChatterBot.Config;
+using ChatterBot.Data;
 using ChatterBot.Infra.LiteDb;
 
 namespace Microsoft.Extensions.DependencyInjection

@@ -1,5 +1,5 @@
-﻿using ChatterBot.Core.Interfaces;
-using ChatterBot.Core.State;
+﻿using ChatterBot.Interfaces;
+using ChatterBot.State;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;

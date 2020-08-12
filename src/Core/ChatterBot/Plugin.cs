@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ChatterBot.Core
+﻿namespace ChatterBot
 {
     public class Plugin : BaseBindable
     {

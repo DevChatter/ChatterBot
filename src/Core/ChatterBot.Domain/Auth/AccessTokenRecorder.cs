@@ -1,5 +1,5 @@
-﻿using ChatterBot.Core.Auth;
-using ChatterBot.Core.Extensions;
+﻿using ChatterBot.Auth;
+using ChatterBot.Extensions;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;

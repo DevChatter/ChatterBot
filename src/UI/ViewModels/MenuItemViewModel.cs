@@ -1,5 +1,4 @@
-﻿using ChatterBot.Core;
-using ChatterBot.Core.Interfaces;
+﻿using ChatterBot.Interfaces;
 using MahApps.Metro.Controls;
 using System.Windows.Controls;
 

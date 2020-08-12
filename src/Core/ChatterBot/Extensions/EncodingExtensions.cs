@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace ChatterBot.Core.Extensions
+namespace ChatterBot.Extensions
 {
     public static class EncodingExtensions
     {

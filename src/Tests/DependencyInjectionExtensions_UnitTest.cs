@@ -1,11 +1,11 @@
 ﻿#pragma warning disable CA1707 // Identifiers should not contain underscores
-using ChatterBot.Core.Config;
+using ChatterBot.Config;
+using FluentAssertions;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 namespace ChatterBot.Tests

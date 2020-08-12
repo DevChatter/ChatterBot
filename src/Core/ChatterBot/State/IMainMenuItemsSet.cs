@@ -1,8 +1,8 @@
-﻿using ChatterBot.Core.Interfaces;
+﻿using ChatterBot.Interfaces;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace ChatterBot.Core.State
+namespace ChatterBot.State
 {
     public interface IMainMenuItemsSet
     {

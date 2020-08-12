@@ -1,4 +1,4 @@
-﻿using ChatterBot.Core.Auth;
+﻿using ChatterBot.Auth;
 using ChatterBot.Views;
 using MahApps.Metro.IconPacks;
 

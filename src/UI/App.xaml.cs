@@ -1,5 +1,5 @@
-﻿using ChatterBot.Core.Interfaces;
-using ChatterBot.Core.State;
+﻿using ChatterBot.Interfaces;
+using ChatterBot.State;
 using ChatterBot.Web;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -7,7 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 

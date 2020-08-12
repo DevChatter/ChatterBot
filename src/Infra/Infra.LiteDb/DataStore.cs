@@ -1,6 +1,6 @@
-﻿using ChatterBot.Core.Auth;
-using ChatterBot.Core.Config;
-using ChatterBot.Core.Data;
+﻿using ChatterBot.Auth;
+using ChatterBot.Config;
+using ChatterBot.Data;
 using LiteDB;
 using System.Collections.Generic;
 

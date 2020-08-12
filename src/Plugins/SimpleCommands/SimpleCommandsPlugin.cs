@@ -1,6 +1,6 @@
-﻿using ChatterBot.Core.Data;
-using ChatterBot.Core.Interfaces;
-using ChatterBot.Core.State;
+﻿using ChatterBot.Data;
+using ChatterBot.Interfaces;
+using ChatterBot.State;
 using System.ComponentModel;
 using System.Linq;
 

@@ -1,5 +1,5 @@
 ﻿using ChatterBot;
-using ChatterBot.Core.Interfaces;
+using ChatterBot.Interfaces;
 using ChatterBot.ViewModels;
 
 namespace Microsoft.Extensions.DependencyInjection

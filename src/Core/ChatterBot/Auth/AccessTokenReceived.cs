@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace ChatterBot.Core.Auth
+namespace ChatterBot.Auth
 {
     public class AccessTokenReceived : IRequest<bool>
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ChatterBot.Core
+namespace ChatterBot
 {
     [Flags]
     public enum Access : uint

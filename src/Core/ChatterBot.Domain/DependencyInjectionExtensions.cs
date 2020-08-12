@@ -1,8 +1,8 @@
-﻿using ChatterBot.Core.Auth;
-using ChatterBot.Core.Config;
-using ChatterBot.Core.State;
+﻿using ChatterBot.Auth;
+using ChatterBot.Config;
 using ChatterBot.Domain.Auth;
 using ChatterBot.Domain.State;
+using ChatterBot.State;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

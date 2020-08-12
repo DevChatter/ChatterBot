@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ChatterBot.Core
+namespace ChatterBot
 {
     public abstract class BaseBindable : INotifyPropertyChanged
     {

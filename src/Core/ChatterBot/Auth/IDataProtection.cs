@@ -1,4 +1,4 @@
-﻿namespace ChatterBot.Core.Auth
+﻿namespace ChatterBot.Auth
 {
     public interface IDataProtection
     {

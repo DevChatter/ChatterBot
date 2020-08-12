@@ -1,5 +1,5 @@
-﻿using ChatterBot.Core.Auth;
-using ChatterBot.Core.Config;
+﻿using ChatterBot.Auth;
+using ChatterBot.Config;
 using System;
 using System.Security.Cryptography;
 

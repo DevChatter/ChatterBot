@@ -1,4 +1,4 @@
-﻿namespace ChatterBot.Core
+﻿namespace ChatterBot
 {
     public enum PluginRuntime
     {

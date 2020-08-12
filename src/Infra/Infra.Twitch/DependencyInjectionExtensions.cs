@@ -1,4 +1,4 @@
-﻿using ChatterBot.Core.Auth;
+﻿using ChatterBot.Auth;
 using ChatterBot.Infra.Twitch;
 
 namespace Microsoft.Extensions.DependencyInjection

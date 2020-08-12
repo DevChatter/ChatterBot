@@ -6,7 +6,7 @@
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
                  xmlns:converters="clr-namespace:ChatterBot.Converters"
-                 xmlns:interfaces="clr-namespace:ChatterBot.Core.Interfaces;assembly=ChatterBot"
+                 xmlns:interfaces="clr-namespace:ChatterBot.Interfaces;assembly=ChatterBot"
                  Icon="DCLogo.ico"
                  Title="Chatter Bot" TitleCharacterCasing="Normal"
                  MinWidth="600" MinHeight="300"

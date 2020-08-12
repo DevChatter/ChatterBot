@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ChatterBot.Core.Data
+namespace ChatterBot.Data
 {
     public interface IDataStore
     {

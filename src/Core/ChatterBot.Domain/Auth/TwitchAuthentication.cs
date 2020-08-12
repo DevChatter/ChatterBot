@@ -1,5 +1,5 @@
-﻿using ChatterBot.Core.Auth;
-using ChatterBot.Core.Data;
+﻿using ChatterBot.Auth;
+using ChatterBot.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;

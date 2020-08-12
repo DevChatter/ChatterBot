@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace ChatterBot.Core.Config
+namespace ChatterBot.Config
 {
     public class ApplicationSettings
     {

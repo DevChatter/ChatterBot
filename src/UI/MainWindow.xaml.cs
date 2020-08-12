@@ -1,4 +1,4 @@
-﻿using ChatterBot.Core.Interfaces;
+﻿using ChatterBot.Interfaces;
 using ChatterBot.ViewModels;
 using MahApps.Metro.Controls;
 using System.Linq;

@@ -1,4 +1,4 @@
-﻿using ChatterBot.Core.Config;
+﻿using ChatterBot.Config;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

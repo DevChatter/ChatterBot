@@ -1,4 +1,4 @@
-﻿using ChatterBot.Core.Data;
+﻿using ChatterBot.Data;
 using ChatterBot.ViewModels;
 using System.ComponentModel;
 using System.Linq;
