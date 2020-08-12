@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace ChatterBot.Tests.Core.CustomCommandTests
+namespace ChatterBot.Tests.CustomCommandTests
 {
     public class GetCommandsToRun_Should
     {
