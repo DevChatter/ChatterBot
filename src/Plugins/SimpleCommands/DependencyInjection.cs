@@ -1,9 +1,9 @@
 ﻿using ChatterBot.Core.Interfaces;
 using ChatterBot.Domain.Validation;
+using ChatterBot.Plugins.SimpleCommands;
 using ChatterBot.Plugins.SimpleCommands.Validation;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace ChatterBot.Plugins.SimpleCommands
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class DependencyInjectionExtensions
     {
