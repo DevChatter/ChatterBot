@@ -1,13 +1,12 @@
-﻿using ChatterBot.Core;
-using ChatterBot.Core.Data;
-using ChatterBot.Core.Interfaces;
-using ChatterBot.Core.State;
+﻿using ChatterBot.Data;
+using ChatterBot.Interfaces;
+using ChatterBot.State;
 using Microsoft.Xaml.Behaviors.Core;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 
-namespace ChatterBot.ViewModels
+namespace ChatterBot.UI.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {

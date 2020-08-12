@@ -1,10 +1,8 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 
-namespace ChatterBot.Views
+namespace ChatterBot.UI.Views
 {
-    public partial class TwitchStreamerView : UserControl
+    public partial class TwitchStreamerView
     {
         public TwitchStreamerView()
         {

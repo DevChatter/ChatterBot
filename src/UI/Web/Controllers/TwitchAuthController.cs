@@ -1,9 +1,9 @@
-﻿using ChatterBot.Core.Auth;
+﻿using ChatterBot.Auth;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace ChatterBot.Web.Controllers
+namespace ChatterBot.UI.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -19,7 +19,7 @@ namespace ChatterBot.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(AccessTokenReceived accessTokenReceived)
         {
-            var result = await _mediator.Send(accessTokenReceived);
+            bool result = await _mediator.Send(accessTokenReceived);
             if (result)
             {
                 return Ok();

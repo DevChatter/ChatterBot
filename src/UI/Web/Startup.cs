@@ -1,13 +1,12 @@
-﻿using ChatterBot.Core.Auth;
-using ChatterBot.Core.Config;
-using ChatterBot.Plugins.SimpleCommands;
+﻿using ChatterBot.Config;
+using ChatterBot.Domain.Auth;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace ChatterBot.Web
+namespace ChatterBot.UI.Web
 {
     public class Startup
     {
@@ -28,7 +27,7 @@ namespace ChatterBot.Web
 
             services.AddMediatR(typeof(Startup), typeof(AccessTokenRecorder));
 
-            var appSettings = this.Configuration.Get<ApplicationSettings>();
+            var appSettings = Configuration.Get<ApplicationSettings>();
             services.AddDomain(appSettings);
             services.AddInfrastructure(appSettings);
             services.AddUI();

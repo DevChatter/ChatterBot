@@ -1,6 +1,6 @@
-﻿using ChatterBot.Core.Interfaces;
-using ChatterBot.Core.State;
-using ChatterBot.Web;
+﻿using ChatterBot.Interfaces;
+using ChatterBot.State;
+using ChatterBot.UI.Web;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 
-namespace ChatterBot
+namespace ChatterBot.UI
 {
     public partial class App
     {
@@ -19,7 +19,7 @@ namespace ChatterBot
 
         public App()
         {
-            var uri = new UriBuilder("http", "localhost", 1111).Uri;
+            Uri uri = new UriBuilder("http", "localhost", 1111).Uri;
             _host = Host.CreateDefaultBuilder()
                 .ConfigureAppConfiguration((context, configurationBuilder) =>
                 {
@@ -49,7 +49,7 @@ namespace ChatterBot
 
             InitializeMenus(provider);
 
-            var plugins = provider.GetServices<IPlugin>();
+            IEnumerable<IPlugin> plugins = provider.GetServices<IPlugin>();
             foreach (IPlugin plugin in plugins)
             {
                 plugin.Initialize();

@@ -1,5 +1,4 @@
-﻿using ChatterBot.Core;
-using ChatterBot.Plugins.SimpleCommands.Validation;
+﻿using ChatterBot.Plugins.SimpleCommands.Validation;
 using System;
 using System.ComponentModel;
 using System.Linq;
@@ -13,8 +12,8 @@ namespace ChatterBot.Plugins.SimpleCommands
         private string _commandWord = "!";
         private Access _access = Access.Everyone;
         private string _response = "";
-        private int _cooldownTime = 0;
-        private int _userCooldownTime = 0;
+        private int _cooldownTime;
+        private int _userCooldownTime;
         private bool _enabled = true;
         private readonly CustomCommandValidator _validator;
 

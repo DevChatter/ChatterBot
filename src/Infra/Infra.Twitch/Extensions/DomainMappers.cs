@@ -1,5 +1,4 @@
-﻿using ChatterBot.Core;
-using System;
+﻿using System;
 
 namespace ChatterBot.Infra.Twitch.Extensions
 {

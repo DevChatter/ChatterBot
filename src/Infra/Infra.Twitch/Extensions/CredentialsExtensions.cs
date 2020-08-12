@@ -1,5 +1,5 @@
-﻿using ChatterBot.Core.Auth;
-using ChatterBot.Core.Extensions;
+﻿using ChatterBot.Auth;
+using ChatterBot.Extensions;
 using TwitchLib.Client.Models;
 
 namespace ChatterBot.Infra.Twitch.Extensions
@@ -11,7 +11,7 @@ namespace ChatterBot.Infra.Twitch.Extensions
         {
             if (credentials.AuthToken == null)
                 throw new System.ArgumentException("Unable to convert null AuthToken", nameof(credentials));
-            
+
             return new ConnectionCredentials(credentials.Username, dataProtection.Unprotect(credentials.AuthToken).BytesToString());
         }
     }

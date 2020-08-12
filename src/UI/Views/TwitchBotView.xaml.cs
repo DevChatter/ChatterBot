@@ -1,10 +1,8 @@
-﻿using ChatterBot.ViewModels;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 
-namespace ChatterBot.Views
+namespace ChatterBot.UI.Views
 {
-    public partial class TwitchBotView : UserControl
+    public partial class TwitchBotView
     {
         public TwitchBotView()
         {

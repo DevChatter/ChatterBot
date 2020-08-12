@@ -1,7 +1,6 @@
-﻿using ChatterBot.Plugins.SimpleCommands;
-using FluentValidation;
+﻿using FluentValidation;
 
-namespace ChatterBot.Domain.Validation
+namespace ChatterBot.Plugins.SimpleCommands.Validation
 {
     public interface ICustomCommandValidator : IValidator<CustomCommand>
     {

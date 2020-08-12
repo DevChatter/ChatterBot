@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Data;
 
-namespace ChatterBot.Converters
+namespace ChatterBot.UI.Converters
 {
     public class SelectedItemToContentConverter : IMultiValueConverter
     {

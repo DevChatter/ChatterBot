@@ -1,11 +1,11 @@
 ﻿#pragma warning disable CA1707 // Identifiers should not contain underscores
-using ChatterBot.Core.Config;
+using ChatterBot.Config;
+using FluentAssertions;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 namespace ChatterBot.Tests
@@ -19,17 +19,17 @@ namespace ChatterBot.Tests
             // Arrange
             var services = new ServiceCollection();
 
-            var fakeAppSettings = new ApplicationSettings() { Entropy = "SomeFakedEntropyString", LightDbConnection = "Filename=database.db;Password=1234" };
+            var fakeAppSettings = new ApplicationSettings { Entropy = "SomeFakedEntropyString", LightDbConnection = "Filename=database.db;Password=1234" };
             //services.AddUI();
             services.AddDomain(fakeAppSettings);
             services.AddInfrastructure(fakeAppSettings);
 
-            var serviceProvider = services.BuildServiceProvider();
+            ServiceProvider serviceProvider = services.BuildServiceProvider();
 
             // Act
             var result = new List<object>();
 
-            foreach (var serviceDescriptor in services)
+            foreach (ServiceDescriptor serviceDescriptor in services)
             {
                 if (serviceDescriptor.ServiceType == null)
                     throw new NullReferenceException("services contains a serviceDescriptor with a null ServiceType");
@@ -54,7 +54,7 @@ namespace ChatterBot.Tests
             }
 
             // Assert
-            var expectedInstanceCountExcludingMediatR = services.Count(x => x.ServiceType.FullName?.StartsWith("MediatR", StringComparison.InvariantCulture) == false);
+            int expectedInstanceCountExcludingMediatR = services.Count(x => x.ServiceType.FullName?.StartsWith("MediatR", StringComparison.InvariantCulture) == false);
             result.Should().HaveCount(expectedInstanceCountExcludingMediatR);
             await Task.CompletedTask.ConfigureAwait(false);
         }

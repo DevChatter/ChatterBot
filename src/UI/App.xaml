@@ -1,9 +1,8 @@
-﻿<Application x:Class="ChatterBot.App"
+﻿<Application x:Class="ChatterBot.UI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:ChatterBot"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-             xmlns:viewModels="clr-namespace:ChatterBot.ViewModels"
+             xmlns:viewModels1="clr-namespace:ChatterBot.UI.ViewModels"
              Startup="App_OnStartup"
              Exit="Application_Exit">
     <Application.Resources>
@@ -17,7 +16,7 @@
 
 
 
-            <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type viewModels:MenuItemViewModel}">
+            <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type viewModels1:MenuItemViewModel}">
                 <Grid x:Name="RootGrid"
                       Height="48"
                       Background="Transparent">

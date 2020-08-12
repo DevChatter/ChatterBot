@@ -1,5 +1,4 @@
-﻿using ChatterBot.Domain.Validation;
-using FluentValidation;
+﻿using FluentValidation;
 using System.Diagnostics.CodeAnalysis;
 
 namespace ChatterBot.Plugins.SimpleCommands.Validation
