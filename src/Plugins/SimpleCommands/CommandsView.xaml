@@ -30,14 +30,33 @@
         </StackPanel>
         <DataGrid Grid.Row="1" ItemsSource="{Binding Path=CustomCommands}"
                   AutoGenerateColumns="False" CanUserAddRows="True">
+            <DataGrid.RowValidationRules>
+                <DataErrorValidationRule ValidatesOnTargetUpdated="True" ValidationStep="UpdatedValue" />
+            </DataGrid.RowValidationRules>
+            <DataGrid.RowValidationErrorTemplate>
+                <ControlTemplate>
+                    <Grid Margin="0,-2,0,-2"
+                          ToolTip="{Binding RelativeSource={
+                                            RelativeSource FindAncestor,
+                                            AncestorType={x:Type DataGridRow}},
+                                    Path=(Validation.Errors)/ErrorContent}">
+                        <Ellipse StrokeThickness="0" Fill="Red"
+                                 Width="{TemplateBinding FontSize}"
+                                 Height="{TemplateBinding FontSize}" />
+                        <TextBlock Text="!" FontSize="{TemplateBinding FontSize}"
+                                   FontWeight="Bold" Foreground="White"
+                                   HorizontalAlignment="Center" />
+                    </Grid>
+                </ControlTemplate>
+            </DataGrid.RowValidationErrorTemplate>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Command" Binding="{Binding CommandWord}" />
+                <DataGridTextColumn Header="Command" Binding="{Binding CommandWord, ValidatesOnDataErrors=True}" />
                 <DataGridComboBoxColumn Header="Access" SelectedItemBinding="{Binding Access}"
                                         ItemsSource="{Binding Source={StaticResource AccessData}, Mode=OneWay}" />
-                <DataGridTextColumn Header="Response" Binding="{Binding Response}" />
-                <mah:DataGridNumericUpDownColumn Header="Cooldown" Binding="{Binding CooldownTime}"
+                <DataGridTextColumn Header="Response" Binding="{Binding Response, ValidatesOnDataErrors=True}" />
+                <mah:DataGridNumericUpDownColumn Header="Cooldown" Binding="{Binding CooldownTime, ValidatesOnDataErrors=True}"
                                                       StringFormat="N0" Minimum="0" Interval="1" />
-                <mah:DataGridNumericUpDownColumn Header="User Cooldown" Binding="{Binding UserCooldownTime}"
+                <mah:DataGridNumericUpDownColumn Header="User Cooldown" Binding="{Binding UserCooldownTime, ValidatesOnDataErrors=True}"
                                                       StringFormat="N0" Minimum="0" Interval="1" />
                 <DataGridCheckBoxColumn Header="Enabled" Binding="{Binding Enabled}" />
             </DataGrid.Columns>

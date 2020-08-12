@@ -1,9 +1,12 @@
 ﻿using ChatterBot.Core;
+using ChatterBot.Plugins.SimpleCommands.Validation;
 using System;
+using System.ComponentModel;
+using System.Linq;
 
 namespace ChatterBot.Plugins.SimpleCommands
 {
-    public class CustomCommand : BaseBindable
+    public class CustomCommand : BaseBindable, IDataErrorInfo
     {
         public int Id { get; set; }
 
@@ -13,6 +16,12 @@ namespace ChatterBot.Plugins.SimpleCommands
         private int _cooldownTime;
         private int _userCooldownTime;
         private bool _enabled = true;
+        private readonly CustomCommandValidator _validator;
+
+        public CustomCommand()
+        {
+            _validator = new CustomCommandValidator();
+        }
 
         public string CommandWord
         {
@@ -54,5 +63,17 @@ namespace ChatterBot.Plugins.SimpleCommands
         {
             respond(Response);
         }
+
+        public string Error
+            => string.Join(Environment.NewLine,
+                _validator?.Validate(this)?.Errors?.Select(x => x.ErrorMessage).ToArray()
+                ?? new string[0]);
+
+        public string this[string columnName]
+            => _validator
+                ?.Validate(this)
+                ?.Errors
+                ?.FirstOrDefault(x => x.PropertyName == columnName)
+                ?.ErrorMessage ?? "";
     }
 }
