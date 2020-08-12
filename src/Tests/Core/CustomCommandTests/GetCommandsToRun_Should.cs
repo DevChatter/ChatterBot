@@ -16,9 +16,8 @@ namespace ChatterBot.Tests.Core.CustomCommandTests
 
         public GetCommandsToRun_Should()
         {
-            var fakeAppSettings = new ApplicationSettings() { Entropy = "SomeFakedEntropyString", LightDbConnection = "Filename=database.db;Password=1234" };
             var services = new ServiceCollection();
-            services.AddDomain(fakeAppSettings);
+            services.AddSimpleCommandsPlugin();
 
             _commandsSet = services.BuildServiceProvider().GetService<ICommandsSet>();
             _customCommand = new CustomCommand
