@@ -1,6 +1,4 @@
-﻿using ChatterBot.Domain.State;
-using ChatterBot.Interfaces;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Moq;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,61 +6,63 @@ using Xunit;
 
 namespace ChatterBot.Tests.Domain.State
 {
-    public class MessageHandlerSet_Should
+    public class TestSet_Should
     {
+        private readonly TestSet _testSet;
+
+        public TestSet_Should()
+        {
+            _testSet = new TestSet();
+        }
+
         [Fact]
         public void NotChangeCollection_AfterInitialize()
         {
-            var handlerSet = new MessageHandlerSet();
-            var original = handlerSet.Handlers;
+            var original = _testSet.Items;
 
-            handlerSet.Initialize(new List<IMessageHandler>());
+            _testSet.Initialize(new List<string>());
 
-            handlerSet.Handlers.Should().BeSameAs(original);
+            _testSet.Items.Should().BeSameAs(original);
         }
 
         [Fact]
         public void AddAllHandlers_GivenInInitialize()
         {
-            var handlerSet = new MessageHandlerSet();
+            string item1 = "Item 1";
 
-            var handler = Mock.Of<IMessageHandler>();
+            _testSet.Initialize(new[] { item1 });
 
-            handlerSet.Initialize(new[] { handler });
-
-            handlerSet.Handlers.Single().Should().BeSameAs(handler);
+            _testSet.Items.Single().Should().BeSameAs(item1);
         }
 
         [Fact]
         public void AddHandler_OnRegister()
         {
-            var handlerSet = new MessageHandlerSet();
-            var handler1 = Mock.Of<IMessageHandler>();
-            var handler2 = Mock.Of<IMessageHandler>();
-            handlerSet.Initialize(new IMessageHandler[] { });
+            string item1 = "Item 1";
+            string item2 = "Item 2";
+            _testSet.Initialize(new string[] { });
 
-            handlerSet.Register(handler1);
-            handlerSet.Register(handler2);
+            _testSet.Register(item1);
+            _testSet.Register(item2);
 
-            handlerSet.Handlers.Should().ContainSingle(x => x == handler1);
-            handlerSet.Handlers.Should().ContainSingle(x => x == handler2);
+            _testSet.Items.Should().ContainSingle(x => x == item1);
+            _testSet.Items.Should().ContainSingle(x => x == item2);
         }
 
         [Fact]
         public void RemoveHandler_OnUnRegister()
         {
-            var handlerSet = new MessageHandlerSet();
-            var handler1 = Mock.Of<IMessageHandler>();
-            var handler2 = Mock.Of<IMessageHandler>();
-            handlerSet.Initialize(new[] { handler1, handler2 });
+            string item1 = "Item 1";
+            string item2 = "Item 2";
+            _testSet.Initialize(new[] { item1, item2 });
 
-            handlerSet.UnRegister(handler1);
-            handlerSet.Handlers.Should().NotContain(x => x == handler1);
+            _testSet.UnRegister(item1);
+            _testSet.Items.Should().NotContain(x => x == item1);
 
-            handlerSet.UnRegister(handler2);
-            handlerSet.Handlers.Should().NotContain(x => x == handler2);
+            _testSet.UnRegister(item2);
+            _testSet.Items.Should().NotContain(x => x == item2);
 
-            handlerSet.Handlers.Should().BeEmpty();
+            _testSet.Items.Should().BeEmpty();
         }
     }
 }
