@@ -5,7 +5,7 @@ namespace ChatterBot.State
 {
     public interface IMessageHandlerSet
     {
-        List<IMessageHandler> Handlers { get; }
+        ICollection<IMessageHandler> Handlers { get; }
         void Initialize(IEnumerable<IMessageHandler> messageHandlers);
         void Register(IMessageHandler messageHandler);
         void UnRegister(IMessageHandler messageHandler);

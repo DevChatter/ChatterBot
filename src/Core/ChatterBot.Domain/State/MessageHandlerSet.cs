@@ -6,10 +6,14 @@ namespace ChatterBot.Domain.State
 {
     public class MessageHandlerSet : IMessageHandlerSet
     {
-        public List<IMessageHandler> Handlers { get; } = new List<IMessageHandler>();
+        public ICollection<IMessageHandler> Handlers { get; } = new HashSet<IMessageHandler>();
+
         public void Initialize(IEnumerable<IMessageHandler> messageHandlers)
         {
-            Handlers.AddRange(messageHandlers);
+            foreach (var handler in messageHandlers)
+            {
+                Handlers.Add(handler);
+            }
         }
 
         public void Register(IMessageHandler messageHandler)
