@@ -13,6 +13,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddSingleton<IDataProtection>(new DataProtection(appSettings));
             services.AddSingleton<ITwitchAuthentication, TwitchAuthentication>();
             services.AddSingleton<IMainMenuItemsSet, MainMenuItemsSet>();
+            services.AddSingleton<IMessageHandlerSet, MessageHandlerSet>();
         }
     }
 }

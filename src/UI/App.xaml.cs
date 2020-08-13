@@ -48,6 +48,7 @@ namespace ChatterBot.UI
             IServiceProvider provider = _host.Services;
 
             InitializeMenus(provider);
+            InitializeMessageHandlers(provider);
 
             IEnumerable<IPlugin> plugins = provider.GetServices<IPlugin>();
             foreach (IPlugin plugin in plugins)
@@ -63,9 +64,18 @@ namespace ChatterBot.UI
 
         private void InitializeMenus(IServiceProvider provider)
         {
+            // TODO: Move this to Domain project
             var menuItemsSet = provider.GetService<IMainMenuItemsSet>();
             var menuItems = provider.GetServices<IMenuItemViewModel>().ToArray();
             menuItemsSet.Initialize(menuItems.Where(x => !x.IsOption), menuItems.Where(x => x.IsOption));
+        }
+
+        private void InitializeMessageHandlers(IServiceProvider provider)
+        {
+            // TODO: Move this to Domain project
+            var messageHandlerSet = provider.GetService<IMessageHandlerSet>();
+            var messageHandlers = provider.GetServices<IMessageHandler>().ToArray();
+            messageHandlerSet.Initialize(messageHandlers);
         }
 
         private async void Application_Exit(object sender, ExitEventArgs e)
