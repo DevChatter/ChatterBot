@@ -1,4 +1,5 @@
-﻿using ChatterBot.Interfaces;
+﻿using ChatterBot.Domain.Plugins;
+using ChatterBot.Interfaces;
 using ChatterBot.State;
 using ChatterBot.UI.Web;
 using Microsoft.AspNetCore.Hosting;
@@ -47,7 +48,10 @@ namespace ChatterBot.UI
         {
             IServiceProvider provider = _host.Services;
 
+            InitializePlugins(provider);
+
             InitializeMenus(provider);
+
             InitializeMessageHandlers(provider);
 
             IEnumerable<IPlugin> plugins = provider.GetServices<IPlugin>();
@@ -76,6 +80,13 @@ namespace ChatterBot.UI
             var messageHandlerSet = provider.GetService<IMessageHandlerSet>();
             var messageHandlers = provider.GetServices<IMessageHandler>().ToArray();
             messageHandlerSet.Initialize(messageHandlers);
+        }
+
+        private void InitializePlugins(IServiceProvider provider)
+        {
+            // TODO: Move this to Domain project
+            var pluginInitialization = provider.GetService<IPluginInitialization>();
+            pluginInitialization.Initialize();
         }
 
         private async void Application_Exit(object sender, ExitEventArgs e)

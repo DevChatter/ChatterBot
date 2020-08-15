@@ -1,4 +1,4 @@
-﻿namespace ChatterBot
+﻿namespace ChatterBot.Domain.Plugins
 {
     public enum PluginRuntime
     {

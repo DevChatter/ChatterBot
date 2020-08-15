@@ -1,4 +1,5 @@
-﻿using ChatterBot.UI.Views;
+﻿using ChatterBot.Domain.Plugins;
+using ChatterBot.UI.Views;
 using MahApps.Metro.IconPacks;
 using System.Collections.ObjectModel;
 

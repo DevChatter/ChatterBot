@@ -1,4 +1,4 @@
-﻿namespace ChatterBot
+﻿namespace ChatterBot.Domain.Plugins
 {
     public class PluginInfo : BaseBindable
     {
@@ -7,5 +7,6 @@
         public string Location { get; set; } = string.Empty;
         public PluginRuntime PluginRuntime { get; set; }
         public bool Enabled { get; set; }
+        public PluginStatuses Status { get; set; }
     }
 }
