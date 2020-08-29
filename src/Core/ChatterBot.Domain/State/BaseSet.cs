@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace ChatterBot.Domain.State
 {
     public abstract class BaseSet<T>
     {
-        public ICollection<T> Items { get; } = new HashSet<T>();
+        public BindingList<T> Items { get; } = new BindingList<T>();
 
         public void Initialize(IEnumerable<T> items)
         {

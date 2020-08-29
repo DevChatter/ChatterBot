@@ -45,12 +45,15 @@ namespace ChatterBot.Domain.Plugins
 
         private void CreateRecordsForNewPlugins(List<string> pluginFolders, List<PluginInfo> matchedPlugins)
         {
+            // TODO: Check for Metadata file.
+
             foreach (string pluginFolder in pluginFolders.Except(matchedPlugins.Select(x => x.Location)))
             {
                 var info = new PluginInfo
                 {
                     Name = pluginFolder,
                     Location = pluginFolder,
+                    Version = "1.0.0.0",
                     Enabled = false
                 };
                 _pluginSet.Register(info);
