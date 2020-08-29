@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -10,6 +10,7 @@
     <ProjectReference Include="..\..\Core\ChatterBot\ChatterBot.csproj" />
     <ProjectReference Include="..\Infra.LiteDb\ChatterBot.Infra.LiteDb.csproj" />
     <ProjectReference Include="..\Infra.Twitch\ChatterBot.Infra.Twitch.csproj" />
+    <ProjectReference Include="..\Infra.Filesystem\ChatterBot.Infra.Filesystem.csproj" />
   </ItemGroup>
 
 </Project>

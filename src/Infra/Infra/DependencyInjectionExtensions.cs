@@ -8,6 +8,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             services.AddInfrastructureForLiteDb(appSettings);
             services.AddInfrastructureForTwitch();
+            services.AddInfrastructureForFilesystem();
         }
     }
 }
