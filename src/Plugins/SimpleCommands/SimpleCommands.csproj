@@ -21,4 +21,8 @@
     <ProjectReference Include="..\..\Core\ChatterBot\ChatterBot.csproj" />
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if not exist $(SolutionDir)UI\bin\Debug\netcoreapp3.1\Plugins\$(ProjectName) MkDir $(SolutionDir)UI\bin\Debug\netcoreapp3.1\Plugins\$(ProjectName)&#xD;&#xA;copy /y $(TargetPath) $(SolutionDir)UI\bin\Debug\netcoreapp3.1\Plugins\$(ProjectName)\$(TargetName).dll" />
+  </Target>
+
 </Project>

@@ -53,6 +53,7 @@ namespace ChatterBot.Domain.Plugins
                 {
                     Name = pluginFolder,
                     Location = pluginFolder,
+                    PluginRuntime = PluginRuntime.Unknown,
                     Version = "1.0.0.0",
                     Enabled = false
                 };

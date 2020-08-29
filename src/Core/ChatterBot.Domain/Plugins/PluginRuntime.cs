@@ -2,7 +2,8 @@
 {
     public enum PluginRuntime
     {
-        ChatterPlugin,
-        PythonScript,
+        Unknown = 0,
+        ChatterPlugin = 1,
+        PythonScript = 2,
     }
 }
