@@ -31,16 +31,24 @@
                 <iconPacks:PackIconFontAwesome Kind="CogsSolid" />
             </Button>
         </StackPanel>
-        <DataGrid Grid.Row="1" CanUserAddRows="True" AutoGenerateColumns="False" ItemsSource="{Binding Plugins}">
+        <DataGrid Grid.Row="1"
+                  CanUserAddRows="False"
+                  AutoGenerateColumns="False"
+                  ItemsSource="{Binding Plugins}">
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn Header="Enabled" Binding="{Binding Path=Enabled, Mode=TwoWay}" />
-
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                <DataGridTextColumn Header="Version" Binding="{Binding Version}" />
-                <DataGridTextColumn Header="Path" Binding="{Binding Location}" />
-                <DataGridComboBoxColumn Header="Runtime" SelectedItemBinding="{Binding PluginRuntime}"
-                                    ItemsSource="{Binding Source={StaticResource PluginRuntimes}, Mode=OneWay}"/>
-
+                <DataGridCheckBoxColumn Header="Enabled" 
+                                        Binding="{Binding Path=Enabled, Mode=TwoWay}" />
+                <DataGridTextColumn Header="Name" 
+                                    Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Version" 
+                                    Binding="{Binding Version}" />
+                <DataGridTextColumn Header="Path" 
+                                    Binding="{Binding Location}" />
+                <DataGridComboBoxColumn Header="Runtime" 
+                                        SelectedItemBinding="{Binding PluginRuntime}"
+                                        ItemsSource="{Binding Source={StaticResource PluginRuntimes}, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Status"
+                                    Binding="{Binding Status}" IsReadOnly="True" />
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="2">
