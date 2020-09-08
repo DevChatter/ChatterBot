@@ -1,9 +1,11 @@
-﻿using System;
+﻿using ChatterBot.Twitch;
+using System;
 
 namespace ChatterBot.Interfaces
 {
     public interface IMessageHandler
     {
-        void Handle(ChatMessage chatMessage, Action<string> respond);
+        event EventHandler<MessageReceivedEventArgs> MessageReceived;
+        void HandleMessage(ChatMessage chatMessage);
     }
 }

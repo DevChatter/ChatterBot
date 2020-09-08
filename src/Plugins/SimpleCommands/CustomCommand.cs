@@ -58,11 +58,6 @@ namespace ChatterBot.Plugins.SimpleCommands
             set => SetProperty(ref _enabled, value);
         }
 
-        public void Run(Action<string> respond)
-        {
-            respond(Response);
-        }
-
         public string Error
             => string.Join(Environment.NewLine,
                 _validator?.Validate(this)?.Errors?.Select(x => x.ErrorMessage).ToArray()

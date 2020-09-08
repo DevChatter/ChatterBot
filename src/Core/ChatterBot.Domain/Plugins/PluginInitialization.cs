@@ -1,5 +1,4 @@
-﻿using ChatterBot.Data;
-using ChatterBot.Domain.State;
+﻿using ChatterBot.Domain.State;
 using ChatterBot.FileSystem;
 using ChatterBot.Interfaces;
 using System;
@@ -13,12 +12,14 @@ namespace ChatterBot.Domain.Plugins
     {
         private readonly IDirectoryReader _directoryReader;
         private readonly IPluginSet _pluginSet;
+        private readonly IPluginUtilities _pluginUtilities;
 
         public PluginInitialization(IDirectoryReader directoryReader,
-            IPluginSet pluginSet)
+            IPluginSet pluginSet, IPluginUtilities pluginUtilities)
         {
             _directoryReader = directoryReader;
             _pluginSet = pluginSet;
+            _pluginUtilities = pluginUtilities;
         }
 
         public void Initialize()
@@ -50,8 +51,8 @@ namespace ChatterBot.Domain.Plugins
                 if (factoryTypes.Length == 1)
                 {
                     IPluginFactory startupObject = CreateFactoryObject(factoryTypes.Single());
-                    startupObject.CreatePlugin(null); // TODO: Pass in the Utils from IoC
-                    // TODO: See if we can connect the plugin with the plugininfo to do Enable/Disable
+                    startupObject.CreatePlugin(_pluginUtilities);
+                    // TODO: See if we can connect the plugin with the PluginInfo to do Enable/Disable
                 }
                 else
                 {
@@ -74,13 +75,6 @@ namespace ChatterBot.Domain.Plugins
                     }
                 }
             }
-
-            //IEnumerable<IPlugin> plugins = provider.GetServices<IPlugin>();
-            //foreach (IPlugin plugin in plugins)
-            //{
-            //    plugin.Initialize();
-            //}
-
         }
 
         private static IPluginFactory CreateFactoryObject(Type factoryType)

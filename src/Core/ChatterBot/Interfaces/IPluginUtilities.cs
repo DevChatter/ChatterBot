@@ -7,5 +7,7 @@ namespace ChatterBot.Interfaces
     {
         IMainMenuItemsSet MainMenuItemsSet { get; }
         IDataStore DataStore { get; }
+        IMessageHandler MessageHandler { get; }
+        IMessageSender MessageSender { get; }
     }
 }

@@ -9,8 +9,8 @@ namespace ChatterBot.Plugins.SimpleCommands
             var commands = utilities.DataStore.GetEntities<CustomCommand>();
             var commandsSet = new CommandsSet(commands);
 
-            return new SimpleCommandsPlugin(utilities.DataStore,
-                utilities.MainMenuItemsSet, commandsSet);
+            return new SimpleCommandsPlugin(utilities.DataStore, utilities.MessageHandler,
+                utilities.MessageSender, utilities.MainMenuItemsSet, commandsSet);
         }
     }
 }

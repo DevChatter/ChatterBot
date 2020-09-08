@@ -7,6 +7,6 @@ namespace ChatterBot.Infra.Twitch.Extensions
         // TODO: #28 Replace DomainMappers with AutoMapper profiles.
         public static ChatMessage ToDomain(this TwitchLib.Client.Models.ChatMessage message) =>
             new ChatMessage(DateTime.UtcNow,
-                message.DisplayName, message.ColorHex, message.Message);
+                message.DisplayName, message.ColorHex, message.Message, message.Channel);
     }
 }

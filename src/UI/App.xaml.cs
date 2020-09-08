@@ -49,8 +49,6 @@ namespace ChatterBot.UI
 
             InitializeMenus(provider);
 
-            InitializeMessageHandlers(provider);
-
             InitializePlugins(provider);
 
             var mainWindow = provider.GetService<MainWindow>();
@@ -65,14 +63,6 @@ namespace ChatterBot.UI
             var menuItemsSet = provider.GetService<IMainMenuItemsSet>();
             var menuItems = provider.GetServices<IMenuItemViewModel>().ToArray();
             menuItemsSet.Initialize(menuItems.Where(x => !x.IsOption), menuItems.Where(x => x.IsOption));
-        }
-
-        private void InitializeMessageHandlers(IServiceProvider provider)
-        {
-            // TODO: Move this to Domain project
-            var messageHandlerSet = provider.GetService<IMessageHandlerSet>();
-            var messageHandlers = provider.GetServices<IMessageHandler>().ToArray();
-            messageHandlerSet.Initialize(messageHandlers);
         }
 
         private void InitializePlugins(IServiceProvider provider)

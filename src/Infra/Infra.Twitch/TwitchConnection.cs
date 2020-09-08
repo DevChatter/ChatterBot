@@ -1,5 +1,6 @@
 ﻿using ChatterBot.Auth;
 using ChatterBot.Infra.Twitch.Extensions;
+using ChatterBot.Interfaces;
 using System;
 using TwitchLib.Client;
 using TwitchLib.Client.Events;
@@ -10,7 +11,7 @@ using TwitchLib.Communication.Models;
 
 namespace ChatterBot.Infra.Twitch
 {
-    internal class TwitchConnection : ITwitchConnection
+    internal class TwitchConnection : ITwitchConnection, IMessageSender
     {
         private readonly IDataProtection _dataProtection;
         protected readonly TwitchClient Client;
@@ -81,6 +82,16 @@ namespace ChatterBot.Infra.Twitch
 
         protected virtual void Client_OnWhisperReceived(object? sender, OnWhisperReceivedArgs e)
         {
+        }
+
+        public void SendMessage(string channel, string message)
+        {
+            Client.SendMessage(channel, message);
+        }
+
+        public void SendWhisper(string username, string message)
+        {
+            Client.SendWhisper(username, message);
         }
     }
 }

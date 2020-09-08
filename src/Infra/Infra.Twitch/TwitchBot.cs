@@ -9,13 +9,13 @@ namespace ChatterBot.Infra.Twitch
 {
     internal class TwitchBot : TwitchConnection
     {
-        private readonly IMessageHandlerSet _messageHandlerSet;
+        private readonly IMessageHandler _messageHandler;
 
         public TwitchBot(IDataProtection dataProtection,
-            IMessageHandlerSet messageHandlerSet)
+            IMessageHandler messageHandler)
             : base(dataProtection)
         {
-            _messageHandlerSet = messageHandlerSet;
+            _messageHandler = messageHandler;
         }
 
         protected override void Client_OnJoinedChannel(object? sender, OnJoinedChannelArgs e)
@@ -28,11 +28,7 @@ namespace ChatterBot.Infra.Twitch
         protected override void Client_OnMessageReceived(object? sender, OnMessageReceivedArgs e)
         {
             ChatMessage chatMessage = e.ChatMessage.ToDomain();
-            foreach (IMessageHandler messageHandler in _messageHandlerSet.Handlers)
-            {
-                messageHandler.Handle(chatMessage,
-                    response => Client.SendMessage(e.ChatMessage.Channel, response));
-            }
+            _messageHandler.HandleMessage(chatMessage);
         }
     }
 }

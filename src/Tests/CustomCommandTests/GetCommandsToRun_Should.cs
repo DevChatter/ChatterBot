@@ -26,7 +26,7 @@ namespace ChatterBot.Tests.CustomCommandTests
         [Trait("Category", "Unit")]
         public void ReturnEmpty_GivenNonMatchingMessage()
         {
-            var chatMessage = new ChatMessage(DateTime.UtcNow, "Brendoneus", "#ffff00", "Hello!");
+            var chatMessage = new ChatMessage(DateTime.UtcNow, "Brendoneus", "#ffff00", "Hello!", "DevChatter");
 
             IEnumerable<CustomCommand> result = _commandsSet.GetCommandsToRun(chatMessage);
 
@@ -42,7 +42,7 @@ namespace ChatterBot.Tests.CustomCommandTests
         [Trait("Category", "Unit")]
         public void ReturnCommand_GivenMatchingCommandWord_RegardlessOfCasing(string text)
         {
-            var chatMessage = new ChatMessage(DateTime.UtcNow, "Brendoneus", "#ffff00", text);
+            var chatMessage = new ChatMessage(DateTime.UtcNow, "Brendoneus", "#ffff00", text, "DevChatter");
 
             IEnumerable<CustomCommand> result = _commandsSet.GetCommandsToRun(chatMessage);
 
@@ -63,7 +63,7 @@ namespace ChatterBot.Tests.CustomCommandTests
                 CommandWord = text,
                 Enabled = enabled,
             });
-            var chatMessage = new ChatMessage(DateTime.UtcNow, "Brendoneus", "#ffff00", text);
+            var chatMessage = new ChatMessage(DateTime.UtcNow, "Brendoneus", "#ffff00", text, "DevChatter");
 
             IEnumerable<CustomCommand> result = _commandsSet.GetCommandsToRun(chatMessage);
 

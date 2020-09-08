@@ -46,6 +46,6 @@ namespace ChatterBot.UI.ViewModels
         public ChatMessage Message => new ChatMessage(DateTime.UtcNow,
             SelectedUser,
             UserColor.ToString(),
-            Text);
+            Text, "REPLACE THIS");
     }
 }
