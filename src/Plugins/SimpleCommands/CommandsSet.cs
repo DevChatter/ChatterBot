@@ -5,9 +5,14 @@ using System.Linq;
 
 namespace ChatterBot.Plugins.SimpleCommands
 {
-    internal class CommandsSet : ICommandsSet
+    public class CommandsSet : ICommandsSet
     {
-        public BindingList<CustomCommand> CustomCommands { get; private set; } = new BindingList<CustomCommand>();
+        public CommandsSet(List<CustomCommand> commands)
+        {
+            CustomCommands = new BindingList<CustomCommand>(commands);
+        }
+
+        public BindingList<CustomCommand> CustomCommands { get; }
 
         public IEnumerable<CustomCommand> GetCommandsToRun(ChatMessage chatMessage) =>
             CustomCommands
@@ -17,10 +22,5 @@ namespace ChatterBot.Plugins.SimpleCommands
 
         private static bool TextMatchesCommand(ChatMessage chatMessage, CustomCommand command)
             => chatMessage.Text.StartsWith(command.CommandWord, StringComparison.InvariantCultureIgnoreCase);
-
-        public void Initialize(List<CustomCommand> commands)
-        {
-            CustomCommands = new BindingList<CustomCommand>(commands);
-        }
     }
 }

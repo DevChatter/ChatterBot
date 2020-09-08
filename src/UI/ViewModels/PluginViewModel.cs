@@ -3,7 +3,6 @@ using ChatterBot.Domain.Plugins;
 using ChatterBot.Domain.State;
 using ChatterBot.UI.Views;
 using MahApps.Metro.IconPacks;
-using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace ChatterBot.UI.ViewModels
@@ -28,9 +27,6 @@ namespace ChatterBot.UI.ViewModels
         private void PluginsOnListChanged(object sender, ListChangedEventArgs e)
         {
             _dataStore.SaveEntities(_pluginSet.Plugins);
-
-            // REMOVE THIS!!!
-            List<PluginInfo> pluginInfos = _dataStore.GetEntities<PluginInfo>();
         }
     }
 }

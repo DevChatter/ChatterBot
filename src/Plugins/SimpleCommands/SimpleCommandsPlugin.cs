@@ -9,24 +9,31 @@ namespace ChatterBot.Plugins.SimpleCommands
     internal class SimpleCommandsPlugin : IPlugin
     {
         private readonly IDataStore _dataStore;
-        private readonly ICommandsSet _commandsSet;
         private readonly IMainMenuItemsSet _menuItemsSet;
+        private readonly ICommandsSet _commandsSet;
+        private readonly CommandsViewModel _commandsViewModel;
 
         public SimpleCommandsPlugin(IDataStore dataStore,
-            ICommandsSet commandsSet, IMainMenuItemsSet menuItemsSet)
+            IMainMenuItemsSet menuItemsSet, ICommandsSet commandsSet)
         {
             _dataStore = dataStore;
-            _commandsSet = commandsSet;
             _menuItemsSet = menuItemsSet;
+            _commandsSet = commandsSet;
+            _commandsViewModel = new CommandsViewModel(_commandsSet);
         }
 
-        public void Initialize()
+        public void Enable()
         {
-            _commandsSet.Initialize(_dataStore.GetEntities<CustomCommand>());
+            _menuItemsSet.MenuItems.Add(_commandsViewModel);
 
-            _menuItemsSet.MenuItems.Add(new CommandsViewModel(_commandsSet)); // TODO: Move to Enable()
+            _commandsSet.CustomCommands.ListChanged += CustomCommandsOnListChanged;
+        }
 
-            _commandsSet.CustomCommands.ListChanged += CustomCommandsOnListChanged; // TODO: Move to Enable()
+        public void Disable()
+        {
+            _menuItemsSet.MenuItems.Remove(_commandsViewModel);
+
+            _commandsSet.CustomCommands.ListChanged -= CustomCommandsOnListChanged;
         }
 
         private void CustomCommandsOnListChanged(object sender, ListChangedEventArgs e)
@@ -34,5 +41,6 @@ namespace ChatterBot.Plugins.SimpleCommands
             var toSave = _commandsSet.CustomCommands.Where(x => string.IsNullOrEmpty(x.Error));
             _dataStore.SaveEntities(toSave);
         }
+
     }
 }

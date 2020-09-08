@@ -7,6 +7,5 @@ namespace ChatterBot.Plugins.SimpleCommands
     {
         BindingList<CustomCommand> CustomCommands { get; }
         IEnumerable<CustomCommand> GetCommandsToRun(ChatMessage chatMessage);
-        void Initialize(List<CustomCommand> commands);
     }
 }

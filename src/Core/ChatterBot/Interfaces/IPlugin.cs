@@ -2,6 +2,7 @@
 {
     public interface IPlugin
     {
-        void Initialize();
+        void Enable();
+        void Disable();
     }
 }

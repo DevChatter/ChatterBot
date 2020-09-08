@@ -3,6 +3,7 @@ using ChatterBot.Config;
 using ChatterBot.Domain.Auth;
 using ChatterBot.Domain.Plugins;
 using ChatterBot.Domain.State;
+using ChatterBot.Interfaces;
 using ChatterBot.State;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -17,6 +18,8 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddSingleton<IMainMenuItemsSet, MainMenuItemsSet>();
             services.AddSingleton<IMessageHandlerSet, MessageHandlerSet>();
             services.AddSingleton<IPluginSet, PluginSet>();
+
+            services.AddSingleton<IPluginUtilities, PluginUtilities>();
 
             services.AddTransient<IPluginInitialization, PluginInitialization>();
         }

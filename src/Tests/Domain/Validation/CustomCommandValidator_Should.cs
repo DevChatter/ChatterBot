@@ -16,9 +16,6 @@ namespace ChatterBot.Tests.Domain.Validation
         public async Task Return_IsValid_GivenValidCustomCommand()
         {
             // Arrange
-            var services = new ServiceCollection();
-            services.AddSimpleCommandsPlugin();
-
             var command = new CustomCommand
             {
                 CommandWord = "!ping",
@@ -29,7 +26,7 @@ namespace ChatterBot.Tests.Domain.Validation
             };
 
             // Act
-            ValidationResult result = await services.BuildServiceProvider().GetRequiredService<ICustomCommandValidator>().ValidateAsync(command).ConfigureAwait(false);
+            ValidationResult result = await new CustomCommandValidator().ValidateAsync(command).ConfigureAwait(false);
 
             // Assert
             result.IsValid.Should().BeTrue();
@@ -40,13 +37,10 @@ namespace ChatterBot.Tests.Domain.Validation
         public async Task Return_ValidationError_GivenCustomCommand_WithZeroLengthCommandWord()
         {
             // Arrange
-            var services = new ServiceCollection();
-            services.AddSimpleCommandsPlugin();
-
             var command = new CustomCommand { CommandWord = string.Empty };
 
             // Act
-            ValidationResult result = await services.BuildServiceProvider().GetRequiredService<ICustomCommandValidator>().ValidateAsync(command).ConfigureAwait(false);
+            ValidationResult result = await new CustomCommandValidator().ValidateAsync(command).ConfigureAwait(false);
 
             // Assert
             result.IsValid.Should().BeFalse();

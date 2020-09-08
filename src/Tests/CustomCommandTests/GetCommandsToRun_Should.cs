@@ -1,6 +1,5 @@
 ﻿using ChatterBot.Plugins.SimpleCommands;
 using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using Xunit;
@@ -10,22 +9,17 @@ namespace ChatterBot.Tests.CustomCommandTests
     public class GetCommandsToRun_Should
     {
         private readonly ICommandsSet _commandsSet;
-        private readonly CustomCommand _customCommand;
 
         public GetCommandsToRun_Should()
         {
-            var services = new ServiceCollection();
-            services.AddSimpleCommandsPlugin();
-
-            _commandsSet = services.BuildServiceProvider().GetService<ICommandsSet>();
-            _customCommand = new CustomCommand
+            var customCommand = new CustomCommand
             {
                 CommandWord = "!ping",
                 Response = "PONG",
                 Enabled = true,
                 Access = Access.Everyone,
             };
-            _commandsSet.Initialize(new List<CustomCommand> { _customCommand });
+            _commandsSet = new CommandsSet(new List<CustomCommand> { customCommand });
         }
 
         [Fact]

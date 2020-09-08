@@ -41,24 +41,17 @@ namespace ChatterBot.UI
                         .ConfigureKestrel((context, options) => { })
                         .UseUrls(uri.AbsoluteUri))
                 .Build();
-
         }
 
         private async void App_OnStartup(object sender, StartupEventArgs e)
         {
             IServiceProvider provider = _host.Services;
 
-            InitializePlugins(provider);
-
             InitializeMenus(provider);
 
             InitializeMessageHandlers(provider);
 
-            IEnumerable<IPlugin> plugins = provider.GetServices<IPlugin>();
-            foreach (IPlugin plugin in plugins)
-            {
-                plugin.Initialize();
-            }
+            InitializePlugins(provider);
 
             var mainWindow = provider.GetService<MainWindow>();
             Current.MainWindow = mainWindow; // TODO: Confirm if this adds any benefit.

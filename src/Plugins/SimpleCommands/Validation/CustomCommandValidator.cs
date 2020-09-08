@@ -5,7 +5,7 @@ namespace ChatterBot.Plugins.SimpleCommands.Validation
 {
     [SuppressMessage("Build", "CA1812", Justification = "Compiler doesn't understand dependency injection")]
     [SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix", Justification = "Fluent Validators are never used as collections directly")]
-    internal class CustomCommandValidator : AbstractValidator<CustomCommand>, ICustomCommandValidator
+    public class CustomCommandValidator : AbstractValidator<CustomCommand>, ICustomCommandValidator
     {
         private const int TwitchMessageMaximum = 500;
 

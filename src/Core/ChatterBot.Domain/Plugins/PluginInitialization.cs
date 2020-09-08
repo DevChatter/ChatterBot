@@ -1,45 +1,119 @@
 ﻿using ChatterBot.Data;
 using ChatterBot.Domain.State;
 using ChatterBot.FileSystem;
+using ChatterBot.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace ChatterBot.Domain.Plugins
 {
     internal class PluginInitialization : IPluginInitialization
     {
-        private readonly IDataStore _dataStore;
         private readonly IDirectoryReader _directoryReader;
         private readonly IPluginSet _pluginSet;
 
-        public PluginInitialization(IDataStore dataStore,
-            IDirectoryReader directoryReader,
+        public PluginInitialization(IDirectoryReader directoryReader,
             IPluginSet pluginSet)
         {
-            _dataStore = dataStore;
             _directoryReader = directoryReader;
             _pluginSet = pluginSet;
         }
 
         public void Initialize()
         {
-            List<PluginInfo> pluginInfos = _dataStore.GetEntities<PluginInfo>();
-
             List<string> pluginFolders = _directoryReader.ReadPluginsFolder();
 
-            List<PluginInfo> matchedPlugins = RegisterCompletePlugins(pluginInfos, pluginFolders);
+            List<PluginInfo> matchedPlugins = FindMatchedPlugins(pluginFolders);
 
             CreateRecordsForNewPlugins(pluginFolders, matchedPlugins);
 
-            FlagMissingPlugins(pluginInfos, matchedPlugins);
+            FlagMissingPlugins(matchedPlugins);
+
+            StartEnabledPlugins(matchedPlugins);
         }
 
-        private void FlagMissingPlugins(List<PluginInfo> pluginInfos, List<PluginInfo> matchedPlugins)
+        private void StartEnabledPlugins(List<PluginInfo> plugins)
         {
-            foreach (var pluginInfo in pluginInfos.Except(matchedPlugins))
+            Type pluginInterface = typeof(IPlugin);
+            Type pluginFactoryInterface = typeof(IPluginFactory);
+
+            foreach (PluginInfo pluginInfo in plugins.Where(x => x.Enabled))
+            {
+                Assembly assembly = Assembly.LoadFrom(pluginInfo.Location);
+
+                var factoryTypes = assembly.GetTypes()
+                    .Where(x => !x.IsAbstract && pluginFactoryInterface.IsAssignableFrom(x))
+                    .ToArray();
+
+                if (factoryTypes.Length == 1)
+                {
+                    IPluginFactory startupObject = CreateFactoryObject(factoryTypes.Single());
+                    startupObject.CreatePlugin(null); // TODO: Pass in the Utils from IoC
+                    // TODO: See if we can connect the plugin with the plugininfo to do Enable/Disable
+                }
+                else
+                {
+                    var instanceTypes = assembly.GetTypes()
+                        .Where(x => !x.IsAbstract && pluginInterface.IsAssignableFrom(x))
+                        .ToArray();
+
+                    // TODO: Extract this!
+                    if (instanceTypes.Length < 1)
+                    {
+                        // TODO: Yell that we didn't find an init class.
+                    }
+                    else if (instanceTypes.Length > 1)
+                    {
+                        // TODO: Yell that we found more than one init class.
+                    }
+                    else
+                    {
+                        IPlugin startupObject = CreateStartUpObject(instanceTypes.Single());
+                    }
+                }
+            }
+
+            //IEnumerable<IPlugin> plugins = provider.GetServices<IPlugin>();
+            //foreach (IPlugin plugin in plugins)
+            //{
+            //    plugin.Initialize();
+            //}
+
+        }
+
+        private static IPluginFactory CreateFactoryObject(Type factoryType)
+        {
+            try
+            {
+                return (IPluginFactory)Activator.CreateInstance(factoryType)!;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        private static IPlugin CreateStartUpObject(Type startupType)
+        {
+            try
+            {
+                return (IPlugin)Activator.CreateInstance(startupType)!;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        private void FlagMissingPlugins(List<PluginInfo> matchedPlugins)
+        {
+            foreach (var pluginInfo in _pluginSet.Plugins.Except(matchedPlugins))
             {
                 pluginInfo.Status = PluginStatuses.Missing;
-                _pluginSet.Register(pluginInfo);
             }
         }
 
@@ -61,18 +135,13 @@ namespace ChatterBot.Domain.Plugins
             }
         }
 
-        private List<PluginInfo> RegisterCompletePlugins(List<PluginInfo> pluginInfos, List<string> pluginFolders)
+        private List<PluginInfo> FindMatchedPlugins(List<string> pluginFolders)
         {
             // TODO: Match these on more than just folder name is consistent.
-            var matchedPlugins = pluginInfos.Join(pluginFolders,
+            var matchedPlugins = _pluginSet.Plugins.Join(pluginFolders,
                 info => info.Location,
                 folder => folder,
                 (info, folder) => info).ToList();
-
-            foreach (PluginInfo pluginInfo in matchedPlugins)
-            {
-                _pluginSet.Register(pluginInfo);
-            }
 
             return matchedPlugins;
         }
