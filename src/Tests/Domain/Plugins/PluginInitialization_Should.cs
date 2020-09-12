@@ -2,6 +2,7 @@
 using ChatterBot.Domain.Plugins;
 using ChatterBot.Domain.State;
 using ChatterBot.FileSystem;
+using ChatterBot.Interfaces;
 using ChatterBot.Tests.Builders;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,33 +15,37 @@ namespace ChatterBot.Tests.Domain.Plugins
 {
     public class PluginInitialization_Should : BaseTestFixture
     {
-        private readonly ServiceProvider _provider;
         private readonly Mock<IDataStore> _dataStore;
         private readonly Mock<IDirectoryReader> _directoryReader;
         private readonly IPluginInitialization _pluginInit;
         private readonly IPluginSet _pluginSet;
 
+        public List<PluginInfo> DataRecords { get; set; } = new List<PluginInfo>();
+        public List<string> Folders { get; set; } = new List<string>();
+
         public PluginInitialization_Should()
         {
             _dataStore = new Mock<IDataStore>();
             _directoryReader = new Mock<IDirectoryReader>();
+            var mockSender = new Mock<IMessageSender>();
 
-            _provider = SetUpServices(x =>
+            ServiceProvider provider = SetUpServices(x =>
             {
+                x.AddSingleton(mockSender.Object);
                 x.AddSingleton(_dataStore.Object);
                 x.AddSingleton(_directoryReader.Object);
                 x.AddDomain(FakeSettingsBuilder.New().WithTestData().Build());
             });
 
-            _pluginInit = _provider.GetRequiredService<IPluginInitialization>();
-            _pluginSet = _provider.GetRequiredService<IPluginSet>();
+            SetReturnValues();
+
+            _pluginInit = provider.GetRequiredService<IPluginInitialization>();
+            _pluginSet = provider.GetRequiredService<IPluginSet>();
         }
 
         [Fact]
         public void SetNoPluginData_GivenEmptyFolderAndDatabase()
         {
-            SetReturnValues(new List<PluginInfo>(), new List<string>());
-
             _pluginInit.Initialize();
 
             _dataStore.Verify();
@@ -54,7 +59,7 @@ namespace ChatterBot.Tests.Domain.Plugins
         [InlineData("SimpleCommands", "ChatGames", "FartBot")]
         public void CreatesPluginInfo_GivenFolderDataAndEmptyDb(params string[] pluginNames)
         {
-            SetReturnValues(new List<PluginInfo>(), pluginNames.ToList());
+            Folders.AddRange(pluginNames);
 
             _pluginInit.Initialize();
 
@@ -75,7 +80,7 @@ namespace ChatterBot.Tests.Domain.Plugins
         public void AddsPluginInfoAsMissing_GivenDatabaseDataAndEmptyFolder()
         {
             var pluginInfo = new PluginInfo();
-            SetReturnValues(new List<PluginInfo> { pluginInfo }, new List<string>());
+            DataRecords.Add(pluginInfo);
 
             _pluginInit.Initialize();
 
@@ -92,7 +97,8 @@ namespace ChatterBot.Tests.Domain.Plugins
             string pluginName = "SimpleCommands";
             PluginStatuses status = PluginStatuses.Enabled;
             var pluginInfo = new PluginInfo { Name = pluginName, Location = pluginName, Status = status };
-            SetReturnValues(new List<PluginInfo> { pluginInfo }, new List<string> { pluginName });
+            DataRecords.Add(pluginInfo);
+            Folders.Add(pluginName);
 
             _pluginInit.Initialize();
 
@@ -103,13 +109,13 @@ namespace ChatterBot.Tests.Domain.Plugins
             _pluginSet.Plugins.Single().Status.Should().Be(status);
         }
 
-        private void SetReturnValues(List<PluginInfo> pluginInfos, List<string> fileNames)
+        private void SetReturnValues()
         {
             _dataStore.Setup(x => x.GetEntities<PluginInfo>())
-                .Returns(pluginInfos)
+                .Returns(() => DataRecords)
                 .Verifiable();
             _directoryReader.Setup(x => x.ReadPluginsFolder())
-                .Returns(fileNames)
+                .Returns(() => Folders)
                 .Verifiable();
         }
     }
