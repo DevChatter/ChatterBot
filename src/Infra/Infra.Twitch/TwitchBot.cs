@@ -1,7 +1,6 @@
 ﻿using ChatterBot.Auth;
 using ChatterBot.Infra.Twitch.Extensions;
 using ChatterBot.Interfaces;
-using ChatterBot.State;
 using System;
 using TwitchLib.Client.Events;
 

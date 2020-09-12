@@ -1,5 +1,7 @@
 ﻿using ChatterBot.Auth;
+using ChatterBot.Domain.Extensions;
 using ChatterBot.Infra.Twitch;
+using ChatterBot.Interfaces;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -7,7 +9,7 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static void AddInfrastructureForTwitch(this IServiceCollection services)
         {
-            services.AddTransient<ITwitchConnection, TwitchBot>();
+            services.AddWithInterfaces<TwitchBot>(typeof(IMessageSender), typeof(ITwitchConnection));
         }
     }
 }
