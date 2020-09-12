@@ -77,6 +77,21 @@ namespace ChatterBot.Tests.Domain.Plugins
         }
 
         [Fact]
+        public void AddsPluginInfoAsNew_GivenEmptyDatabaseAndNewFolder()
+        {
+            var folder = "The New Folder";
+            Folders.Add(folder);
+
+            _pluginInit.Initialize();
+
+            _dataStore.Verify();
+            _directoryReader.Verify();
+            _pluginSet.Plugins.Should().ContainSingle();
+            _pluginSet.Plugins.Single().Location.Should().Be(folder);
+            _pluginSet.Plugins.Single().Status.Should().Be(PluginStatuses.New);
+        }
+
+        [Fact]
         public void AddsPluginInfoAsMissing_GivenDatabaseDataAndEmptyFolder()
         {
             var pluginInfo = new PluginInfo();

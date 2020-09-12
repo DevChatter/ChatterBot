@@ -28,9 +28,9 @@ namespace ChatterBot.Domain.Plugins
 
             List<PluginInfo> matchedPlugins = FindMatchedPlugins(pluginFolders);
 
-            CreateRecordsForNewPlugins(pluginFolders, matchedPlugins);
-
             FlagMissingPlugins(matchedPlugins);
+
+            CreateRecordsForNewPlugins(pluginFolders, matchedPlugins);
 
             StartEnabledPlugins(matchedPlugins);
         }
@@ -115,7 +115,8 @@ namespace ChatterBot.Domain.Plugins
         {
             // TODO: Check for Metadata file.
 
-            foreach (string pluginFolder in pluginFolders.Except(matchedPlugins.Select(x => x.Location)))
+            var newFolders = pluginFolders.Except(matchedPlugins.Select(x => x.Location));
+            foreach (string pluginFolder in newFolders)
             {
                 var info = new PluginInfo
                 {
