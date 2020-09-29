@@ -32,7 +32,8 @@ namespace ChatterBot.Infra.LiteDb
             {
                 ILiteCollection<TEntity> col = db.GetCollection<TEntity>(typeof(TEntity).Name);
 
-                return col.Query().ToList();
+                List<TEntity> entities = col.Query().ToList();
+                return entities;
             }
         }
 

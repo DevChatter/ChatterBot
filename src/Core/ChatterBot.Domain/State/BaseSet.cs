@@ -5,14 +5,17 @@ namespace ChatterBot.Domain.State
 {
     public abstract class BaseSet<T>
     {
-        public BindingList<T> Items { get; protected set; } = new BindingList<T>();
+        public BindingList<T> Items { get; protected set; }
 
-        public void Initialize(IEnumerable<T> items)
+        protected BaseSet(List<T> items)
         {
-            foreach (var item in items)
+            Items = new BindingList<T>(items)
             {
-                Items.Add(item);
-            }
+                AllowNew = true,
+                AllowRemove = true,
+                AllowEdit = true,
+                RaiseListChangedEvents = true,
+            };
         }
 
         public void Register(T item)

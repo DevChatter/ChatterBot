@@ -7,31 +7,15 @@ namespace ChatterBot.Tests.Domain.State
 {
     public class TestSet_Should
     {
-        private readonly TestSet _testSet;
-
-        public TestSet_Should()
-        {
-            _testSet = new TestSet();
-        }
-
-        [Fact]
-        public void NotChangeCollection_AfterInitialize()
-        {
-            var original = _testSet.Items;
-
-            _testSet.Initialize(new List<string>());
-
-            _testSet.Items.Should().BeSameAs(original);
-        }
 
         [Fact]
         public void AddAllHandlers_GivenInInitialize()
         {
             string item1 = "Item 1";
 
-            _testSet.Initialize(new[] { item1 });
+            var testSet = new TestSet(new List<string> { item1 });
 
-            _testSet.Items.Single().Should().BeSameAs(item1);
+            testSet.Items.Single().Should().BeSameAs(item1);
         }
 
         [Fact]
@@ -39,13 +23,13 @@ namespace ChatterBot.Tests.Domain.State
         {
             string item1 = "Item 1";
             string item2 = "Item 2";
-            _testSet.Initialize(new string[] { });
+            var testSet = new TestSet(new List<string>());
 
-            _testSet.Register(item1);
-            _testSet.Register(item2);
+            testSet.Register(item1);
+            testSet.Register(item2);
 
-            _testSet.Items.Should().ContainSingle(x => x == item1);
-            _testSet.Items.Should().ContainSingle(x => x == item2);
+            testSet.Items.Should().ContainSingle(x => x == item1);
+            testSet.Items.Should().ContainSingle(x => x == item2);
         }
 
         [Fact]
@@ -53,15 +37,15 @@ namespace ChatterBot.Tests.Domain.State
         {
             string item1 = "Item 1";
             string item2 = "Item 2";
-            _testSet.Initialize(new[] { item1, item2 });
+            var testSet = new TestSet(new List<string> { item1, item2 });
 
-            _testSet.UnRegister(item1);
-            _testSet.Items.Should().NotContain(x => x == item1);
+            testSet.UnRegister(item1);
+            testSet.Items.Should().NotContain(x => x == item1);
 
-            _testSet.UnRegister(item2);
-            _testSet.Items.Should().NotContain(x => x == item2);
+            testSet.UnRegister(item2);
+            testSet.Items.Should().NotContain(x => x == item2);
 
-            _testSet.Items.Should().BeEmpty();
+            testSet.Items.Should().BeEmpty();
         }
     }
 }
