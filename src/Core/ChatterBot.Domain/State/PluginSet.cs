@@ -1,5 +1,5 @@
 ﻿using ChatterBot.Data;
-using ChatterBot.Domain.Plugins;
+using ChatterBot.Plugins;
 using System.ComponentModel;
 
 namespace ChatterBot.Domain.State

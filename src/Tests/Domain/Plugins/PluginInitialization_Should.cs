@@ -3,6 +3,7 @@ using ChatterBot.Domain.Plugins;
 using ChatterBot.Domain.State;
 using ChatterBot.FileSystem;
 using ChatterBot.Interfaces;
+using ChatterBot.Plugins;
 using ChatterBot.Tests.Builders;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;

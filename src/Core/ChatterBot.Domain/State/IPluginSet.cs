@@ -1,5 +1,4 @@
-﻿using ChatterBot.Domain.Plugins;
-using System.Collections.Generic;
+﻿using ChatterBot.Plugins;
 using System.ComponentModel;
 
 namespace ChatterBot.Domain.State

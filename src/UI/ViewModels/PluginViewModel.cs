@@ -1,6 +1,6 @@
 ﻿using ChatterBot.Data;
-using ChatterBot.Domain.Plugins;
 using ChatterBot.Domain.State;
+using ChatterBot.Plugins;
 using ChatterBot.UI.Views;
 using MahApps.Metro.IconPacks;
 using System.ComponentModel;

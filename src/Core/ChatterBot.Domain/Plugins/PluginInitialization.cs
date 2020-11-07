@@ -1,6 +1,7 @@
 ﻿using ChatterBot.Domain.State;
 using ChatterBot.FileSystem;
 using ChatterBot.Interfaces;
+using ChatterBot.Plugins;
 using System;
 using System.Collections.Generic;
 using System.Linq;

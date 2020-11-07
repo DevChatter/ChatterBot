@@ -1,6 +1,7 @@
 ﻿using ChatterBot.Auth;
 using ChatterBot.Config;
 using ChatterBot.Data;
+using ChatterBot.Plugins;
 using LiteDB;
 using System.Collections.Generic;
 
@@ -18,6 +19,8 @@ namespace ChatterBot.Infra.LiteDb
         public void EnsureSchema()
         {
             BsonMapper.Global.Entity<TwitchCredentials>().Id(x => x.AuthType);
+
+            BsonMapper.Global.Entity<PluginInfo>().Id(x => x.Name);
 
             using (LiteDatabase db = new LiteDatabase(_appSettings.LightDbConnection))
             {

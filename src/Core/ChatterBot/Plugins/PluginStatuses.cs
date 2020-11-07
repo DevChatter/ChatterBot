@@ -1,4 +1,4 @@
-﻿namespace ChatterBot.Domain.Plugins
+﻿namespace ChatterBot.Plugins
 {
     public enum PluginStatuses
     {
